@@ -9,9 +9,15 @@ class Clock extends React.Component {
 
     componentDidMount() {
         console.log("Did Mount Fired");
-        const interval = setInterval(function() {
+        this.interval = setInterval(() => {
             this.tick();
-        }.bind(this), 1000)
+        }, 1000)
+    }
+
+    componentWillUnmount() {
+        console.log("Unmount fired");
+        clearInterval(this.interval);
+
     }
 
     tick() {
@@ -23,10 +29,21 @@ class Clock extends React.Component {
         const {time} = this.state
         return (
             <div>
-                <h1>Clock</h1>
-                <span>{time.getHours()}:</span>
-                <span>{time.getMinutes()}:</span>
-                <span>{time.getSeconds()}</span>
+                <div className="header">Clock</div>
+
+                <div className="clock-box">
+                    {/* <span className="time-box">Time: {time.getHours()}:{time.getMinutes()}:{time.getSeconds()}</span>
+                    <span className="date-box">Date: {time.toDateString()}</span> */}
+
+                    <ul>
+                        <li>Time:</li>
+                        <li>Date:</li>
+                    </ul>
+                    <ul className="time-box">
+                        <li>{time.getHours()}:{time.getMinutes()}:{time.getSeconds()} CST</li>
+                        <li>{time.toDateString()}</li>
+                    </ul>
+                </div>
             </div>
         )
     }
