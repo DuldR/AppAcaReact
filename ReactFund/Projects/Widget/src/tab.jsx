@@ -3,11 +3,30 @@ import React from "react";
 class Tab extends React.Component {
     constructor(props) {
         super(props);
+
+        this.state = { tabIndex: 0, tabContent: this.props.content };
+        this.tabTitles = this.tabTitles.bind(this);
+    }
+
+    tabTitles () {
+        let butts = [1,2,3]
+
+        return (
+            butts.map((ele) => <li>{ele}</li>)
+        )
+
     }
 
     render() {
         return (
-            <h1>Am I in?</h1>
+
+            <div className="tab">
+
+                <div className="header">Tab</div>
+                <h1>{this.tabTitles()}</h1>
+                
+                
+            </div>
         )
     }
 }
