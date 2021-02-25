@@ -10,9 +10,12 @@ class Tab extends React.Component {
 
     tabTitles () {
         let butts = [1,2,3]
+       
 
         return (
-            butts.map((ele) => <li>{ele}</li>)
+
+            // butts.map((ele, idx) => <li key={idx}>{ele}</li>)
+            this.state.tabContent.map((ele, idx) => <li key={idx}>{ele.content}</li>)
         )
 
     }
