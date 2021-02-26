@@ -26,7 +26,7 @@ class Tab extends React.Component {
             <div className="tab">
 
                 <div className="header">Tab</div>
-                <h1>{this.tabTitles()}</h1>
+                <div className="tab-header">{this.tabTitles()}</div>
                 
                 
             </div>

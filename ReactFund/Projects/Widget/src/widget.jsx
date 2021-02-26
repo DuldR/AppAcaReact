@@ -7,7 +7,7 @@ import Tab from "./tab.jsx"
 
 document.addEventListener("DOMContentLoaded", () => {
   const root = document.getElementById('root');
-  const tabContent = [{title: "1", content: "Tab1"}, {title: "2", content: "Tab2"}];
+  const tabContent = [{title: "One", content: "Tab1"}, {title: "Two", content: "Tab2"}, {title: "Three", content: "Tab3"}];
 
   ReactDOM.render(
     <div>
