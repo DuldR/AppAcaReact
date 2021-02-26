@@ -15,8 +15,17 @@ class Tab extends React.Component {
     }
 
     tabTitles () {
+
         return (
-            this.state.tabContent.map((ele, idx) => <li id={idx} key={idx}>{ele.title}</li>)
+
+            this.state.tabContent.map((ele, idx) => {
+                
+                if (this.state.tabIndex == idx) {
+                    return <li className={"tab-on"} id={idx} key={idx}>{ele.title}</li>
+                } else {
+                    return <li className={"tab-off"} id={idx} key={idx}>{ele.title}</li>
+                }
+            })
         )
     }
     
@@ -39,7 +48,7 @@ class Tab extends React.Component {
             <div className="tab">
 
                 <h1 className="header">Tab</h1>
-                <div onClick={this.tabChange} className="tab-header">{this.tabTitles()}</div>
+                <div onClick={this.tabChange} className={`tab-header`}>{this.tabTitles()}</div>
                 <article className="tab-content">{this.tabContent()}</article>
                 
                 
