@@ -28,13 +28,10 @@ class Clock extends React.Component {
 
         const {time} = this.state
         return (
-            <div className="holder-box">
+            <div className="clock">
                 <h1 className="header">Clock</h1>
 
                 <div className="clock-box">
-                    {/* <span className="time-box">Time: {time.getHours()}:{time.getMinutes()}:{time.getSeconds()}</span>
-                    <span className="date-box">Date: {time.toDateString()}</span> */}
-
                     <ul>
                         <li>Time:</li>
                         <li>Date:</li>

@@ -11,7 +11,10 @@ document.addEventListener("DOMContentLoaded", () => {
 
   ReactDOM.render(
     <div>
-      <Clock />
+      <div class="holder-box">
+        <Clock />
+      </div>
+  
       <div class="holder-box">
         <Tab content={tabContent} />
         <div class="auto-fill">
