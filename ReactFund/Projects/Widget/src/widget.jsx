@@ -12,7 +12,10 @@ document.addEventListener("DOMContentLoaded", () => {
   ReactDOM.render(
     <div>
       <Clock />
-      <Tab content={tabContent}/>
+      <div class="holder-box">
+        <Tab content={tabContent} />
+        <h1>Test</h1>
+      </div>
     </div>, root);
   
 });

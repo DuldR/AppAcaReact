@@ -5,6 +5,20 @@
     background-color: green;
     font-size: 15px;
 }
+
+.split-header {
+    margin: 5px auto;
+    width: 125px;
+    background-color: green;
+    font-size: 15px;
+}
+
+.holder-box {
+    width: 250px;
+    height: 200px;
+    margin: auto;
+}
+
 .clock-box {
     font-family: monospace;
     display: flex;
@@ -31,6 +45,17 @@
     text-align: right;
     letter-spacing: normal;
 
+}
+
+.auto-fill {
+    width: 125px;
+    float: right;
+}
+
+.tab {
+    width: 125px;
+    float: left;
+    margin: 0 20% 0 0;
 }
 
 .tab-header {

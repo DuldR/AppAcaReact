@@ -28,7 +28,7 @@ class Clock extends React.Component {
 
         const {time} = this.state
         return (
-            <div className="clock">
+            <div className="holder-box">
                 <h1 className="header">Clock</h1>
 
                 <div className="clock-box">
