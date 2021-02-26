@@ -16,7 +16,7 @@ class Tab extends React.Component {
 
     tabTitles () {
         return (
-            this.state.tabContent.map((ele, idx) => <li key={idx}>{ele.title}</li>)
+            this.state.tabContent.map((ele, idx) => <li id={idx} key={idx}>{ele.title}</li>)
         )
     }
     
@@ -30,7 +30,7 @@ class Tab extends React.Component {
 
     tabChange(event) {
         event.preventDefault();
-        alert("Fired");
+        this.setState( {tabIndex: event.target.id} )
     }
 
     render() {
