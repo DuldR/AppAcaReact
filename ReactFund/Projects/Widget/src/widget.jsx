@@ -14,7 +14,8 @@ document.addEventListener("DOMContentLoaded", () => {
       <Clock />
       <div class="holder-box">
         <Tab content={tabContent} />
-        <h1>Test</h1>
+        <div class="auto-fill">
+          <h1 class="split-header">Test</h1></div>
       </div>
     </div>, root);
   
