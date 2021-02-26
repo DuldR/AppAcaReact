@@ -5,19 +5,32 @@ class Tab extends React.Component {
         super(props);
 
         this.state = { tabIndex: 0, tabContent: this.props.content };
+
+        // EventHandlers
+        this.tabChange = this.tabChange.bind(this);
+
+        // Methods
         this.tabTitles = this.tabTitles.bind(this);
+        this.tabContent = this.tabContent.bind(this);
     }
 
     tabTitles () {
-        let butts = [1,2,3]
-       
-
         return (
-
-            // butts.map((ele, idx) => <li key={idx}>{ele}</li>)
-            this.state.tabContent.map((ele, idx) => <li key={idx}>{ele.content}</li>)
+            this.state.tabContent.map((ele, idx) => <li key={idx}>{ele.title}</li>)
         )
+    }
+    
+    // Could be one line
+    tabContent() {
+        let index = this.state.tabIndex;
+        return (
+            this.state.tabContent[index].content
+        )
+    }
 
+    tabChange(event) {
+        event.preventDefault();
+        alert("Fired");
     }
 
     render() {
@@ -25,8 +38,9 @@ class Tab extends React.Component {
 
             <div className="tab">
 
-                <div className="header">Tab</div>
-                <div className="tab-header">{this.tabTitles()}</div>
+                <h1 className="header">Tab</h1>
+                <div onClick={this.tabChange} className="tab-header">{this.tabTitles()}</div>
+                <article className="tab-content">{this.tabContent()}</article>
                 
                 
             </div>

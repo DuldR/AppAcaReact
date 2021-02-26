@@ -38,13 +38,22 @@
     display:flex;
     flex-direction: row;
     margin: auto;
-    width: 150px;
+    width: 100px;
     list-style: none;
 }
 
 .tab-header li {
     background-color: red;
-    
+    font-size: 10px;
+    padding: 0 5px 0 5px;
     border: 1px solid black;
     border-radius: 5px 5px 0 0;
+}
+
+.tab-content {
+    background-color: red;
+    margin: auto;
+    width: 100px;
+    height: 125px;
+
 }
