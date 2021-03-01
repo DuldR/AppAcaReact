@@ -8,14 +8,13 @@ class Clock extends React.Component {
     }
 
     componentDidMount() {
-        console.log("Did Mount Fired");
+
         this.interval = setInterval(() => {
             this.tick();
         }, 1000)
     }
 
     componentWillUnmount() {
-        console.log("Unmount fired");
         clearInterval(this.interval);
 
     }
