@@ -41,6 +41,23 @@
     list-style-type: none;
 }
 
+.weather-box {
+    font-family: monospace;
+    display: flex;
+    height:100px;
+    width:250px;
+    margin:auto;
+
+    border: 1px black solid;
+
+    background: greenyellow;
+    font-size:15px;
+    color: white;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    align-content: center;
+}
+
 .time-box li {
     text-align: right;
     letter-spacing: normal;

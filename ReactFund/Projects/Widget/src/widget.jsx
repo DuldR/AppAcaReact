@@ -4,6 +4,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import Clock from "./clock.jsx"
 import Tab from "./tab.jsx"
+import Weather from "./weather.jsx"
 
 document.addEventListener("DOMContentLoaded", () => {
   const root = document.getElementById('root');
@@ -11,14 +12,15 @@ document.addEventListener("DOMContentLoaded", () => {
 
   ReactDOM.render(
     <div>
-      <div class="holder-box">
+      <div className="holder-box">
         <Clock />
+        <Weather />
       </div>
   
-      <div class="holder-box">
+      <div className="holder-box">
         <Tab content={tabContent} />
-        <div class="auto-fill">
-          <h1 class="split-header">Test</h1></div>
+        <div className="auto-fill">
+          <h1 className="split-header">Test</h1></div>
       </div>
     </div>, root);
   
