@@ -40,6 +40,7 @@ build/Release
 # Dependency directories
 node_modules/
 jspm_packages/
+okrat/
 
 # TypeScript v1 declaration files
 typings/
@@ -104,4 +105,4 @@ dist
 .tern-port
 
 # Config Info
-/AppAcaReact/ReactFund/Projects/Widget/frontend/config1.js
+config/
