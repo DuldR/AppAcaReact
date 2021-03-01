@@ -1,4 +1,5 @@
 import React from "react";
+import API from "../config/api.js"
 
 class Weather extends React.Component {
     constructor(props) {
@@ -19,6 +20,16 @@ class Weather extends React.Component {
     succ(pos) {
         console.log(pos.coords.latitude);
         console.log(pos.coords.longitude);
+
+        let url = `http://api.openweathermap.org/data/2.5/weather?q=London,uk&appid=${API.weather}`
+        let xhr = new XMLHttpRequest();
+        xhr.open("GET", url);
+
+        xhr.send();
+
+        xhr.onload = function() {
+            console.log(xhr.response);
+        }
     }
 
     render() {
