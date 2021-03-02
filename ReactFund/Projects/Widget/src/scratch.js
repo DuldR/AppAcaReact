@@ -1,13 +1,21 @@
-class Test {
-    constructor() {
-        this.name = "test";
-    }
+function nameFilter (q) {
 
-    butts() {
-        const anus = "Anus";
-    }
+    const names = ["abc", "ab", "a", "c"]
+    let butts = [];
 
-    hole() {
-        console.log(anus);
-    }
+    inpLeng = q.length
+
+//     for (i=0; i<names.length; i++) {
+//         let str = names[i];
+//         if (str.substr(0, inpLeng) === q) {
+//             console.log("Found");
+//         }
+//     }
+    names.forEach(function(ele) {
+        console.log(ele);
+        butts.push(ele)
+        console.log
+    })
+
+    return butts;
 }

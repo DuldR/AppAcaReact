@@ -8,6 +8,7 @@ class Auto extends React.Component {
         this.state = { names: this.props.content};
 
         this.fillNames = this.fillNames.bind(this);
+        this.searchNames = this.searchNames.bind(this);
 
     }
 
@@ -21,12 +22,20 @@ class Auto extends React.Component {
         )
     }
 
+    searchNames (inp) {
+
+        let newNames = [];
+        
+        this.state.names.forEach((ele) => {})
+
+    }
+
     render() {
         return (
             <div className="auto">
 
                 <h1 className="split-header">Auto</h1>
-                <input className="auto-input" placeholder="Search..."></input>
+                <input onChange={this.searchNames} className="auto-input" placeholder="Search..."></input>
                 <div className="name-box">
                     <ul>
                         {this.fillNames()}
