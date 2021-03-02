@@ -1,4 +1,5 @@
 import React from "react";
+import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
 
 class Auto extends React.Component {
 
@@ -15,7 +16,7 @@ class Auto extends React.Component {
 
     pickName (e) {
         e.preventDefault();
-        this.setState( {value: [e.target.innerHTML]})
+        this.setState( {filter: [e.target.innerHTML], value: [e.target.innerHTML]})
     }
 
     fillNames () {
@@ -59,7 +60,11 @@ class Auto extends React.Component {
                 <div className="name-box">
                     <input onChange={this.searchNames} className="auto-input" placeholder="Searching..." value={this.state.value}></input>
                     <ul onClick={this.pickName}>
-                        {this.fillNames()}
+                        <ReactCSSTransitionGroup
+                            transitionName="auto"
+                            transitionEnterTimeout={500}          transitionLeaveTimeout={300}>
+                            {this.fillNames()}
+                        </ReactCSSTransitionGroup>
                     </ul>
 
                     
