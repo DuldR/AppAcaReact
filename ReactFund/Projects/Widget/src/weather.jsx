@@ -8,7 +8,7 @@ class Weather extends React.Component {
         this.state = { temp: "Loading...", feels: "Loading...", city: "Loading...", weather: "Loading..." }
 
         this.succ = this.succ.bind(this);
-        this.postData = this.postData.bind(this);
+
     }
 
     componentDidMount() {
@@ -16,24 +16,17 @@ class Weather extends React.Component {
         navigator.geolocation.getCurrentPosition(this.succ);
     }
 
-    postData(response) {
-        console.log(response.coord);
-    }
-
     succ(pos) {
-        console.log(pos.coords.latitude);
-        console.log(pos.coords.longitude);
-
-        let resp = "";
         let url = `http://api.openweathermap.org/data/2.5/weather?lat=${pos.coords.latitude}&lon=${pos.coords.longitude}&appid=${API.weather}&units=imperial`
         let xhr = new XMLHttpRequest();
+        
         xhr.open("GET", url);
+
         xhr.onload = function() {
 
-            resp = JSON.parse(xhr.response);
-            console.log(resp)
-
+            let resp = JSON.parse(xhr.response);
             this.setState( {temp: resp.main.temp, city: resp.name, feels: resp.main.feels_like, weather: resp.weather[0].main} )
+
         }.bind(this);
         
 
