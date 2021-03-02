@@ -5,7 +5,7 @@ class Auto extends React.Component {
     constructor(props) {
         super(props);
 
-        this.state = { names: this.props.content};
+        this.state = { names: this.props.content, filter: this.props.content };
 
         this.fillNames = this.fillNames.bind(this);
         this.searchNames = this.searchNames.bind(this);
@@ -16,7 +16,7 @@ class Auto extends React.Component {
         return (
 
 
-            this.state.names.map((ele, idx) => {
+            this.state.filter.map((ele, idx) => {
                 return <li key={idx}>{ele}</li>
             })
         )
@@ -24,9 +24,19 @@ class Auto extends React.Component {
 
     searchNames (inp) {
 
+        // This CONCEPTUALLY works.
+
         let newNames = [];
         
-        this.state.names.forEach((ele) => {})
+        this.state.names.forEach((ele) => {
+
+            if (ele.substring(0, inp.length) === inp) {
+                newNames.push(ele);
+            }
+
+        })
+
+        this.setState( {filter: newNames} )
 
     }
 
@@ -40,6 +50,7 @@ class Auto extends React.Component {
                     <ul>
                         {this.fillNames()}
                     </ul>
+
                     
                 </div>
                 

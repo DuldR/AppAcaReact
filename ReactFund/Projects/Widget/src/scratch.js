@@ -11,7 +11,7 @@ function nameFilter (q) {
 //             console.log("Found");
 //         }
 //     }
-    names.forEach(function(ele) {
+    names.forEach((ele) => {
         console.log(ele);
         butts.push(ele)
         console.log
