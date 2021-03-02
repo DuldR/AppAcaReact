@@ -64,11 +64,41 @@
 
 }
 
+.name-box {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 10px 0 0 0;
+    font-size: 9px;
+}
+
+.name-box ul {
+    margin: auto;
+}
+
+.name-box li {
+    list-style-type:square;
+}
+
+.auto-input {
+
+    width: 100px;
+    margin: 0 5px;
+}
+
+.auto {
+    width: 120px;
+    float: right;
+    height: 175px;
+    margin: 0 0 0 5px;
+}
+
 
 
 .tab {
     width: 120px;
     float: left;
+    height: 175px;
     margin: 0 5px 0 0;
 }
 
