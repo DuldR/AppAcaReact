@@ -5,7 +5,7 @@ class Weather extends React.Component {
     constructor(props) {
         super(props);
 
-        this.state = { temp: "ok", city: "df" }
+        this.state = { temp: "Loading...", feels: "Loading...", city: "Loading...", weather: "Loading..." }
 
         this.succ = this.succ.bind(this);
         this.postData = this.postData.bind(this);
@@ -29,11 +29,12 @@ class Weather extends React.Component {
         let xhr = new XMLHttpRequest();
         xhr.open("GET", url);
         xhr.onload = function() {
-            console.log(xhr.status);
-            console.log(xhr.responseText);
-            console.log(xhr.response);
-            console.log(JSON.parse(xhr.response))
-        }
+
+            resp = JSON.parse(xhr.response);
+            console.log(resp)
+
+            this.setState( {temp: resp.main.temp, city: resp.name, feels: resp.main.feels_like, weather: resp.weather[0].main} )
+        }.bind(this);
         
 
         xhr.send();
@@ -43,13 +44,28 @@ class Weather extends React.Component {
 
     render() {
 
-        const {temp} = this.state
+        const {temp, city, feels, weather} = this.state
 
         return (
             <div className="weather">
                 <h1 className="header">Weather</h1>
                 <div className="weather-box">
-                    <h3>{temp}</h3>
+
+                    <ul>
+                        <li>City:</li>
+                        <li>Temp:</li>
+                        <li>Feels Like:</li>
+                        <li>Weather:</li>
+                    </ul>
+
+                    <ul>
+                        <li>{city}</li>
+                        <li>{temp}</li>
+                        <li>{feels}</li>
+                        <li>{weather}</li>
+
+                    </ul>
+                    
                 </div>
             </div>
         )
