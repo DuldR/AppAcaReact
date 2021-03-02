@@ -5,11 +5,17 @@ class Auto extends React.Component {
     constructor(props) {
         super(props);
 
-        this.state = { names: this.props.content, filter: this.props.content };
+        this.state = { names: this.props.content, filter: this.props.content, value: "" };
 
         this.fillNames = this.fillNames.bind(this);
         this.searchNames = this.searchNames.bind(this);
+        this.pickName = this.pickName.bind(this);
 
+    }
+
+    pickName (e) {
+        e.preventDefault();
+        this.setState( {value: [e.target.innerHTML]})
     }
 
     fillNames () {
@@ -25,14 +31,12 @@ class Auto extends React.Component {
     searchNames (inp) {
 
         // This CONCEPTUALLY works.
+        inp.preventDefault();
 
         let newNames = [];
         let trg = inp.currentTarget.value
         
         this.state.names.forEach((ele) => {
-
-            console.log(ele);
-            console.log(trg);
 
             if (ele.substring(0, trg.length).toLowerCase() === trg.toLowerCase()) {
                 newNames.push(ele);
@@ -40,22 +44,21 @@ class Auto extends React.Component {
 
         })
 
-        console.log(newNames);
-
-        this.setState( {filter: newNames} )
-
-        console.log(inp.currentTarget.value.length);
+        this.setState( {filter: newNames, value: inp.currentTarget.value} )
 
     }
 
     render() {
+
+        const{names, filter, value} = this.state
+
         return (
             <div className="auto">
 
                 <h1 className="split-header">Auto</h1>
-                <input onChange={this.searchNames} className="auto-input" placeholder="Search..."></input>
                 <div className="name-box">
-                    <ul>
+                    <input onChange={this.searchNames} className="auto-input" placeholder="Searching..." value={this.state.value}></input>
+                    <ul onClick={this.pickName}>
                         {this.fillNames()}
                     </ul>
 
