@@ -27,16 +27,24 @@ class Auto extends React.Component {
         // This CONCEPTUALLY works.
 
         let newNames = [];
+        let trg = inp.currentTarget.value
         
         this.state.names.forEach((ele) => {
 
-            if (ele.substring(0, inp.length) === inp) {
+            console.log(ele);
+            console.log(trg);
+
+            if (ele.substring(0, trg.length).toLowerCase() === trg.toLowerCase()) {
                 newNames.push(ele);
             }
 
         })
 
+        console.log(newNames);
+
         this.setState( {filter: newNames} )
+
+        console.log(inp.currentTarget.value.length);
 
     }
 
