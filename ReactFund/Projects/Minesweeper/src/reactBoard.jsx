@@ -2,7 +2,9 @@
 
 import React from "react";
 
-function ReactBoard(props) {
+const ReactBoard = (props) => {
+
+    console.log(props);
     return <div>Board</div>
 }
 

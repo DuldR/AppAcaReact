@@ -10,7 +10,7 @@ class Game extends React.Component {
 
         this.state = { board: new Board(2, 1) }
 
-
+        this.updateGame = this.updateGame.bind(this);
     }
 
     updateGame () {
@@ -20,11 +20,12 @@ class Game extends React.Component {
     render() {
 
         console.log(this.state.board);
+        let boardProps = {board: this.state.board, func: this.updateGame}
 
         return (
 
             <div>
-                <ReactBoard props={this.state.board, this.updateGame}/>
+                <ReactBoard props={boardProps}/>
                 <ReactTile />
 
             </div>
