@@ -18,16 +18,12 @@ class Game extends React.Component {
     }
 
     render() {
-
-        console.log(this.state.board);
         let boardProps = {board: this.state.board, func: this.updateGame}
 
         return (
 
             <div>
                 <ReactBoard {...boardProps}/>
-                <ReactTile />
-
             </div>
         )
     }

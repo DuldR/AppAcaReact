@@ -1,20 +1,22 @@
 // Needs to be functional component
 
 import React from "react";
+import ReactTile from "./reactTile.jsx"
 
 const ReactBoard = (props) => {
 
-    console.log(props);
-    console.log(props.board.grid);
     return (
         props.board.grid.map((ele, idx) => {
             return (
-                <div>
+                <div key={"board"+idx}>
+                    <ul>
                     {ele.map((el, idx2) => {
+                        let tileProps = {tile: el, func: props.func}
                         return (
-                            <li>t</li>
+                            <ReactTile key={"row-"+idx+"-tile-"+idx2} {...tileProps}/>
                         )
                     })}
+                    </ul>
                 </div>
             )
         })

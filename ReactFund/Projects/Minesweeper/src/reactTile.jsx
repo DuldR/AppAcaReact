@@ -1,18 +1,10 @@
 import React from "react";
 
-class ReactTile extends React.Component {
+const ReactTile = (props) => {
 
-    constructor(props) {
-        super(props);
-
-    }
-
-    render() {
-        return(
-            <div>Tile</div>
-        )
-    }
-
+    return (
+        <li>Tile</li>
+    )
 
 }
 
