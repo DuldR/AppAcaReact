@@ -5,8 +5,11 @@ import React from "react";
 const ReactBoard = (props) => {
 
     console.log(props);
+    console.log(props.board.grid);
     return (
-        <div>B</div>
+        props.board.grid.map((ele, idx) => {
+            return <li key={idx}>idx</li>
+        })
     )
 }
 
