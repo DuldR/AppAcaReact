@@ -8,7 +8,15 @@ const ReactBoard = (props) => {
     console.log(props.board.grid);
     return (
         props.board.grid.map((ele, idx) => {
-            return <li key={idx}>idx</li>
+            return (
+                <div>
+                    {ele.map((el, idx2) => {
+                        return (
+                            <li>t</li>
+                        )
+                    })}
+                </div>
+            )
         })
     )
 }
