@@ -25,7 +25,7 @@ class Game extends React.Component {
         return (
 
             <div>
-                <ReactBoard props={boardProps}/>
+                <ReactBoard {...boardProps}/>
                 <ReactTile />
 
             </div>
