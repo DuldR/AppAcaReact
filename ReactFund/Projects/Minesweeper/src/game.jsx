@@ -8,7 +8,7 @@ class Game extends React.Component {
     constructor(props) {
         super(props);
 
-        this.state = { board: new Board(3, 1) }
+        this.state = { board: new Board(9, 5) }
 
         this.updateGame = this.updateGame.bind(this);
         this.restartGame = this.restartGame.bind(this);
@@ -19,9 +19,9 @@ class Game extends React.Component {
 
         e.preventDefault();
 
-        document.getElementById('modal').classList.remove('is-active');
+        document.getElementById('modal').classList.remove('is-active', 'won', 'lost');
 
-        this.setState( {board: new Board(3,1) })
+        this.setState( {board: new Board(9, 5) })
 
     }
 
@@ -34,11 +34,18 @@ class Game extends React.Component {
         }
 
         if (this.state.board.won() === true) {
-            document.getElementById('modal').classList.add('is-active');
+
+            let gameState = document.createElement('h1');
+            gameState.innerHTML = "Won!"
+            document.getElementsByClassName('modal-close')[0].prepend(gameState);
+            document.getElementById('modal').classList.add('is-active', 'won');
         } else {
 
             if (this.state.board.lost() === true) {
-                document.getElementById('modal').classList.add('is-active');
+                let gameState = document.createElement('h1');
+                gameState.innerHTML = "Lost!"
+                document.getElementsByClassName('modal-close')[0].prepend(gameState);
+                document.getElementById('modal').classList.add('is-active', 'lost');
             }
 
             this.setState( {board: this.state.board} )
