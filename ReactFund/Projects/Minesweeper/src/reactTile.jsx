@@ -8,6 +8,8 @@ class ReactTile extends React.Component {
         this.getBombs = this.getBombs.bind(this);
         this.selectTile = this.selectTile.bind(this);
         this.getFlag = this.getFlag.bind(this);
+
+        this.getTileContent = this.getTileContent.bind(this);
     }
 
     getBombs() {
@@ -27,10 +29,18 @@ class ReactTile extends React.Component {
 
         if (this.props.tile.explored === true) {
             theString += " explored";
-        };
+        }
 
         return theString;
 
+    }
+
+    getTileContent() {
+        if (this.props.tile.flagged === true) {
+            return "⚑";
+        } else if (this.props.tile.explored === true) {
+            return this.props.tile.adjacentBombCount();
+        }
     }
 
     selectTile(e) {
@@ -43,7 +53,7 @@ class ReactTile extends React.Component {
     render() {
         return (
             <li onClick={this.selectTile} className={"tile" + this.getFlag()}>
-                {this.getBombs()}
+                {this.getTileContent()}
             </li>
         )
     }

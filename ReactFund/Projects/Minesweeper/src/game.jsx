@@ -20,6 +20,7 @@ class Game extends React.Component {
         e.preventDefault();
 
         document.getElementById('modal').classList.remove('is-active', 'won', 'lost');
+        document.getElementsByClassName('modal-close')[0].firstChild.innerHTML = ""; 
 
         this.setState( {board: new Board(9, 5) })
 
@@ -61,6 +62,8 @@ class Game extends React.Component {
         
         
         return (
+
+    
             <div className="game">
                 <ReactBoard {...boardProps}/>
             </div>
