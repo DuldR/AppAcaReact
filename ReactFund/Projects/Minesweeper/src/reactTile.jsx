@@ -35,7 +35,7 @@ class ReactTile extends React.Component {
 
     selectTile(e) {
         e.preventDefault();
-        this.props.func(this.props.tile, true);
+        this.props.func(this.props.tile, e.altKey);
         
     }
 

@@ -11,17 +11,28 @@ class Game extends React.Component {
         this.state = { board: new Board(3, 1) }
 
         this.updateGame = this.updateGame.bind(this);
+        this.restartGame = this.restartGame.bind(this);
+    }
+
+
+    restartGame() {
+
     }
 
     updateGame (obj, flag) {
 
-        obj.explore();
+        if (flag === true) {
+            obj.toggleFlag();
+        } else {
+            obj.explore();
+        }
 
         if (this.state.board.won() === true) {
-            alert("Go off King.");
+            document.getElementById('modal').classList.add('is-active');
         } else {
+
             if (this.state.board.lost() === true) {
-                alert("Mission Failed. You'll get them next time.")
+                document.getElementById('modal').classList.add('is-active');
             }
 
             this.setState( {board: this.state.board} )
@@ -33,6 +44,10 @@ class Game extends React.Component {
 
         let boardProps = {board: this.state.board, func: this.updateGame}
 
+        console.log(document.getElementById('modal'))
+
+        
+        
         return (
 
             <div className="game">
