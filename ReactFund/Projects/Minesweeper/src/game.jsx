@@ -17,9 +17,15 @@ class Game extends React.Component {
 
         obj.explore();
 
-        this.setState( {board: this.state.board} )
+        if (this.state.board.won() === true) {
+            alert("Go off King.");
+        } else {
+            if (this.state.board.lost() === true) {
+                alert("Mission Failed. You'll get them next time.")
+            }
 
-
+            this.setState( {board: this.state.board} )
+        }
     }
 
     render() {
