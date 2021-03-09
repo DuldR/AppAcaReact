@@ -4,13 +4,11 @@ import React from "react";
 import ReactTile from "./reactTile.jsx"
 
 const ReactBoard = (props) => {
-
-    console.log(props);
     return (
         props.board.grid.map((ele, idx) => {
             return (
-                <div className="board" key={"board"+idx}>
-                    <ul>
+                <div className="row" key={"board"+idx}>
+                    <ul className="column">
                     {ele.map((el, idx2) => {
                         let tileProps = {tile: el, func: props.func}
                         return (

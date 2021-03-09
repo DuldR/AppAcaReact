@@ -5,15 +5,11 @@ class ReactTile extends React.Component {
     constructor(props) {
         super(props);
 
-
-        this.state = { explored: props.tile.explored, bombed: props.tile.bombed, flagged: props.tile.flagged }
+        this.state = { flag: "" }
 
         this.getBombs = this.getBombs.bind(this);
         this.selectTile = this.selectTile.bind(this);
-
-        if (this.state.explored === true) {
-            this.flag = "explored";
-        }
+        this.getFlag = this.getFlag.bind(this);
     }
 
     getBombs() {
@@ -25,6 +21,18 @@ class ReactTile extends React.Component {
         return bombCount;
     }
 
+    getFlag() {
+
+        let theString;
+
+        if (this.props.tile.explored === true) {
+            theString += " explored";
+        };
+
+        return theString;
+
+    }
+
     selectTile(e) {
         e.preventDefault();
         this.props.func(this.props.tile, true);
@@ -33,11 +41,12 @@ class ReactTile extends React.Component {
 
 
     render() {
-        console.log(this.state.explored);
         return (
-            <div onClick={this.selectTile} className={"tile"}>
+            <li onClick={this.selectTile} className={"tile" + this.getFlag()}>
                 {"Explored?: " + this.props.tile.explored}
-            </div>
+                <span>{"Bombed?: " + this.props.tile.bombed}</span>
+                <span>{"Adjacent Bombs: " + this.props.tile.adjacentBombCount()}</span>
+            </li>
         )
     }
     

@@ -1,3 +1,14 @@
+.game {
+    background-color: burlywood;
+    display: flex;
+    flex-direction: row;
+
+    margin: auto;
+
+    width: 750px;
+    height: 750px;
+}
+
 .tile {
     background-color: green;
     width: 200px;
@@ -7,7 +18,11 @@
     border-style: outset;
 }
 
-.board {
+.column {
+    list-style-type: none;
+}
+
+.row {
     background-color: blue;
 }
 
