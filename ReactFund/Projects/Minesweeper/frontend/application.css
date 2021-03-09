@@ -5,25 +5,31 @@
 
     margin: auto;
 
-    width: 750px;
-    height: 750px;
+    width: 500px;
+    height: 500px;
 }
 
 .tile {
     background-color: green;
     width: 200px;
     height: 100px;
+    text-align: center;
+    line-height: 100px;
 
     border: 1px solid black;
-    border-style: outset;
+    border-style: inset;
 }
 
 .column {
     list-style-type: none;
+    margin: auto;
+    padding: 0;
 }
 
 .row {
+    display: flex;
     background-color: blue;
+    
 }
 
 .explored {
