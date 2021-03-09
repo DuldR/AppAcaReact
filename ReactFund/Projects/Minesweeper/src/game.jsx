@@ -15,7 +15,13 @@ class Game extends React.Component {
     }
 
 
-    restartGame() {
+    restartGame(e) {
+
+        e.preventDefault();
+
+        document.getElementById('modal').classList.remove('is-active');
+
+        this.setState( {board: new Board(3,1) })
 
     }
 
@@ -44,12 +50,10 @@ class Game extends React.Component {
 
         let boardProps = {board: this.state.board, func: this.updateGame}
 
-        console.log(document.getElementById('modal'))
-
+        document.getElementById('modal-close').onclick = this.restartGame
         
         
         return (
-
             <div className="game">
                 <ReactBoard {...boardProps}/>
             </div>
