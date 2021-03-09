@@ -5,6 +5,7 @@ import ReactTile from "./reactTile.jsx"
 
 const ReactBoard = (props) => {
 
+    console.log(props);
     return (
         props.board.grid.map((ele, idx) => {
             return (
@@ -22,5 +23,7 @@ const ReactBoard = (props) => {
         })
     )
 }
+
+
 
 export default ReactBoard

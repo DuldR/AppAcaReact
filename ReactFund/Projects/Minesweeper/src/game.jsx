@@ -8,16 +8,25 @@ class Game extends React.Component {
     constructor(props) {
         super(props);
 
-        this.state = { board: new Board(2, 1) }
+        this.state = { board: new Board(3, 1) }
 
         this.updateGame = this.updateGame.bind(this);
     }
 
-    updateGame () {
+    updateGame (obj, flag) {
+
+        obj.explore();
+
+        this.setState( {board: this.state.board} )
+
 
     }
 
     render() {
+
+    
+
+        console.log(this.state.board)
         let boardProps = {board: this.state.board, func: this.updateGame}
 
         return (

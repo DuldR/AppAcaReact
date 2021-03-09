@@ -1,47 +1,43 @@
 import React from "react";
 
-// const ReactTile = (props) => {
-
-//     let bombCount;
-
-//     if (props.tile.explored === true && props.tile.bombed === false) {
-//         bombCount = props.tile.adjacentBombCount();
-//     }
-
-//     return (
-//         <div>
-//             <div className="tile">{bombCount}</div>
-//         </div>
-//     )
-
-// }
-
 class ReactTile extends React.Component {
 
     constructor(props) {
         super(props);
 
-        this.state = { explored: props.explored, bombed: props.bombed, flagged: props.flagged }
+
+        this.state = { explored: props.tile.explored, bombed: props.tile.bombed, flagged: props.tile.flagged }
 
         this.getBombs = this.getBombs.bind(this);
+        this.selectTile = this.selectTile.bind(this);
+
+        if (this.state.explored === true) {
+            this.flag = "explored";
+        }
     }
 
     getBombs() {
         let bombCount;
 
-        if (this.state.explored === true && this.state.bombed === false) {
-            bombCount = this.props.tile.adjacentBombCount();
-        }
+        bombCount = this.props.tile.adjacentBombCount();
+
 
         return bombCount;
     }
 
-
+    selectTile(e) {
+        e.preventDefault();
+        this.props.func(this.props.tile, true);
+        
+    }
 
 
     render() {
+        console.log(this.state.explored);
         return (
-            <div className="tile">{this.getBombs()}</div>
+            <div onClick={this.selectTile} className={"tile"}>
+                {"Explored?: " + this.props.tile.explored}
+            </div>
         )
     }
     
