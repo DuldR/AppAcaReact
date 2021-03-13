@@ -18,6 +18,7 @@ const initialState = {
   }
 };
 
+// This works
 const arrToObj = (arr, key) => {
     const newObj = {};
 
@@ -28,7 +29,6 @@ const arrToObj = (arr, key) => {
         }
     }, newObj)
 }
-
 
 
 const todosReducer = (state = initialState, action) => {

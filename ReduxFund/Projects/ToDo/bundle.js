@@ -84,7 +84,7 @@ var initialState = {
     body: "with shampoo",
     done: true
   }
-};
+}; // This works
 
 var arrToObj = function arrToObj(arr, key) {
   var newObj = {};
