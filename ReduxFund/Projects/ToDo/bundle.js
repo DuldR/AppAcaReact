@@ -102,12 +102,7 @@ var todosReducer = function todosReducer() {
       return state = arrToObj(action.todos, 'id');
 
     case _actions_todo_actions_js__WEBPACK_IMPORTED_MODULE_0__.RECEIVE_TODO:
-      console.log(action.todo);
-      console.log(action.todo.id);
-      var b = action.todo.id;
-      console.log(b); // JAVASCRIPT IS SO FUCKING BAD
-
-      return state = _defineProperty({}, b, "FUCK OFF");
+      return state = Object.assign(state, _defineProperty({}, action.todo.id, action.todo));
 
     default:
       return state;

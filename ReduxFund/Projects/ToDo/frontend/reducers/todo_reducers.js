@@ -38,12 +38,7 @@ const todosReducer = (state = initialState, action) => {
             return state = arrToObj(action.todos, 'id');
 
         case RECEIVE_TODO:
-            console.log(action.todo);
-            console.log(action.todo.id)
-            let b = action.todo.id
-            console.log(b)
-            // JAVASCRIPT IS SO FUCKING BAD
-            return state = {[b]:"FUCK OFF"}
+            return state = Object.assign(state, {[action.todo.id]: action.todo})
         default:
             return state;
     }
