@@ -102,7 +102,12 @@ var todosReducer = function todosReducer() {
       return state = arrToObj(action.todos, 'id');
 
     case _actions_todo_actions_js__WEBPACK_IMPORTED_MODULE_0__.RECEIVE_TODO:
-      return state;
+      console.log(action.todo);
+      console.log(action.todo.id);
+      var b = action.todo.id;
+      console.log(b); // JAVASCRIPT IS SO FUCKING BAD
+
+      return state = _defineProperty({}, b, "FUCK OFF");
 
     default:
       return state;
@@ -30991,6 +30996,7 @@ __webpack_require__.r(__webpack_exports__);
 
 window.store = _store_todo_store_js__WEBPACK_IMPORTED_MODULE_2__.default;
 window.receiveTodos = _actions_todo_actions_js__WEBPACK_IMPORTED_MODULE_3__.receiveTodos;
+window.receiveTodo = _actions_todo_actions_js__WEBPACK_IMPORTED_MODULE_3__.receiveTodo;
 document.addEventListener("DOMContentLoaded", function () {
   react_dom__WEBPACK_IMPORTED_MODULE_1__.render( /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", null, "Hooked"), document.getElementById('root'));
 });
