@@ -1,5 +1,6 @@
 import { RECEIVE_TODO } from '../actions/todo_actions.js'
 import { RECEIVE_TODOS } from '../actions/todo_actions.js'
+import { REMOVE_TODO } from '../actions/todo_actions.js'
 
 
 
@@ -39,6 +40,9 @@ const todosReducer = (state = initialState, action) => {
 
         case RECEIVE_TODO:
             return state = Object.assign(state, {[action.todo.id]: action.todo})
+        case REMOVE_TODO:
+            delete state[action.todo.id]
+            return state
         default:
             return state;
     }
