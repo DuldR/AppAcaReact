@@ -4,17 +4,6 @@ import configureStore from './store/store';
 
 import Root from './components/root';
 
-const logger = store => next => action => {
-
-  console.log('Action received:', action);
-  console.log('state pre dispatch:', store.getState());
-
-  let result = next(action);
-
-  console.log('state post disp: ', store.getState());
-
-  return result
-}
 
 // const applyMiddleware = (store, ...args) => {
 //   let dispatch = store.dispatch;

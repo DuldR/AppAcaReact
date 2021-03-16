@@ -1227,26 +1227,13 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-
-
-var logger = function logger(store) {
-  return function (next) {
-    return function (action) {
-      console.log('Action received:', action);
-      console.log('state pre dispatch:', store.getState());
-      var result = next(action);
-      console.log('state post disp: ', store.getState());
-      return result;
-    };
-  };
-}; // const applyMiddleware = (store, ...args) => {
+ // const applyMiddleware = (store, ...args) => {
 //   let dispatch = store.dispatch;
 //   args.forEach((ware) => {
 //     dispatch = ware(store)(dispatch);
 //   })
 //   return Object.assign({}, store, { dispatch });
 // }
-
 
 document.addEventListener('DOMContentLoaded', function () {
   var preloadedState = localStorage.state ? JSON.parse(localStorage.state) : {};
