@@ -1,6 +1,4 @@
-import { RECEIVE_TODO } from '../actions/todo_actions.js'
-import { RECEIVE_TODOS } from '../actions/todo_actions.js'
-import { REMOVE_TODO } from '../actions/todo_actions.js'
+import { RECEIVE_TODO, RECEIVE_TODOS, REMOVE_TODO } from '../actions/todo_actions.js'
 
 
 
