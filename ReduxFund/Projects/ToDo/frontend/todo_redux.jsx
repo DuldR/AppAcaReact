@@ -17,6 +17,11 @@ window.receiveSteps = receiveSteps;
 window.receiveStep = receiveStep;
 window.removeStep = removeStep;
 
+// Scratch Actions
+// Step
+const newStep = { id: 1, title: 'Dispatch actions', done: false, todo_id: 1 }
+const newTodo = { id: 1, title: 'Learn Redux', body: 'It is fundamental', done: false }
+
 
 
 document.addEventListener("DOMContentLoaded", function(){

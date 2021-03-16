@@ -114,20 +114,33 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
 /* harmony import */ var _actions_steps_actions_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../actions/steps_actions.js */ "./frontend/actions/steps_actions.js");
+function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
+
+function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
 
 var initialState = {
   1: {
     id: 1,
-    step: 1,
+    todo_id: 1,
     body: "Smoek Weed",
     done: false
   },
   2: {
     id: 2,
-    step: 2,
+    todo_id: 2,
     body: "AWW YEAH",
     done: true
   }
+};
+
+var arrToObj = function arrToObj(arr, key) {
+  var newObj = {};
+  return arr.reduce(function (obj, ele) {
+    return _objectSpread(_objectSpread({}, obj), {}, _defineProperty({}, ele[key], ele));
+  }, newObj);
 };
 
 var stepsReducer = function stepsReducer() {
@@ -135,6 +148,16 @@ var stepsReducer = function stepsReducer() {
   var action = arguments.length > 1 ? arguments[1] : undefined;
 
   switch (action.type) {
+    case _actions_steps_actions_js__WEBPACK_IMPORTED_MODULE_0__.RECEIVE_STEPS:
+      return state = arrToObj(action.steps, 'id');
+
+    case _actions_steps_actions_js__WEBPACK_IMPORTED_MODULE_0__.RECEIVE_STEP:
+      return state = Object.assign(state, _defineProperty({}, action.step.id, action.step));
+
+    case _actions_steps_actions_js__WEBPACK_IMPORTED_MODULE_0__.REMOVE_STEP:
+      delete state[action.step.id];
+      return state;
+
     default:
       return state;
   }
@@ -31094,7 +31117,21 @@ window.removeTodo = _actions_todo_actions_js__WEBPACK_IMPORTED_MODULE_3__.remove
 
 window.receiveSteps = _actions_steps_actions_js__WEBPACK_IMPORTED_MODULE_4__.receiveSteps;
 window.receiveStep = _actions_steps_actions_js__WEBPACK_IMPORTED_MODULE_4__.receiveStep;
-window.removeStep = _actions_steps_actions_js__WEBPACK_IMPORTED_MODULE_4__.removeStep;
+window.removeStep = _actions_steps_actions_js__WEBPACK_IMPORTED_MODULE_4__.removeStep; // Scratch Actions
+// Step
+
+var newStep = {
+  id: 1,
+  title: 'Dispatch actions',
+  done: false,
+  todo_id: 1
+};
+var newTodo = {
+  id: 1,
+  title: 'Learn Redux',
+  body: 'It is fundamental',
+  done: false
+};
 document.addEventListener("DOMContentLoaded", function () {
   react_dom__WEBPACK_IMPORTED_MODULE_1__.render( /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", null, "Hooked"), document.getElementById('root'));
 });
