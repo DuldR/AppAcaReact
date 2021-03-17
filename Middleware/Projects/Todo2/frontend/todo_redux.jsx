@@ -1,6 +1,8 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import configureStore from './store/todo_store.js'
+import Root from './components/root.jsx'
+
 import { receiveTodos, receiveTodo, removeTodo } from './actions/todo_actions.js'
 import { receiveSteps, receiveStep, removeStep } from './actions/steps_actions.js'
 
@@ -25,5 +27,6 @@ const newTodo = { id: 1, title: 'Learn Redux', body: 'It is fundamental', done: 
 
 
 document.addEventListener("DOMContentLoaded", function(){
-  ReactDOM.render(<div>Hooked</div>, document.getElementById('root'));
+  const store = configureStore;
+  ReactDOM.render(<Root store={store} />, document.getElementById('root'));
 });

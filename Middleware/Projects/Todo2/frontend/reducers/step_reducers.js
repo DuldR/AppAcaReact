@@ -35,10 +35,10 @@ const stepsReducer = (state = initialState, action) => {
           let nextState = Object.assign({}, state);
           return nextState = arrToObj(action.steps, 'id');
         case RECEIVE_STEP:
-          let nextState = Object.assign(state, {[action.step.id]: action.step});
+          nextState = Object.assign(state, {[action.step.id]: action.step});
           return nextState
         case REMOVE_STEP:
-          let nextState = Object.assign({}, state);
+          nextState = Object.assign({}, state);
           delete nextState[action.step.id]
           return nextState;
         default:
