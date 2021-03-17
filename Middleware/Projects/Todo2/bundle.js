@@ -217,6 +217,23 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
+/***/ "./frontend/reducers/selectors.js":
+/*!****************************************!*\
+  !*** ./frontend/reducers/selectors.js ***!
+  \****************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "allTodos": () => (/* binding */ allTodos)
+/* harmony export */ });
+var allTodos = function allTodos(state) {
+  return Object.values(state.todos);
+};
+
+/***/ }),
+
 /***/ "./frontend/reducers/step_reducers.js":
 /*!********************************************!*\
   !*** ./frontend/reducers/step_reducers.js ***!
@@ -33991,8 +34008,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react_dom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-dom */ "./node_modules/react-dom/index.js");
 /* harmony import */ var _store_todo_store_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./store/todo_store.js */ "./frontend/store/todo_store.js");
 /* harmony import */ var _components_root_jsx__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./components/root.jsx */ "./frontend/components/root.jsx");
-/* harmony import */ var _actions_todo_actions_js__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./actions/todo_actions.js */ "./frontend/actions/todo_actions.js");
-/* harmony import */ var _actions_steps_actions_js__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./actions/steps_actions.js */ "./frontend/actions/steps_actions.js");
+/* harmony import */ var _reducers_selectors_js__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./reducers/selectors.js */ "./frontend/reducers/selectors.js");
+/* harmony import */ var _actions_todo_actions_js__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./actions/todo_actions.js */ "./frontend/actions/todo_actions.js");
+/* harmony import */ var _actions_steps_actions_js__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./actions/steps_actions.js */ "./frontend/actions/steps_actions.js");
+
 
 
 
@@ -34001,13 +34020,15 @@ __webpack_require__.r(__webpack_exports__);
 
 window.store = _store_todo_store_js__WEBPACK_IMPORTED_MODULE_2__.default; // Todos
 
-window.receiveTodos = _actions_todo_actions_js__WEBPACK_IMPORTED_MODULE_4__.receiveTodos;
-window.receiveTodo = _actions_todo_actions_js__WEBPACK_IMPORTED_MODULE_4__.receiveTodo;
-window.removeTodo = _actions_todo_actions_js__WEBPACK_IMPORTED_MODULE_4__.removeTodo; // Steps
+window.receiveTodos = _actions_todo_actions_js__WEBPACK_IMPORTED_MODULE_5__.receiveTodos;
+window.receiveTodo = _actions_todo_actions_js__WEBPACK_IMPORTED_MODULE_5__.receiveTodo;
+window.removeTodo = _actions_todo_actions_js__WEBPACK_IMPORTED_MODULE_5__.removeTodo; // Steps
 
-window.receiveSteps = _actions_steps_actions_js__WEBPACK_IMPORTED_MODULE_5__.receiveSteps;
-window.receiveStep = _actions_steps_actions_js__WEBPACK_IMPORTED_MODULE_5__.receiveStep;
-window.removeStep = _actions_steps_actions_js__WEBPACK_IMPORTED_MODULE_5__.removeStep; // Scratch Actions
+window.receiveSteps = _actions_steps_actions_js__WEBPACK_IMPORTED_MODULE_6__.receiveSteps;
+window.receiveStep = _actions_steps_actions_js__WEBPACK_IMPORTED_MODULE_6__.receiveStep;
+window.removeStep = _actions_steps_actions_js__WEBPACK_IMPORTED_MODULE_6__.removeStep; // Selectors
+
+window.allTodos = _reducers_selectors_js__WEBPACK_IMPORTED_MODULE_4__.allTodos; // Scratch Actions
 // Step
 
 var newStep = {

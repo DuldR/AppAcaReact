@@ -2,6 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import configureStore from './store/todo_store.js'
 import Root from './components/root.jsx'
+import { allTodos } from './reducers/selectors.js'
 
 import { receiveTodos, receiveTodo, removeTodo } from './actions/todo_actions.js'
 import { receiveSteps, receiveStep, removeStep } from './actions/steps_actions.js'
@@ -18,6 +19,10 @@ window.removeTodo = removeTodo;
 window.receiveSteps = receiveSteps;
 window.receiveStep = receiveStep;
 window.removeStep = removeStep;
+
+// Selectors
+
+window.allTodos = allTodos;
 
 // Scratch Actions
 // Step
