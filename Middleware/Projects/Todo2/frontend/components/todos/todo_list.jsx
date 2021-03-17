@@ -1,3 +1,14 @@
 import React from 'react';
 
-export const toDo = () => <h3>Todo List Goes Here!</h3>
+export const ToDo = ({ todos }) => {
+    const listTodos = todos.map((ele, idx) => (
+        <li key={idx}>{ele.title}</li>
+    ));
+
+    return (
+        <ul>
+            {listTodos}
+        </ul>
+    )
+
+}

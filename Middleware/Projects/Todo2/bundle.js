@@ -204,12 +204,18 @@ var Root = function Root(_ref) {
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "toDo": () => (/* binding */ toDo)
+/* harmony export */   "ToDo": () => (/* binding */ ToDo)
 /* harmony export */ });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 
-var toDo = function toDo() {
-  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("h3", null, "Todo List Goes Here!");
+var ToDo = function ToDo(_ref) {
+  var todos = _ref.todos;
+  var listTodos = todos.map(function (ele, idx) {
+    return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("li", {
+      key: idx
+    }, ele.title);
+  });
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("ul", null, listTodos);
 };
 
 /***/ }),
