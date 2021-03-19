@@ -246,15 +246,13 @@ var ToDoForm = /*#__PURE__*/function (_React$Component) {
 
     _this = _super.call(this, props);
     _this.state = {
+      id: _frontend_util_util_funcs_js__WEBPACK_IMPORTED_MODULE_1___default().uniqueId(),
       value: 1,
-      title: ""
-    };
-    var newTodo = {
-      id: 3,
-      title: 'Learn Redux',
-      body: 'It is fundamental',
+      title: "",
+      body: "Test Body",
       done: false
-    }; // console.log(props)
+    }; // const newTodo = { id: 3, title: 'Learn Redux', body: 'It is fundamental', done: false }
+    // console.log(props)
     // console.log(props.receiveTodo);
     // console.log(props.receiveTodo(newTodo))
 
@@ -267,6 +265,8 @@ var ToDoForm = /*#__PURE__*/function (_React$Component) {
     key: "handleSubmit",
     value: function handleSubmit(event) {
       event.preventDefault(); // Fire receive
+
+      this.props.receiveTodo(this.state);
     }
   }, {
     key: "addTodo",
@@ -600,7 +600,7 @@ var configureStore = (0,redux__WEBPACK_IMPORTED_MODULE_1__.createStore)(_reducer
 /***/ ((module) => {
 
 var APIUtil = {
-  uniqueId: function uniqueId(id) {
+  uniqueId: function uniqueId() {
     return new Date().getTime();
   }
 };

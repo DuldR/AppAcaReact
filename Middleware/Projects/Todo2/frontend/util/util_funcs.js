@@ -1,5 +1,5 @@
 const APIUtil = {
-    uniqueId: id => {
+    uniqueId: () => {
         return new Date().getTime();
     }
 }

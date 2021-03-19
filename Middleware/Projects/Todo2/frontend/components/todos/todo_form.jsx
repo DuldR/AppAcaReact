@@ -7,8 +7,9 @@ class ToDoForm extends React.Component {
         super(props);
 
 
-        this.state = { value:1, title: "" }
-        const newTodo = { id: 3, title: 'Learn Redux', body: 'It is fundamental', done: false }
+        this.state = { id: API.uniqueId(), value:1, title: "", body: "Test Body", done: false }
+
+        // const newTodo = { id: 3, title: 'Learn Redux', body: 'It is fundamental', done: false }
 
         // console.log(props)
         // console.log(props.receiveTodo);
@@ -25,6 +26,8 @@ class ToDoForm extends React.Component {
     handleSubmit(event) {
         event.preventDefault();
         // Fire receive
+        this.props.receiveTodo(this.state);
+
     }
 
     addTodo(e) {
