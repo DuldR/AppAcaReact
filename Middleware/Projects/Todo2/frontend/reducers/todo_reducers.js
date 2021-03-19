@@ -36,18 +36,34 @@ const todosReducer = (state = initialState, action) => {
 
         case RECEIVE_TODOS:
             let nextState = Object.assign({}, state);
-            return nextState = arrToObj(action.steps, 'id');
+            return nextState
         case RECEIVE_TODO:
-            nextState = Object.assign(state, {[action.step.id]: action.step});
+            nextState = Object.assign({}, state, {[action.todo.id]: action.todo});
             return nextState
         case REMOVE_TODO:
             nextState = Object.assign({}, state);
-            delete nextState[action.step.id]
+            delete nextState[action.todo.id]
             return nextState;
         default:
             return state;
     }
 }
+
+// const todosReducer = (state = initialState, action) => {
+//     switch (action.type) {
+
+//         case RECEIVE_TODOS:
+//             return state = arrToObj(action.todos, 'id');
+
+//         case RECEIVE_TODO:
+//             return state = Object.assign(state, {[action.todo.id]: action.todo})
+//         case REMOVE_TODO:
+//             delete state[action.todo.id]
+//             return state
+//         default:
+//             return state;
+//     }
+// }
 
 
 export default todosReducer;

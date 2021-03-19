@@ -1,14 +1,25 @@
 import React from 'react';
 
-export const ToDo = ({ todos }) => {
+import { ToDoItem } from './todo_list_item.jsx'
+import ToDoForm from './todo_form.jsx'
+
+
+
+export const ToDo = ({ todos, receiveTodo }) => {
     const listTodos = todos.map((ele, idx) => (
-        <li key={idx}>{ele.title}</li>
+        <ToDoItem key={idx} todo={ele} />
     ));
 
+
     return (
-        <ul>
-            {listTodos}
-        </ul>
+
+        <div>
+            <ul>
+                {listTodos}
+            </ul>
+
+            <ToDoForm receiveTodo={receiveTodo} />
+        </div>
     )
 
 }
