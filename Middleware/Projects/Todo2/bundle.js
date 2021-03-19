@@ -246,25 +246,44 @@ var ToDoForm = /*#__PURE__*/function (_React$Component) {
 
     _this = _super.call(this, props);
     _this.state = {
-      testProps: props.receiveTodo
+      value: 1,
+      title: ""
     };
+    var newTodo = {
+      id: 3,
+      title: 'Learn Redux',
+      body: 'It is fundamental',
+      done: false
+    }; // console.log(props)
+    // console.log(props.receiveTodo);
+    // console.log(props.receiveTodo(newTodo))
+
     _this.handleSubmit = _this.handleSubmit.bind(_assertThisInitialized(_this));
+    _this.addTodo = _this.addTodo.bind(_assertThisInitialized(_this));
     return _this;
   }
 
   _createClass(ToDoForm, [{
     key: "handleSubmit",
     value: function handleSubmit(event) {
-      console.log(event);
-      event.preventDefault();
-      alert("Submit fired");
+      event.preventDefault(); // Fire receive
+    }
+  }, {
+    key: "addTodo",
+    value: function addTodo(e) {
+      e.preventDefault();
+      this.setState({
+        title: e.currentTarget.value
+      });
     }
   }, {
     key: "render",
     value: function render() {
       return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("form", {
-        onSubmit: this.handleSubmit
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("label", null, "OK"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("input", {
+        onSubmit: this.handleSubmit,
+        defaultValue: this.state.value
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("label", null, "Title"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("input", {
+        onChange: this.addTodo,
         type: "text"
       }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("button", null, "Submit"));
     }
@@ -548,20 +567,7 @@ var todosReducer = function todosReducer() {
     default:
       return state;
   }
-}; // const todosReducer = (state = initialState, action) => {
-//     switch (action.type) {
-//         case RECEIVE_TODOS:
-//             return state = arrToObj(action.todos, 'id');
-//         case RECEIVE_TODO:
-//             return state = Object.assign(state, {[action.todo.id]: action.todo})
-//         case REMOVE_TODO:
-//             delete state[action.todo.id]
-//             return state
-//         default:
-//             return state;
-//     }
-// }
-
+};
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (todosReducer);
 

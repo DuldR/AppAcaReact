@@ -49,21 +49,5 @@ const todosReducer = (state = initialState, action) => {
     }
 }
 
-// const todosReducer = (state = initialState, action) => {
-//     switch (action.type) {
-
-//         case RECEIVE_TODOS:
-//             return state = arrToObj(action.todos, 'id');
-
-//         case RECEIVE_TODO:
-//             return state = Object.assign(state, {[action.todo.id]: action.todo})
-//         case REMOVE_TODO:
-//             delete state[action.todo.id]
-//             return state
-//         default:
-//             return state;
-//     }
-// }
-
 
 export default todosReducer;

@@ -7,24 +7,36 @@ class ToDoForm extends React.Component {
         super(props);
 
 
-        this.state = { testProps: props.receiveTodo }
+        this.state = { value:1, title: "" }
+        const newTodo = { id: 3, title: 'Learn Redux', body: 'It is fundamental', done: false }
+
+        // console.log(props)
+        // console.log(props.receiveTodo);
+        // console.log(props.receiveTodo(newTodo))
+        
+
         
 
         this.handleSubmit = this.handleSubmit.bind(this);
+        this.addTodo = this.addTodo.bind(this);
     
     }
 
     handleSubmit(event) {
-        console.log(event);
         event.preventDefault();
-        alert("Submit fired");
+        // Fire receive
+    }
+
+    addTodo(e) {
+        e.preventDefault();
+        this.setState( {title: e.currentTarget.value } )
     }
 
     render() {
         return (
-            <form onSubmit={this.handleSubmit}>
-                <label>OK</label>
-                <input type='text'></input>
+            <form onSubmit={this.handleSubmit} defaultValue={this.state.value}>
+                <label>Title</label>
+                <input onChange={this.addTodo} type='text'></input>
                 <button>Submit</button>
             </form>
         )
