@@ -247,17 +247,13 @@ var ToDoForm = /*#__PURE__*/function (_React$Component) {
     _this = _super.call(this, props);
     _this.state = {
       id: _frontend_util_util_funcs_js__WEBPACK_IMPORTED_MODULE_1___default().uniqueId(),
-      value: 1,
       title: "",
       body: "Test Body",
       done: false
-    }; // const newTodo = { id: 3, title: 'Learn Redux', body: 'It is fundamental', done: false }
-    // console.log(props)
-    // console.log(props.receiveTodo);
-    // console.log(props.receiveTodo(newTodo))
-
+    };
     _this.handleSubmit = _this.handleSubmit.bind(_assertThisInitialized(_this));
     _this.addTodo = _this.addTodo.bind(_assertThisInitialized(_this));
+    _this.addTodoBody = _this.addTodoBody.bind(_assertThisInitialized(_this));
     return _this;
   }
 
@@ -277,13 +273,24 @@ var ToDoForm = /*#__PURE__*/function (_React$Component) {
       });
     }
   }, {
+    key: "addTodoBody",
+    value: function addTodoBody(e) {
+      e.preventDefault();
+      this.setState({
+        body: e.currentTarget.value
+      });
+    }
+  }, {
     key: "render",
     value: function render() {
       return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("form", {
         onSubmit: this.handleSubmit,
         defaultValue: this.state.value
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("label", null, "Title"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("input", {
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("label", null, "Title"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("input", {
         onChange: this.addTodo,
+        type: "text"
+      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("label", null, "Body"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("input", {
+        onChange: this.addTodoBody,
         type: "text"
       }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("button", null, "Submit"));
     }
@@ -388,7 +395,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ToDoItem = function ToDoItem(_ref) {
   var todo = _ref.todo;
-  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("li", null, todo.title);
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("li", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("label", null, "Title: "), todo.title, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("label", null, "Body: "), todo.body);
 };
 
 /***/ }),
