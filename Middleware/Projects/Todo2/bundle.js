@@ -195,6 +195,25 @@ var Root = function Root(_ref) {
 
 /***/ }),
 
+/***/ "./frontend/components/todos/todo_detail_view.jsx":
+/*!********************************************************!*\
+  !*** ./frontend/components/todos/todo_detail_view.jsx ***!
+  \********************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "TodoDetailView": () => (/* binding */ TodoDetailView)
+/* harmony export */ });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+
+var TodoDetailView = function TodoDetailView() {
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("h1", null, "Hello");
+};
+
+/***/ }),
+
 /***/ "./frontend/components/todos/todo_form.jsx":
 /*!*************************************************!*\
   !*** ./frontend/components/todos/todo_form.jsx ***!
@@ -411,6 +430,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "ToDoItem": () => (/* binding */ ToDoItem)
 /* harmony export */ });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var _todo_detail_view_jsx__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./todo_detail_view.jsx */ "./frontend/components/todos/todo_detail_view.jsx");
+
 
 var ToDoItem = function ToDoItem(_ref) {
   var todo = _ref.todo,
@@ -432,12 +453,20 @@ var ToDoItem = function ToDoItem(_ref) {
     return todo;
   };
 
-  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("li", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("label", null, "Title: "), todo.title, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("label", null, "Body: "), todo.body, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("label", null, "Done: "), todo.done ? 'Yes' : 'No', /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("button", {
-    onClick: handleDelete
-  }, "Delete"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("button", {
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("li", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("label", null, "Title: "), todo.title, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("button", {
     onClick: handleDone
-  }, todo.done ? 'Undo' : 'Done'));
-};
+  }, todo.done ? 'Undo' : 'Done'), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_todo_detail_view_jsx__WEBPACK_IMPORTED_MODULE_1__.TodoDetailView, null));
+}; // Todo
+// 
+// <br></br>
+// <label>Body: </label>
+// {todo.body}
+// <br></br>
+// <label>Done: </label>
+// {todo.done ? 'Yes' : 'No' }
+// <br></br>
+// <button onClick={handleDelete}>Delete</button>
+// <br></br>
 
 /***/ }),
 
