@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { TodoDetailView } from './todo_detail_view.jsx'
+import TodoDetailViewContainer from './todo_detail_container.jsx'
 
 
 
@@ -14,7 +14,6 @@ class ToDoItem extends React.Component {
         this.handleDelete = this.handleDelete.bind(this);
         this.handleDone = this.handleDone.bind(this);
 
-        console.log(props);
         // console.log(todo);
     }
 
@@ -42,7 +41,7 @@ class ToDoItem extends React.Component {
                 {/* {todo.title} */}
                 <br></br>
                 {/* <button onClick={handleDone}>{todo.done ? 'Undo' : 'Done'}</button> */}
-                <TodoDetailView />
+                <TodoDetailViewContainer />
             </li>
         )
 

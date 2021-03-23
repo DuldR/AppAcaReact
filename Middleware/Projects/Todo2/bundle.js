@@ -195,6 +195,48 @@ var Root = function Root(_ref) {
 
 /***/ }),
 
+/***/ "./frontend/components/todos/todo_detail_container.jsx":
+/*!*************************************************************!*\
+  !*** ./frontend/components/todos/todo_detail_container.jsx ***!
+  \*************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
+/* harmony import */ var _todo_detail_view_jsx__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./todo_detail_view.jsx */ "./frontend/components/todos/todo_detail_view.jsx");
+
+
+
+var mapStateToProps = function mapStateToProps(state) {
+  return {};
+};
+
+var mapDispatchToProps = function mapDispatchToProps(dispatch) {
+  return {
+    removeTodo: function (_removeTodo) {
+      function removeTodo(_x) {
+        return _removeTodo.apply(this, arguments);
+      }
+
+      removeTodo.toString = function () {
+        return _removeTodo.toString();
+      };
+
+      return removeTodo;
+    }(function (todo) {
+      return dispatch(removeTodo(todo));
+    })
+  };
+};
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ((0,react_redux__WEBPACK_IMPORTED_MODULE_0__.connect)(null, mapDispatchToProps)(_todo_detail_view_jsx__WEBPACK_IMPORTED_MODULE_1__.TodoDetailView));
+
+/***/ }),
+
 /***/ "./frontend/components/todos/todo_detail_view.jsx":
 /*!********************************************************!*\
   !*** ./frontend/components/todos/todo_detail_view.jsx ***!
@@ -430,7 +472,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var _todo_detail_view_jsx__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./todo_detail_view.jsx */ "./frontend/components/todos/todo_detail_view.jsx");
+/* harmony import */ var _todo_detail_container_jsx__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./todo_detail_container.jsx */ "./frontend/components/todos/todo_detail_container.jsx");
 function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -471,8 +513,7 @@ var ToDoItem = /*#__PURE__*/function (_React$Component) {
       detail: false
     };
     _this.handleDelete = _this.handleDelete.bind(_assertThisInitialized(_this));
-    _this.handleDone = _this.handleDone.bind(_assertThisInitialized(_this));
-    console.log(props); // console.log(todo);
+    _this.handleDone = _this.handleDone.bind(_assertThisInitialized(_this)); // console.log(todo);
 
     return _this;
   }
@@ -499,7 +540,7 @@ var ToDoItem = /*#__PURE__*/function (_React$Component) {
   }, {
     key: "render",
     value: function render() {
-      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("li", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("label", null, "Title: "), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_todo_detail_view_jsx__WEBPACK_IMPORTED_MODULE_1__.TodoDetailView, null));
+      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("li", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("label", null, "Title: "), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_todo_detail_container_jsx__WEBPACK_IMPORTED_MODULE_1__.default, null));
     }
   }]);
 
