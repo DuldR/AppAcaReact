@@ -4,7 +4,7 @@ export const ToDoItem = ( {todo, props} ) => {
 
     const handleDelete = (event) => {
         event.preventDefault();
-        console.log(props);
+        props.removeTodo(todo);
     }
 
     return (
