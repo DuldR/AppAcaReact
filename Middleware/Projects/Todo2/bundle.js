@@ -251,8 +251,17 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 
 var TodoDetailView = function TodoDetailView(_ref) {
-  var removeTodo = _ref.removeTodo;
-  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("h1", null, "Greets"));
+  var todo = _ref.todo,
+      removeTodo = _ref.removeTodo;
+
+  var handleDelete = function handleDelete(event) {
+    event.preventDefault();
+    removeTodo(todo);
+  };
+
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("label", null, "Body: "), todo.body, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("label", null, "Done: "), todo.done ? 'Yes' : 'No', /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("button", {
+    onClick: handleDelete
+  }, "Delete"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("br", null));
 };
 
 /***/ }),
@@ -511,9 +520,6 @@ var ToDoItem = /*#__PURE__*/function (_React$Component) {
 
     _this = _super.call(this, props); // This deconstructs correctly
 
-    var _props$props = props.props,
-        removeTodo = _props$props.removeTodo,
-        receiveTodo = _props$props.receiveTodo;
     _this.state = {
       todo: props.todo,
       detail: false
@@ -521,6 +527,7 @@ var ToDoItem = /*#__PURE__*/function (_React$Component) {
     _this.handleDelete = _this.handleDelete.bind(_assertThisInitialized(_this));
     _this.handleDone = _this.handleDone.bind(_assertThisInitialized(_this));
     _this.showDetail = _this.showDetail.bind(_assertThisInitialized(_this));
+    _this.toggleDone = _this.toggleDone.bind(_assertThisInitialized(_this));
     return _this;
   }
 
@@ -534,8 +541,8 @@ var ToDoItem = /*#__PURE__*/function (_React$Component) {
     key: "handleDone",
     value: function handleDone(event) {
       event.preventDefault();
-      var newTodo = toggleDone(todo);
-      this.props.receiveTodo(newTodo);
+      var newTodo = this.toggleDone(this.state.todo);
+      this.props.props.receiveTodo(newTodo);
     }
   }, {
     key: "toggleDone",
@@ -554,9 +561,13 @@ var ToDoItem = /*#__PURE__*/function (_React$Component) {
   }, {
     key: "render",
     value: function render() {
-      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("li", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("label", null, "Title: "), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("a", {
+      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("li", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("a", {
         onClick: this.showDetail
-      }, this.state.todo.title), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("br", null), this.state.detail ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_todo_detail_container_jsx__WEBPACK_IMPORTED_MODULE_1__.default, null) : "");
+      }, this.state.todo.title), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("br", null), this.state.detail ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_todo_detail_container_jsx__WEBPACK_IMPORTED_MODULE_1__.default, {
+        todo: this.props.todo
+      }) : "", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("button", {
+        onClick: this.handleDone
+      }, this.state.todo.done ? 'Undo' : 'Done'));
     }
   }]);
 

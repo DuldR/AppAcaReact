@@ -8,13 +8,13 @@ class ToDoItem extends React.Component {
         super(props);
 
         // This deconstructs correctly
-        const { removeTodo, receiveTodo } = props.props
         
         this.state = { todo: props.todo, detail: false }
 
         this.handleDelete = this.handleDelete.bind(this);
         this.handleDone = this.handleDone.bind(this);
         this.showDetail = this.showDetail.bind(this);
+        this.toggleDone = this.toggleDone.bind(this);
 
         
     }
@@ -26,8 +26,8 @@ class ToDoItem extends React.Component {
 
     handleDone(event) {
         event.preventDefault();
-        let newTodo = toggleDone(todo);
-        this.props.receiveTodo(newTodo);
+        let newTodo = this.toggleDone(this.state.todo);
+        this.props.props.receiveTodo(newTodo);
     
     }
 
@@ -44,11 +44,10 @@ class ToDoItem extends React.Component {
     render() {
         return (
             <li>
-                <label>Title: </label>
                 <a onClick={this.showDetail}>{this.state.todo.title}</a>
                 <br></br>
-                {/* <button onClick={handleDone}>{todo.done ? 'Undo' : 'Done'}</button> */}
-                {this.state.detail ? <TodoDetailViewContainer /> : ""}
+                {this.state.detail ? <TodoDetailViewContainer todo={this.props.todo}/> : ""}
+                <button onClick={this.handleDone}>{this.state.todo.done ? 'Undo' : 'Done'}</button>
             </li>
         )
 

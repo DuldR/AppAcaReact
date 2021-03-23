@@ -2,14 +2,24 @@ import React from 'react';
 
 
 
-export const TodoDetailView = ({removeTodo}) => {
+export const TodoDetailView = ({todo, removeTodo}) => {
 
-
-
+    const handleDelete = (event) => {
+        event.preventDefault();
+        removeTodo(todo);
+    }
 
     return (
         <div>
-            <h1>Greets</h1>
+            <br></br>
+            <label>Body: </label>
+            {todo.body}
+            <br></br>
+            <label>Done: </label>
+            {todo.done ? 'Yes' : 'No' }
+            <br></br>
+            <button onClick={handleDelete}>Delete</button>
+            <br></br>
         </div>
     )
 }
