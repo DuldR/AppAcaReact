@@ -2,10 +2,14 @@ import React from 'react';
 
 
 
-export const TodoDetailView = () => {
+export const TodoDetailView = ({removeTodo}) => {
+
+
 
 
     return (
-        <h1>Hello</h1>
+        <div>
+            <h1>Greets</h1>
+        </div>
     )
 }

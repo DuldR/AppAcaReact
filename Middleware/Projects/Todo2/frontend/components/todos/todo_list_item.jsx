@@ -41,7 +41,7 @@ class ToDoItem extends React.Component {
                 {/* {todo.title} */}
                 <br></br>
                 {/* <button onClick={handleDone}>{todo.done ? 'Undo' : 'Done'}</button> */}
-                <TodoDetailViewContainer />
+                {this.state.detail ? <TodoDetailViewContainer /> : ""}
             </li>
         )
 
