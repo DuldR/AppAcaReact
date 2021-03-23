@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { ToDoItem } from './todo_list_item.jsx'
+import ToDoItem from './todo_list_item.jsx'
 import ToDoForm from './todo_form.jsx'
 
 
