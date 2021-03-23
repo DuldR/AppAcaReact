@@ -5,9 +5,10 @@ import ToDoForm from './todo_form.jsx'
 
 
 
-export const ToDo = ({ todos, receiveTodo }) => {
+export const ToDo = ({ todos, receiveTodo, removeTodo }) => {
+    let props = {receiveTodo, removeTodo}
     const listTodos = todos.map((ele, idx) => (
-        <ToDoItem key={idx} todo={ele} />
+        <ToDoItem key={idx} todo={ele} props={props} />
     ));
 
 

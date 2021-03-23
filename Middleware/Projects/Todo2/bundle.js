@@ -322,11 +322,17 @@ __webpack_require__.r(__webpack_exports__);
 
 var ToDo = function ToDo(_ref) {
   var todos = _ref.todos,
-      receiveTodo = _ref.receiveTodo;
+      receiveTodo = _ref.receiveTodo,
+      removeTodo = _ref.removeTodo;
+  var props = {
+    receiveTodo: receiveTodo,
+    removeTodo: removeTodo
+  };
   var listTodos = todos.map(function (ele, idx) {
     return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_todo_list_item_jsx__WEBPACK_IMPORTED_MODULE_1__.ToDoItem, {
       key: idx,
-      todo: ele
+      todo: ele,
+      props: props
     });
   });
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("ul", null, listTodos), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_todo_form_jsx__WEBPACK_IMPORTED_MODULE_2__.default, {
@@ -372,6 +378,19 @@ var mapDispatchToProps = function mapDispatchToProps(dispatch) {
       return receiveTodo;
     }(function (todo) {
       return dispatch(receiveTodo(todo));
+    }),
+    removeTodo: function (_removeTodo) {
+      function removeTodo(_x2) {
+        return _removeTodo.apply(this, arguments);
+      }
+
+      removeTodo.toString = function () {
+        return _removeTodo.toString();
+      };
+
+      return removeTodo;
+    }(function (todo) {
+      return dispatch(removeTodo(todo));
     })
   };
 };
@@ -394,8 +413,17 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 
 var ToDoItem = function ToDoItem(_ref) {
-  var todo = _ref.todo;
-  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("li", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("label", null, "Title: "), todo.title, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("label", null, "Body: "), todo.body);
+  var todo = _ref.todo,
+      props = _ref.props;
+
+  var handleDelete = function handleDelete(event) {
+    event.preventDefault();
+    console.log(props);
+  };
+
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("li", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("label", null, "Title: "), todo.title, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("label", null, "Body: "), todo.body, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("button", {
+    onClick: handleDelete
+  }, "Delete"));
 };
 
 /***/ }),

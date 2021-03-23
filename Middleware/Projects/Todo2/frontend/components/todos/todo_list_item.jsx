@@ -1,6 +1,11 @@
 import React from 'react';
 
-export const ToDoItem = ( {todo} ) => {
+export const ToDoItem = ( {todo, props} ) => {
+
+    const handleDelete = (event) => {
+        event.preventDefault();
+        console.log(props);
+    }
 
     return (
         <li>
@@ -9,6 +14,7 @@ export const ToDoItem = ( {todo} ) => {
             <br></br>
             <label>Body: </label>
             {todo.body}
+            <button onClick={handleDelete}>Delete</button>
         </li>
     )
 }
