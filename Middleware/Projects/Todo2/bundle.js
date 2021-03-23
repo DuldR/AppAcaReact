@@ -509,13 +509,18 @@ var ToDoItem = /*#__PURE__*/function (_React$Component) {
 
     _classCallCheck(this, ToDoItem);
 
-    _this = _super.call(this, props);
+    _this = _super.call(this, props); // This deconstructs correctly
+
+    var _props$props = props.props,
+        removeTodo = _props$props.removeTodo,
+        receiveTodo = _props$props.receiveTodo;
     _this.state = {
+      todo: props.todo,
       detail: false
     };
     _this.handleDelete = _this.handleDelete.bind(_assertThisInitialized(_this));
-    _this.handleDone = _this.handleDone.bind(_assertThisInitialized(_this)); // console.log(todo);
-
+    _this.handleDone = _this.handleDone.bind(_assertThisInitialized(_this));
+    _this.showDetail = _this.showDetail.bind(_assertThisInitialized(_this));
     return _this;
   }
 
@@ -539,9 +544,19 @@ var ToDoItem = /*#__PURE__*/function (_React$Component) {
       return todo;
     }
   }, {
+    key: "showDetail",
+    value: function showDetail(event) {
+      event.preventDefault();
+      this.setState({
+        detail: !this.state.detail
+      });
+    }
+  }, {
     key: "render",
     value: function render() {
-      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("li", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("label", null, "Title: "), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("br", null), this.state.detail ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_todo_detail_container_jsx__WEBPACK_IMPORTED_MODULE_1__.default, null) : "");
+      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("li", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("label", null, "Title: "), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("a", {
+        onClick: this.showDetail
+      }, this.state.todo.title), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("br", null), this.state.detail ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_todo_detail_container_jsx__WEBPACK_IMPORTED_MODULE_1__.default, null) : "");
     }
   }]);
 

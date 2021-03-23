@@ -2,19 +2,21 @@ import React from 'react';
 
 import TodoDetailViewContainer from './todo_detail_container.jsx'
 
-
-
-
 class ToDoItem extends React.Component {
 
     constructor(props) {
         super(props);
-        this.state = { detail: false }
+
+        // This deconstructs correctly
+        const { removeTodo, receiveTodo } = props.props
+        
+        this.state = { todo: props.todo, detail: false }
 
         this.handleDelete = this.handleDelete.bind(this);
         this.handleDone = this.handleDone.bind(this);
+        this.showDetail = this.showDetail.bind(this);
 
-        // console.log(todo);
+        
     }
 
     handleDelete(event) {
@@ -34,11 +36,16 @@ class ToDoItem extends React.Component {
         return todo;
     }
 
+    showDetail(event) {
+        event.preventDefault();
+        this.setState( { detail: !this.state.detail })
+    }
+
     render() {
         return (
             <li>
                 <label>Title: </label>
-                {/* {todo.title} */}
+                <a onClick={this.showDetail}>{this.state.todo.title}</a>
                 <br></br>
                 {/* <button onClick={handleDone}>{todo.done ? 'Undo' : 'Done'}</button> */}
                 {this.state.detail ? <TodoDetailViewContainer /> : ""}
