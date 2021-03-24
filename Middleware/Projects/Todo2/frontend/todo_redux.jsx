@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom';
 import configureStore from './store/todo_store.js'
 import Root from './components/root.jsx'
 import { allTodos } from './reducers/selectors.js'
+import { stepsByTodoId } from './reducers/selectors.js'
 
 
 
@@ -25,6 +26,7 @@ window.removeStep = removeStep;
 // Selectors
 
 // window.allTodos = allTodos;
+window.stepsByTodoId= stepsByTodoId;
 
 // Scratch Actions
 // Step

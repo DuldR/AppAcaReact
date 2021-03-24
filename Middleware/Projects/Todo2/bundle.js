@@ -648,10 +648,17 @@ __webpack_require__.r(__webpack_exports__);
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "allTodos": () => (/* binding */ allTodos)
+/* harmony export */   "allTodos": () => (/* binding */ allTodos),
+/* harmony export */   "stepsByTodoId": () => (/* binding */ stepsByTodoId)
 /* harmony export */ });
 var allTodos = function allTodos(state) {
   return Object.values(state.todos);
+};
+var stepsByTodoId = function stepsByTodoId(state, todoId) {
+  var listSteps = Object.values(state.steps);
+  return listSteps.filter(function (ele) {
+    return ele.todo_id === todoId;
+  });
 };
 
 /***/ }),
@@ -34444,6 +34451,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
+
 window.store = _store_todo_store_js__WEBPACK_IMPORTED_MODULE_2__.default; // Todos
 
 window.receiveTodos = _actions_todo_actions_js__WEBPACK_IMPORTED_MODULE_5__.receiveTodos;
@@ -34454,7 +34462,8 @@ window.receiveSteps = _actions_steps_actions_js__WEBPACK_IMPORTED_MODULE_6__.rec
 window.receiveStep = _actions_steps_actions_js__WEBPACK_IMPORTED_MODULE_6__.receiveStep;
 window.removeStep = _actions_steps_actions_js__WEBPACK_IMPORTED_MODULE_6__.removeStep; // Selectors
 // window.allTodos = allTodos;
-// Scratch Actions
+
+window.stepsByTodoId = _reducers_selectors_js__WEBPACK_IMPORTED_MODULE_4__.stepsByTodoId; // Scratch Actions
 // Step
 
 var newStep = {
