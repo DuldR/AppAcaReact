@@ -214,6 +214,7 @@ var StepList = function StepList(_ref) {
   var todo_id = _ref.todo_id,
       steps = _ref.steps,
       receiveStep = _ref.receiveStep;
+  // This allows me to update. Why? i dont understand
   var props = {
     receiveStep: receiveStep
   };
@@ -345,9 +346,7 @@ var StepListItem = /*#__PURE__*/function (_React$Component) {
     value: function handleDone(event) {
       event.preventDefault();
       var newStep = this.toggleDone(this.state.step);
-      console.log(this.props);
-      console.log(this.props.props);
-      this.props.props.receiveStep(newStep);
+      this.props.receiveStep(this.state.step);
     }
   }, {
     key: "toggleDone",
@@ -370,7 +369,7 @@ var StepListItem = /*#__PURE__*/function (_React$Component) {
         onClick: this.showDetail
       }, this.state.step.title), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("br", null), this.state.detail ? this.state.step.body : "", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("button", {
         onClick: this.handleDone
-      }, "Jesus"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("button", {
+      }, this.state.step.done ? 'Undo' : 'Done'), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("button", {
         onClick: this.handleDelete
       }, "Delete"));
     }
