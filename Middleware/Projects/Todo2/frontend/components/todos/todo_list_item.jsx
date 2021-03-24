@@ -27,6 +27,8 @@ class ToDoItem extends React.Component {
     handleDone(event) {
         event.preventDefault();
         let newTodo = this.toggleDone(this.state.todo);
+
+        // Theres a better way to write this
         this.props.props.receiveTodo(newTodo);
     
     }
