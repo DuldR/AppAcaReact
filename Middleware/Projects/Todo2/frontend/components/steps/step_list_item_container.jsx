@@ -9,7 +9,7 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = dispatch => ( {
 
     removeStep: step => dispatch(removeStep(step)),
-    receiveStep: step => dispatch(receivStep(step))
+    receiveStep: step => dispatch(receiveStep(step))
 
 })
 

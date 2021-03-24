@@ -215,11 +215,10 @@ var StepList = function StepList(_ref) {
       steps = _ref.steps,
       receiveStep = _ref.receiveStep;
   var listSteps = steps.map(function (ele, idx) {
-    return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("li", {
+    return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_step_list_item_container_jsx__WEBPACK_IMPORTED_MODULE_1__.default, {
+      step: ele,
       key: idx
-    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_step_list_item_container_jsx__WEBPACK_IMPORTED_MODULE_1__.default, {
-      step: ele
-    }));
+    });
   });
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("ul", null, listSteps));
 };
@@ -321,15 +320,55 @@ var StepListItem = /*#__PURE__*/function (_React$Component) {
 
     _this = _super.call(this, props);
     _this.state = {
-      step: props.step
+      step: props.step,
+      detail: false
     };
+    _this.handleDelete = _this.handleDelete.bind(_assertThisInitialized(_this));
+    _this.handleDone = _this.handleDone.bind(_assertThisInitialized(_this));
+    _this.showDetail = _this.showDetail.bind(_assertThisInitialized(_this));
+    _this.toggleDone = _this.toggleDone.bind(_assertThisInitialized(_this));
     return _this;
   }
 
   _createClass(StepListItem, [{
+    key: "handleDelete",
+    value: function handleDelete(event) {
+      event.preventDefault();
+      this.props.removeStep(this.state.step);
+    }
+  }, {
+    key: "handleDone",
+    value: function handleDone(event) {
+      event.preventDefault();
+      var newStep = this.toggleDone(this.state.step); // Theres a better way to write this
+
+      console.log(newStep);
+      this.props.receiveStep(newStep);
+    }
+  }, {
+    key: "toggleDone",
+    value: function toggleDone(step) {
+      step.done = !step.done;
+      return step;
+    }
+  }, {
+    key: "showDetail",
+    value: function showDetail(event) {
+      event.preventDefault();
+      this.setState({
+        detail: !this.state.detail
+      });
+    }
+  }, {
     key: "render",
     value: function render() {
-      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", null, this.state.step.title, this.state.step.body);
+      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("li", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("a", {
+        onClick: this.showDetail
+      }, this.state.step.title), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("br", null), this.state.detail ? this.state.step.body : "", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("button", {
+        onClick: this.handleDone
+      }, this.state.step.done ? 'Undo' : 'Done'), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("button", {
+        onClick: this.handleDelete
+      }, "Delete"));
     }
   }]);
 
@@ -373,9 +412,19 @@ var mapDispatchToProps = function mapDispatchToProps(dispatch) {
     }(function (step) {
       return dispatch(removeStep(step));
     }),
-    receiveStep: function receiveStep(step) {
-      return dispatch(receivStep(step));
-    }
+    receiveStep: function (_receiveStep) {
+      function receiveStep(_x2) {
+        return _receiveStep.apply(this, arguments);
+      }
+
+      receiveStep.toString = function () {
+        return _receiveStep.toString();
+      };
+
+      return receiveStep;
+    }(function (step) {
+      return dispatch(receiveStep(step));
+    })
   };
 };
 
@@ -884,10 +933,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
 /* harmony import */ var _actions_steps_actions_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../actions/steps_actions.js */ "./frontend/actions/steps_actions.js");
-function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
-
-function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
-
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
 
@@ -895,24 +940,18 @@ var initialState = {
   1: {
     id: 1,
     todo_id: 1,
+    title: "Step1",
     body: "Smoek Weed",
     done: false
   },
   2: {
     id: 2,
     todo_id: 2,
+    title: "Step1",
     body: "AWW YEAH",
     done: true
   }
-};
-
-var arrToObj = function arrToObj(arr, key) {
-  var newObj = {};
-  return arr.reduce(function (obj, ele) {
-    return _objectSpread(_objectSpread({}, obj), {}, _defineProperty({}, ele[key], ele));
-  }, newObj);
 }; // I was mutating state. WRONG
-
 
 var stepsReducer = function stepsReducer() {
   var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : initialState;
@@ -922,10 +961,10 @@ var stepsReducer = function stepsReducer() {
   switch (action.type) {
     case _actions_steps_actions_js__WEBPACK_IMPORTED_MODULE_0__.RECEIVE_STEPS:
       var nextState = Object.assign({}, state);
-      return nextState = arrToObj(action.steps, 'id');
+      return nextState;
 
     case _actions_steps_actions_js__WEBPACK_IMPORTED_MODULE_0__.RECEIVE_STEP:
-      nextState = Object.assign(state, _defineProperty({}, action.step.id, action.step));
+      nextState = Object.assign({}, state, _defineProperty({}, action.step.id, action.step));
       return nextState;
 
     case _actions_steps_actions_js__WEBPACK_IMPORTED_MODULE_0__.REMOVE_STEP:
