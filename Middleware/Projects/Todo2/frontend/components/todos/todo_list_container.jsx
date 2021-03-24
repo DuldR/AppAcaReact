@@ -1,5 +1,6 @@
 import { connect } from 'react-redux'
 import { ToDo } from './todo_list.jsx'
+import { allTodos } from '/frontend/reducers/selectors.js'
 
 const mapStateToProps = state => ({
   todos: allTodos(state)

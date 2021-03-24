@@ -24,7 +24,7 @@ window.removeStep = removeStep;
 
 // Selectors
 
-window.allTodos = allTodos;
+// window.allTodos = allTodos;
 
 // Scratch Actions
 // Step

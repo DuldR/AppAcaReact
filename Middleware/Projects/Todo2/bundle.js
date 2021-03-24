@@ -426,12 +426,14 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
 /* harmony import */ var _todo_list_jsx__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./todo_list.jsx */ "./frontend/components/todos/todo_list.jsx");
+/* harmony import */ var _frontend_reducers_selectors_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../../../../../../frontend/reducers/selectors.js */ "./frontend/reducers/selectors.js");
+
 
 
 
 var mapStateToProps = function mapStateToProps(state) {
   return {
-    todos: allTodos(state)
+    todos: (0,_frontend_reducers_selectors_js__WEBPACK_IMPORTED_MODULE_2__.allTodos)(state)
   };
 };
 
@@ -736,10 +738,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
 /* harmony import */ var _actions_todo_actions_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../actions/todo_actions.js */ "./frontend/actions/todo_actions.js");
-function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
-
-function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
-
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
 
@@ -757,13 +755,6 @@ var initialState = {
     done: true
   }
 }; // This works
-
-var arrToObj = function arrToObj(arr, key) {
-  var newObj = {};
-  return arr.reduce(function (obj, ele) {
-    return _objectSpread(_objectSpread({}, obj), {}, _defineProperty({}, ele[key], ele));
-  }, newObj);
-};
 
 var todosReducer = function todosReducer() {
   var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : initialState;
@@ -34462,8 +34453,8 @@ window.removeTodo = _actions_todo_actions_js__WEBPACK_IMPORTED_MODULE_5__.remove
 window.receiveSteps = _actions_steps_actions_js__WEBPACK_IMPORTED_MODULE_6__.receiveSteps;
 window.receiveStep = _actions_steps_actions_js__WEBPACK_IMPORTED_MODULE_6__.receiveStep;
 window.removeStep = _actions_steps_actions_js__WEBPACK_IMPORTED_MODULE_6__.removeStep; // Selectors
-
-window.allTodos = _reducers_selectors_js__WEBPACK_IMPORTED_MODULE_4__.allTodos; // Scratch Actions
+// window.allTodos = allTodos;
+// Scratch Actions
 // Step
 
 var newStep = {
