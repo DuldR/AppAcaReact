@@ -6,6 +6,8 @@ class StepListItem extends React.Component {
     constructor (props) {
         super(props);
 
+
+
         this.state = { step: props.step, detail: false }
 
         this.handleDelete = this.handleDelete.bind(this);
@@ -21,17 +23,14 @@ class StepListItem extends React.Component {
     }
 
     handleDone(event) {
+
         event.preventDefault();
-        const newStep = { id: 1, title: 'Dispatch actions', done: false, todo_id: 1 }
-        
-
-        console.log("fired");
-        console.log(newStep);
+        let newStep = this.toggleDone(this.state.step);
         console.log(this.props);
+        console.log(this.props.props);
 
-        
+        this.props.props.receiveStep(newStep);
 
-        this.props.receiveStep(newStep);
         
     }
 
@@ -51,7 +50,7 @@ class StepListItem extends React.Component {
                 <a onClick={this.showDetail}>{this.state.step.title}</a>
                 <br></br>
                 {this.state.detail ? this.state.step.body : ""}
-                <button onClick={this.handleDone}>{this.state.step.done ? 'Undo' : 'Done'}</button>
+                <button onClick={this.handleDone}>Jesus</button>
                 <button onClick={this.handleDelete}>Delete</button>
             </li>
         )

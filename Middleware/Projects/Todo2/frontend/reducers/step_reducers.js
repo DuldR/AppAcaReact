@@ -14,7 +14,14 @@ const initialState = {
     title: "Step1",
     body: "AWW YEAH",
     done: true
-  }
+  },
+  3: {
+    id: 3,
+    todo_id: 1,
+    title: "Step2",
+    body: "Step2 of 1",
+    done: false
+  },
 };
 
 
@@ -27,7 +34,6 @@ const stepsReducer = (state = initialState, action) => {
           let nextState = Object.assign({}, state);
           return nextState
         case RECEIVE_STEP:
-          console.log("reducer hit")
           nextState = Object.assign({}, state, {[action.step.id]: action.step});
           return nextState
         case REMOVE_STEP:

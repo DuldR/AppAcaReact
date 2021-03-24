@@ -214,10 +214,14 @@ var StepList = function StepList(_ref) {
   var todo_id = _ref.todo_id,
       steps = _ref.steps,
       receiveStep = _ref.receiveStep;
+  var props = {
+    receiveStep: receiveStep
+  };
   var listSteps = steps.map(function (ele, idx) {
     return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_step_list_item_container_jsx__WEBPACK_IMPORTED_MODULE_1__.default, {
       step: ele,
-      key: idx
+      key: "step-item-" + idx,
+      props: props
     });
   });
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("ul", null, listSteps));
@@ -340,16 +344,10 @@ var StepListItem = /*#__PURE__*/function (_React$Component) {
     key: "handleDone",
     value: function handleDone(event) {
       event.preventDefault();
-      var newStep = {
-        id: 1,
-        title: 'Dispatch actions',
-        done: false,
-        todo_id: 1
-      };
-      console.log("fired");
-      console.log(newStep);
+      var newStep = this.toggleDone(this.state.step);
       console.log(this.props);
-      this.props.receiveStep(newStep);
+      console.log(this.props.props);
+      this.props.props.receiveStep(newStep);
     }
   }, {
     key: "toggleDone",
@@ -372,7 +370,7 @@ var StepListItem = /*#__PURE__*/function (_React$Component) {
         onClick: this.showDetail
       }, this.state.step.title), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("br", null), this.state.detail ? this.state.step.body : "", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("button", {
         onClick: this.handleDone
-      }, this.state.step.done ? 'Undo' : 'Done'), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("button", {
+      }, "Jesus"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("button", {
         onClick: this.handleDelete
       }, "Delete"));
     }
@@ -954,6 +952,13 @@ var initialState = {
     title: "Step1",
     body: "AWW YEAH",
     done: true
+  },
+  3: {
+    id: 3,
+    todo_id: 1,
+    title: "Step2",
+    body: "Step2 of 1",
+    done: false
   }
 }; // I was mutating state. WRONG
 
@@ -968,7 +973,6 @@ var stepsReducer = function stepsReducer() {
       return nextState;
 
     case _actions_steps_actions_js__WEBPACK_IMPORTED_MODULE_0__.RECEIVE_STEP:
-      console.log("reducer hit");
       nextState = Object.assign({}, state, _defineProperty({}, action.step.id, action.step));
       return nextState;
 

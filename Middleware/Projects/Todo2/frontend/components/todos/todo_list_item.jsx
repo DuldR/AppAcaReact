@@ -8,6 +8,8 @@ class ToDoItem extends React.Component {
         super(props);
 
         // This deconstructs correctly
+
+        
         
         this.state = { todo: props.todo, detail: false }
 
