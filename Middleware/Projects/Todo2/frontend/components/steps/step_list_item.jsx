@@ -22,11 +22,15 @@ class StepListItem extends React.Component {
 
     handleDone(event) {
         event.preventDefault();
+        const newStep = { id: 1, title: 'Dispatch actions', done: false, todo_id: 1 }
+        
 
-        let newStep = this.toggleDone(this.state.step);
-        // Theres a better way to write this
-
+        console.log("fired");
         console.log(newStep);
+        console.log(this.props);
+
+        
+
         this.props.receiveStep(newStep);
         
     }

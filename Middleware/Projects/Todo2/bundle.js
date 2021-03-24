@@ -340,9 +340,15 @@ var StepListItem = /*#__PURE__*/function (_React$Component) {
     key: "handleDone",
     value: function handleDone(event) {
       event.preventDefault();
-      var newStep = this.toggleDone(this.state.step); // Theres a better way to write this
-
+      var newStep = {
+        id: 1,
+        title: 'Dispatch actions',
+        done: false,
+        todo_id: 1
+      };
+      console.log("fired");
       console.log(newStep);
+      console.log(this.props);
       this.props.receiveStep(newStep);
     }
   }, {
@@ -394,8 +400,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _step_list_item_jsx__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./step_list_item.jsx */ "./frontend/components/steps/step_list_item.jsx");
 
 
-
-var mapStateToProps = function mapStateToProps(state) {};
 
 var mapDispatchToProps = function mapDispatchToProps(dispatch) {
   return {
@@ -964,6 +968,7 @@ var stepsReducer = function stepsReducer() {
       return nextState;
 
     case _actions_steps_actions_js__WEBPACK_IMPORTED_MODULE_0__.RECEIVE_STEP:
+      console.log("reducer hit");
       nextState = Object.assign({}, state, _defineProperty({}, action.step.id, action.step));
       return nextState;
 

@@ -27,6 +27,7 @@ const stepsReducer = (state = initialState, action) => {
           let nextState = Object.assign({}, state);
           return nextState
         case RECEIVE_STEP:
+          console.log("reducer hit")
           nextState = Object.assign({}, state, {[action.step.id]: action.step});
           return nextState
         case REMOVE_STEP:
