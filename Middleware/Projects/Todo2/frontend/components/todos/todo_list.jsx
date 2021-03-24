@@ -11,7 +11,7 @@ export const ToDo = ({ todos, receiveTodo, removeTodo }) => {
     const listTodos = todos.map((ele, idx) => (
         <div key={idx}>
             <ToDoItem key={idx + "-todo"} todo={ele} props={props} />
-            <StepListContainer key={idx + "-step"} />
+            <StepListContainer key={idx + "-step"} todo_id={ele.id}/>
         </div>
     ));
 

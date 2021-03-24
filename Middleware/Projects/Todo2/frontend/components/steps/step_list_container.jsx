@@ -2,8 +2,9 @@ import { connect } from 'react-redux'
 import { StepList } from './step_list.jsx'
 import { stepsByTodoId } from '/frontend/reducers/selectors.js'
 
-const mapStateToProps = state => ({
-    steps: state.steps
+const mapStateToProps = (state, ownProps) => ({
+    steps: stepsByTodoId(state, ownProps.todo_id),
+    todo: ownProps.todo_id
 
 })
 

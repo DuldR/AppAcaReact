@@ -1,12 +1,23 @@
 import React from 'react';
+import StepListItemContainer from "./step_list_item_container.jsx"
 
 
-export const StepList = ( {steps, receiveStep} ) => {
+export const StepList = ( {todo_id, steps, receiveStep} ) => {
+
+    const listSteps = steps.map((ele, idx) => {
+        return (
+            <li key={idx}>
+                <StepListItemContainer step={ele} />
+            </li>
+        )
+    })
 
     return (
-        <ul>
-            {console.log(steps)}
-            step
-        </ul>
+        <div>
+            <ul>
+                {listSteps}
+            </ul>
+            {/* StepForm */}
+        </div>
     )
 }
