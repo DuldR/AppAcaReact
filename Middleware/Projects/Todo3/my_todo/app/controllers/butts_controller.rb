@@ -1,6 +1,6 @@
 class ButtsController < ApplicationController
 
-    def show
+    def root
         render :show
     end
 
