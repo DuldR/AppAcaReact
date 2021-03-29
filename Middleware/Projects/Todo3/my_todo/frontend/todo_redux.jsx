@@ -8,7 +8,7 @@ import APIUtil from './util/util_funcs.js'
 
 
 
-import { receiveTodos, receiveTodo, removeTodo } from './actions/todo_actions.js'
+import { receiveTodos, receiveTodo, removeTodo, fetchTodos } from './actions/todo_actions.js'
 import { receiveSteps, receiveStep, removeStep } from './actions/steps_actions.js'
 
 window.store = configureStore();
@@ -31,7 +31,9 @@ window.stepsByTodoId= stepsByTodoId;
 
 // Test ajax
 
-window.fetchTodos = APIUtil.fetchTodos;
+// window.fetchTodos = APIUtil.fetchTodos;
+
+window.fetchTodos = fetchTodos
 
 // Scratch Actions
 // Step

@@ -1244,27 +1244,13 @@ var APIUtil = {
     return new Date().getTime();
   },
   fetchTodos: function fetchTodos() {
-    $.ajax({
+    return $.ajax({
       method: 'GET',
       url: '/api/todos'
     });
   }
 };
-module.exports = APIUtil; // export const fetchTodos = () => (
-//   $.ajax({
-//     method: 'GET',
-//     url: '/api/todos'
-//   })
-// );
-// fetchTodos: () => {
-//     $.ajax({
-//         method: 'GET',
-//         url: '/api/todos'
-//     }).then(
-//         todos => console.log(todos),
-//         error => console.log(error)
-//     )
-// }
+module.exports = APIUtil;
 
 /***/ }),
 
@@ -34719,8 +34705,9 @@ window.removeStep = _actions_steps_actions_js__WEBPACK_IMPORTED_MODULE_7__.remov
 // window.allTodos = allTodos;
 
 window.stepsByTodoId = _reducers_selectors_js__WEBPACK_IMPORTED_MODULE_4__.stepsByTodoId; // Test ajax
+// window.fetchTodos = APIUtil.fetchTodos;
 
-window.fetchTodos = (_util_util_funcs_js__WEBPACK_IMPORTED_MODULE_5___default().fetchTodos); // Scratch Actions
+window.fetchTodos = _actions_todo_actions_js__WEBPACK_IMPORTED_MODULE_6__.fetchTodos; // Scratch Actions
 // Step
 
 var newStep = {
