@@ -453,8 +453,6 @@ var TodoList = /*#__PURE__*/function (_React$Component) {
   _createClass(TodoList, [{
     key: "componentDidMount",
     value: function componentDidMount() {
-      console.log(this.props);
-      console.log(this.props.requestTodos);
       this.props.requestTodos();
     }
   }, {
@@ -874,22 +872,22 @@ __webpack_require__.r(__webpack_exports__);
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
 
-var initialState = {//   1: {
-  //     id: 1,
-  //     title: "wash car",
-  //     body: "with soap",
-  //     done: false
-  //   },
-  //   2: {
-  //     id: 2,
-  //     title: "wash dog",
-  //     body: "with shampoo",
-  //     done: true
-  //   }
+var initialState = {// 1: {
+  //   id: 1,
+  //   title: "wash car",
+  //   body: "with soap",
+  //   done: false
+  // },
+  // 2: {
+  //   id: 2,
+  //   title: "wash dog",
+  //   body: "with shampoo",
+  //   done: true
+  // }
 }; // This works
 
 var todosReducer = function todosReducer() {
-  var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
+  var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : initialState;
   var action = arguments.length > 1 ? arguments[1] : undefined;
   Object.freeze(state);
   var nextState = {};
@@ -902,9 +900,8 @@ var todosReducer = function todosReducer() {
       return nextState;
 
     case _actions_todo_actions_js__WEBPACK_IMPORTED_MODULE_0__.RECEIVE_TODO:
-      var newTodo = _defineProperty({}, action.todo.id, action.todo);
-
-      return Object.assign({}, state, newTodo);
+      nextState = Object.assign({}, state, _defineProperty({}, action.todo.id, action.todo));
+      return nextState;
 
     case _actions_todo_actions_js__WEBPACK_IMPORTED_MODULE_0__.REMOVE_TODO:
       nextState = Object.assign({}, state);
