@@ -104,5 +104,5 @@ dist
 # TernJS port file
 .tern-port
 
-/home/garrett/Documents/TestBed/AppAcaReact/Middleware/Projects/Todo3/my_todo/tmp
+.tmp
 
