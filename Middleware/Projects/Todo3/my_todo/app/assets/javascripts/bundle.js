@@ -455,7 +455,6 @@ var TodoList = /*#__PURE__*/function (_React$Component) {
     value: function componentDidMount() {
       console.log(this.props);
       console.log(this.props.requestTodos);
-      console.log(this.props.requestTodos());
       this.props.requestTodos();
     }
   }, {
@@ -463,7 +462,7 @@ var TodoList = /*#__PURE__*/function (_React$Component) {
     value: function render() {
       var _this$props = this.props,
           todos = _this$props.todos,
-          createTodo = _this$props.createTodo,
+          receiveTodo = _this$props.receiveTodo,
           updateTodo = _this$props.updateTodo,
           errors = _this$props.errors;
       var todoItems = todos.map(function (todo) {
@@ -474,7 +473,7 @@ var TodoList = /*#__PURE__*/function (_React$Component) {
         });
       });
       return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_todo_form_jsx__WEBPACK_IMPORTED_MODULE_2__.default, {
-        createTodo: createTodo,
+        receiveTodo: receiveTodo,
         errors: errors
       }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("ul", {
         className: "todo-list"
@@ -523,6 +522,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
 /* harmony import */ var _todo_list_jsx__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./todo_list.jsx */ "./frontend/components/todos/todo_list.jsx");
 /* harmony import */ var _frontend_reducers_selectors_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../../../../../../../frontend/reducers/selectors.js */ "./frontend/reducers/selectors.js");
+/* harmony import */ var _frontend_actions_todo_actions__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../../../../../../../../frontend/actions/todo_actions */ "./frontend/actions/todo_actions.js");
+
 
 
 
@@ -536,7 +537,7 @@ var mapStateToProps = function mapStateToProps(state) {
 var mapDispatchToProps = function mapDispatchToProps(dispatch) {
   return {
     requestTodos: function requestTodos() {
-      return dispatch(fetchTodos());
+      return dispatch((0,_frontend_actions_todo_actions__WEBPACK_IMPORTED_MODULE_3__.fetchTodos)());
     },
     receiveTodo: function (_receiveTodo) {
       function receiveTodo(_x) {
@@ -888,18 +889,22 @@ var initialState = {//   1: {
 }; // This works
 
 var todosReducer = function todosReducer() {
-  var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : initialState;
+  var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
   var action = arguments.length > 1 ? arguments[1] : undefined;
   Object.freeze(state);
+  var nextState = {};
 
   switch (action.type) {
     case _actions_todo_actions_js__WEBPACK_IMPORTED_MODULE_0__.RECEIVE_TODOS:
-      var nextState = Object.assign({}, state);
+      action.todos.forEach(function (todo) {
+        nextState[todo.id] = todo;
+      });
       return nextState;
 
     case _actions_todo_actions_js__WEBPACK_IMPORTED_MODULE_0__.RECEIVE_TODO:
-      nextState = Object.assign({}, state, _defineProperty({}, action.todo.id, action.todo));
-      return nextState;
+      var newTodo = _defineProperty({}, action.todo.id, action.todo);
+
+      return Object.assign({}, state, newTodo);
 
     case _actions_todo_actions_js__WEBPACK_IMPORTED_MODULE_0__.REMOVE_TODO:
       nextState = Object.assign({}, state);

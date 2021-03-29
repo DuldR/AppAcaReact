@@ -2,8 +2,6 @@ import { connect } from 'react-redux'
 import TodoList from './todo_list.jsx'
 import { allTodos } from '/frontend/reducers/selectors.js'
 
-import { fetchTodos } from '/frontend/actions/todo_actions'
-
 const mapStateToProps = state => ({
   todos: allTodos(state)
 });

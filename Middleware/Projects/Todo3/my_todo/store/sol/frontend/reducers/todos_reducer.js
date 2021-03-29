@@ -1,23 +1,9 @@
-import { RECEIVE_TODO, RECEIVE_TODOS, REMOVE_TODO } from '../actions/todo_actions.js'
-
-
-
-const initialState = {
-//   1: {
-//     id: 1,
-//     title: "wash car",
-//     body: "with soap",
-//     done: false
-//   },
-//   2: {
-//     id: 2,
-//     title: "wash dog",
-//     body: "with shampoo",
-//     done: true
-//   }
-};
-
-// This works
+import {
+  RECEIVE_TODOS,
+  RECEIVE_TODO,
+  REMOVE_TODO,
+  TODO_ERROR,
+} from '../actions/todo_actions';
 
 const todosReducer = (state = {}, action) => {
   Object.freeze(state);
@@ -42,3 +28,19 @@ const todosReducer = (state = {}, action) => {
 };
 
 export default todosReducer;
+
+// Sample State Shape
+// {
+//   "1": {
+//     id: 1,
+//     title: "wash car",
+//     body: "with soap",
+//     done: false
+//   },
+//   "2": {
+//     id: 2,
+//     title: "wash dog",
+//     body: "with shampoo",
+//     done: true
+//   },
+// };
