@@ -3,6 +3,12 @@ import combineReducer from './../reducers/root_reducer.js'
 import thunk from '../middleware/thunk.js'
 
 
-const configureStore = createStore(combineReducer, applyMiddleware(thunk));
+const configureStore = (preloadedState = {}) => {
+  return createStore(
+    combineReducer,
+    preloadedState,
+    applyMiddleware(thunk)
+  );
+}
 
 export default configureStore;

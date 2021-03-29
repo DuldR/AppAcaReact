@@ -11,7 +11,7 @@ import APIUtil from './util/util_funcs.js'
 import { receiveTodos, receiveTodo, removeTodo } from './actions/todo_actions.js'
 import { receiveSteps, receiveStep, removeStep } from './actions/steps_actions.js'
 
-window.store = configureStore;
+window.store = configureStore();
 
 // Todos
 window.receiveTodos = receiveTodos;
@@ -41,6 +41,6 @@ const newTodo = { id: 1, title: 'Learn Redux', body: 'It is fundamental', done: 
 
 
 document.addEventListener("DOMContentLoaded", function(){
-  const store = configureStore;
+  const store = configureStore();
   ReactDOM.render(<Root store={store} />, document.getElementById('root'));
 });
