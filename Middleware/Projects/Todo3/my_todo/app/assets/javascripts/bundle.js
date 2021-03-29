@@ -206,363 +206,6 @@ var Root = function Root(_ref) {
 
 /***/ }),
 
-/***/ "./frontend/components/steps/step_form.jsx":
-/*!*************************************************!*\
-  !*** ./frontend/components/steps/step_form.jsx ***!
-  \*************************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
-/* harmony export */ });
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var _frontend_util_util_funcs_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../../../../../../../../frontend/util/util_funcs.js */ "./frontend/util/util_funcs.js");
-/* harmony import */ var _frontend_util_util_funcs_js__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_frontend_util_util_funcs_js__WEBPACK_IMPORTED_MODULE_1__);
-function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
-
-function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
-
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
-
-function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
-
-function _createSuper(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct(); return function _createSuperInternal() { var Super = _getPrototypeOf(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = _getPrototypeOf(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return _possibleConstructorReturn(this, result); }; }
-
-function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
-
-function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
-
-function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Boolean.prototype.valueOf.call(Reflect.construct(Boolean, [], function () {})); return true; } catch (e) { return false; } }
-
-function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
-
-
-
-
-var StepForm = /*#__PURE__*/function (_React$Component) {
-  _inherits(StepForm, _React$Component);
-
-  var _super = _createSuper(StepForm);
-
-  function StepForm(props) {
-    var _this;
-
-    _classCallCheck(this, StepForm);
-
-    _this = _super.call(this, props);
-    _this.state = {
-      id: _frontend_util_util_funcs_js__WEBPACK_IMPORTED_MODULE_1___default().uniqueId(),
-      todo_id: _this.props.props.todo_id,
-      title: "",
-      body: "Test Body",
-      done: false
-    };
-    _this.handleSubmit = _this.handleSubmit.bind(_assertThisInitialized(_this));
-    _this.addStep = _this.addStep.bind(_assertThisInitialized(_this));
-    _this.addStepBody = _this.addStepBody.bind(_assertThisInitialized(_this));
-    return _this;
-  }
-
-  _createClass(StepForm, [{
-    key: "handleSubmit",
-    value: function handleSubmit(event) {
-      event.preventDefault(); // Fire receive
-
-      console.log("clicked");
-      console.log(this.state);
-      this.props.props.receiveStep(this.state);
-    }
-  }, {
-    key: "addStep",
-    value: function addStep(e) {
-      e.preventDefault();
-      this.setState({
-        title: e.currentTarget.value
-      });
-    }
-  }, {
-    key: "addStepBody",
-    value: function addStepBody(e) {
-      e.preventDefault();
-      this.setState({
-        body: e.currentTarget.value
-      });
-    }
-  }, {
-    key: "render",
-    value: function render() {
-      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("form", {
-        onSubmit: this.handleSubmit,
-        defaultValue: this.state.value
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("label", null, "Step Title"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("input", {
-        onChange: this.addStep,
-        type: "text"
-      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("label", null, "Step Body"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("input", {
-        onChange: this.addStepBody,
-        type: "text"
-      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("button", null, "Submit"));
-    }
-  }]);
-
-  return StepForm;
-}(react__WEBPACK_IMPORTED_MODULE_0__.Component);
-
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (StepForm);
-
-/***/ }),
-
-/***/ "./frontend/components/steps/step_list.jsx":
-/*!*************************************************!*\
-  !*** ./frontend/components/steps/step_list.jsx ***!
-  \*************************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "StepList": () => (/* binding */ StepList)
-/* harmony export */ });
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var _step_list_item_container_jsx__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./step_list_item_container.jsx */ "./frontend/components/steps/step_list_item_container.jsx");
-/* harmony import */ var _step_form_jsx__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./step_form.jsx */ "./frontend/components/steps/step_form.jsx");
-
-
-
-var StepList = function StepList(_ref) {
-  var todo_id = _ref.todo_id,
-      steps = _ref.steps,
-      receiveStep = _ref.receiveStep;
-  // This allows me to update. Why? i dont understand
-  var props = {
-    receiveStep: receiveStep
-  };
-  var formProps = {
-    todo_id: todo_id,
-    receiveStep: receiveStep
-  };
-  var listSteps = steps.map(function (ele, idx) {
-    return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_step_list_item_container_jsx__WEBPACK_IMPORTED_MODULE_1__.default, {
-      step: ele,
-      key: "step-item-" + idx,
-      props: props
-    });
-  });
-  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_step_form_jsx__WEBPACK_IMPORTED_MODULE_2__.default, {
-    props: formProps
-  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("ul", null, listSteps));
-};
-
-/***/ }),
-
-/***/ "./frontend/components/steps/step_list_container.jsx":
-/*!***********************************************************!*\
-  !*** ./frontend/components/steps/step_list_container.jsx ***!
-  \***********************************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
-/* harmony export */ });
-/* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
-/* harmony import */ var _step_list_jsx__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./step_list.jsx */ "./frontend/components/steps/step_list.jsx");
-/* harmony import */ var _frontend_reducers_selectors_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../../../../../../../frontend/reducers/selectors.js */ "./frontend/reducers/selectors.js");
-
-
-
-
-var mapStateToProps = function mapStateToProps(state, ownProps) {
-  return {
-    steps: (0,_frontend_reducers_selectors_js__WEBPACK_IMPORTED_MODULE_2__.stepsByTodoId)(state, ownProps.todo_id),
-    todo: ownProps.todo_id
-  };
-};
-
-var mapDispatchToProps = function mapDispatchToProps(dispatch) {
-  return {
-    receiveStep: function (_receiveStep) {
-      function receiveStep(_x) {
-        return _receiveStep.apply(this, arguments);
-      }
-
-      receiveStep.toString = function () {
-        return _receiveStep.toString();
-      };
-
-      return receiveStep;
-    }(function (step) {
-      return dispatch(receiveStep(step));
-    })
-  };
-};
-
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ((0,react_redux__WEBPACK_IMPORTED_MODULE_0__.connect)(mapStateToProps, mapDispatchToProps)(_step_list_jsx__WEBPACK_IMPORTED_MODULE_1__.StepList));
-
-/***/ }),
-
-/***/ "./frontend/components/steps/step_list_item.jsx":
-/*!******************************************************!*\
-  !*** ./frontend/components/steps/step_list_item.jsx ***!
-  \******************************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
-/* harmony export */ });
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
-
-function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
-
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
-
-function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
-
-function _createSuper(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct(); return function _createSuperInternal() { var Super = _getPrototypeOf(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = _getPrototypeOf(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return _possibleConstructorReturn(this, result); }; }
-
-function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
-
-function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
-
-function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Boolean.prototype.valueOf.call(Reflect.construct(Boolean, [], function () {})); return true; } catch (e) { return false; } }
-
-function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
-
-
-
-var StepListItem = /*#__PURE__*/function (_React$Component) {
-  _inherits(StepListItem, _React$Component);
-
-  var _super = _createSuper(StepListItem);
-
-  function StepListItem(props) {
-    var _this;
-
-    _classCallCheck(this, StepListItem);
-
-    _this = _super.call(this, props);
-    _this.state = {
-      step: props.step,
-      detail: false
-    };
-    _this.handleDelete = _this.handleDelete.bind(_assertThisInitialized(_this));
-    _this.handleDone = _this.handleDone.bind(_assertThisInitialized(_this));
-    _this.showDetail = _this.showDetail.bind(_assertThisInitialized(_this));
-    _this.toggleDone = _this.toggleDone.bind(_assertThisInitialized(_this));
-    return _this;
-  }
-
-  _createClass(StepListItem, [{
-    key: "handleDelete",
-    value: function handleDelete(event) {
-      event.preventDefault();
-      this.props.removeStep(this.state.step);
-    }
-  }, {
-    key: "handleDone",
-    value: function handleDone(event) {
-      event.preventDefault();
-      var newStep = this.toggleDone(this.state.step);
-      this.props.receiveStep(this.state.step);
-    }
-  }, {
-    key: "toggleDone",
-    value: function toggleDone(step) {
-      step.done = !step.done;
-      return step;
-    }
-  }, {
-    key: "showDetail",
-    value: function showDetail(event) {
-      event.preventDefault();
-      this.setState({
-        detail: !this.state.detail
-      });
-    }
-  }, {
-    key: "render",
-    value: function render() {
-      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("li", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("a", {
-        onClick: this.showDetail
-      }, this.state.step.title), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("br", null), this.state.detail ? this.state.step.body : "", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("button", {
-        onClick: this.handleDone
-      }, this.state.step.done ? 'Undo' : 'Done'), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("button", {
-        onClick: this.handleDelete
-      }, "Delete"));
-    }
-  }]);
-
-  return StepListItem;
-}(react__WEBPACK_IMPORTED_MODULE_0__.Component);
-
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (StepListItem);
-
-/***/ }),
-
-/***/ "./frontend/components/steps/step_list_item_container.jsx":
-/*!****************************************************************!*\
-  !*** ./frontend/components/steps/step_list_item_container.jsx ***!
-  \****************************************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
-/* harmony export */ });
-/* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
-/* harmony import */ var _step_list_item_jsx__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./step_list_item.jsx */ "./frontend/components/steps/step_list_item.jsx");
-
-
-
-var mapDispatchToProps = function mapDispatchToProps(dispatch) {
-  return {
-    removeStep: function (_removeStep) {
-      function removeStep(_x) {
-        return _removeStep.apply(this, arguments);
-      }
-
-      removeStep.toString = function () {
-        return _removeStep.toString();
-      };
-
-      return removeStep;
-    }(function (step) {
-      return dispatch(removeStep(step));
-    }),
-    receiveStep: function (_receiveStep) {
-      function receiveStep(_x2) {
-        return _receiveStep.apply(this, arguments);
-      }
-
-      receiveStep.toString = function () {
-        return _receiveStep.toString();
-      };
-
-      return receiveStep;
-    }(function (step) {
-      return dispatch(receiveStep(step));
-    })
-  };
-};
-
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ((0,react_redux__WEBPACK_IMPORTED_MODULE_0__.connect)(null, mapDispatchToProps)(_step_list_item_jsx__WEBPACK_IMPORTED_MODULE_1__.default));
-
-/***/ }),
-
 /***/ "./frontend/components/todos/todo_detail_container.jsx":
 /*!*************************************************************!*\
   !*** ./frontend/components/todos/todo_detail_container.jsx ***!
@@ -764,40 +407,105 @@ var ToDoForm = /*#__PURE__*/function (_React$Component) {
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "ToDo": () => (/* binding */ ToDo)
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var _todo_list_item_jsx__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./todo_list_item.jsx */ "./frontend/components/todos/todo_list_item.jsx");
 /* harmony import */ var _todo_form_jsx__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./todo_form.jsx */ "./frontend/components/todos/todo_form.jsx");
-/* harmony import */ var _steps_step_list_container_jsx__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../steps/step_list_container.jsx */ "./frontend/components/steps/step_list_container.jsx");
+function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+function _createSuper(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct(); return function _createSuperInternal() { var Super = _getPrototypeOf(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = _getPrototypeOf(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return _possibleConstructorReturn(this, result); }; }
+
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Boolean.prototype.valueOf.call(Reflect.construct(Boolean, [], function () {})); return true; } catch (e) { return false; } }
+
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+ // Components
 
 
 
 
-var ToDo = function ToDo(_ref) {
-  var todos = _ref.todos,
-      receiveTodo = _ref.receiveTodo,
-      removeTodo = _ref.removeTodo;
-  var props = {
-    receiveTodo: receiveTodo,
-    removeTodo: removeTodo
-  };
-  var listTodos = todos.map(function (ele, idx) {
-    return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-      key: idx
-    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_todo_list_item_jsx__WEBPACK_IMPORTED_MODULE_1__.default, {
-      key: idx + "-todo",
-      todo: ele,
-      props: props
-    }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_steps_step_list_container_jsx__WEBPACK_IMPORTED_MODULE_3__.default, {
-      key: idx + "-step",
-      todo_id: ele.id
-    }));
-  });
-  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("ul", null, listTodos), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_todo_form_jsx__WEBPACK_IMPORTED_MODULE_2__.default, {
-    receiveTodo: receiveTodo
-  }));
-};
+var TodoList = /*#__PURE__*/function (_React$Component) {
+  _inherits(TodoList, _React$Component);
+
+  var _super = _createSuper(TodoList);
+
+  function TodoList() {
+    _classCallCheck(this, TodoList);
+
+    return _super.apply(this, arguments);
+  }
+
+  _createClass(TodoList, [{
+    key: "componentDidMount",
+    value: function componentDidMount() {
+      console.log(this.props);
+      console.log(this.props.requestTodos);
+      console.log(this.props.requestTodos());
+      this.props.requestTodos();
+    }
+  }, {
+    key: "render",
+    value: function render() {
+      var _this$props = this.props,
+          todos = _this$props.todos,
+          createTodo = _this$props.createTodo,
+          updateTodo = _this$props.updateTodo,
+          errors = _this$props.errors;
+      var todoItems = todos.map(function (todo) {
+        return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_todo_list_item_jsx__WEBPACK_IMPORTED_MODULE_1__.default, {
+          key: todo.id,
+          todo: todo,
+          updateTodo: updateTodo
+        });
+      });
+      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_todo_form_jsx__WEBPACK_IMPORTED_MODULE_2__.default, {
+        createTodo: createTodo,
+        errors: errors
+      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("ul", {
+        className: "todo-list"
+      }, todoItems));
+    }
+  }]);
+
+  return TodoList;
+}(react__WEBPACK_IMPORTED_MODULE_0__.Component);
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (TodoList); // import React from 'react';
+// import ToDoItem from './todo_list_item.jsx'
+// import ToDoForm from './todo_form.jsx'
+// import StepListContainer from '../steps/step_list_container.jsx'
+// export const ToDo = ({ todos, receiveTodo, removeTodo }) => {
+//     let props = {receiveTodo, removeTodo}
+//     const listTodos = todos.map((ele, idx) => (
+//         <div key={idx}>
+//             <ToDoItem key={idx + "-todo"} todo={ele} props={props} />
+//             <StepListContainer key={idx + "-step"} todo_id={ele.id}/>
+//         </div>
+//     ));
+//     return (
+//         <div>
+//             <ul>
+//                 {listTodos}
+//             </ul>
+//             <ToDoForm receiveTodo={receiveTodo} />
+//         </div>
+//     )
+// }
 
 /***/ }),
 
@@ -827,6 +535,9 @@ var mapStateToProps = function mapStateToProps(state) {
 
 var mapDispatchToProps = function mapDispatchToProps(dispatch) {
   return {
+    requestTodos: function requestTodos() {
+      return dispatch(fetchTodos());
+    },
     receiveTodo: function (_receiveTodo) {
       function receiveTodo(_x) {
         return _receiveTodo.apply(this, arguments);
@@ -856,7 +567,7 @@ var mapDispatchToProps = function mapDispatchToProps(dispatch) {
   };
 };
 
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ((0,react_redux__WEBPACK_IMPORTED_MODULE_0__.connect)(mapStateToProps, mapDispatchToProps)(_todo_list_jsx__WEBPACK_IMPORTED_MODULE_1__.ToDo));
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ((0,react_redux__WEBPACK_IMPORTED_MODULE_0__.connect)(mapStateToProps, mapDispatchToProps)(_todo_list_jsx__WEBPACK_IMPORTED_MODULE_1__.default));
 
 /***/ }),
 
@@ -1096,28 +807,27 @@ __webpack_require__.r(__webpack_exports__);
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
 
-var initialState = {
-  1: {
-    id: 1,
-    todo_id: 1,
-    title: "Step1",
-    body: "Smoek Weed",
-    done: false
-  },
-  2: {
-    id: 2,
-    todo_id: 2,
-    title: "Step1",
-    body: "AWW YEAH",
-    done: true
-  },
-  3: {
-    id: 3,
-    todo_id: 1,
-    title: "Step2",
-    body: "Step2 of 1",
-    done: false
-  }
+var initialState = {// 1: {
+  //   id: 1,
+  //   todo_id: 1,
+  //   title: "Step1",
+  //   body: "Smoek Weed",
+  //   done: false
+  // },
+  // 2: {
+  //   id: 2,
+  //   todo_id: 2,
+  //   title: "Step1",
+  //   body: "AWW YEAH",
+  //   done: true
+  // },
+  // 3: {
+  //   id: 3,
+  //   todo_id: 1,
+  //   title: "Step2",
+  //   body: "Step2 of 1",
+  //   done: false
+  // },
 }; // I was mutating state. WRONG
 
 var stepsReducer = function stepsReducer() {
@@ -1163,19 +873,18 @@ __webpack_require__.r(__webpack_exports__);
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
 
-var initialState = {
-  1: {
-    id: 1,
-    title: "wash car",
-    body: "with soap",
-    done: false
-  },
-  2: {
-    id: 2,
-    title: "wash dog",
-    body: "with shampoo",
-    done: true
-  }
+var initialState = {//   1: {
+  //     id: 1,
+  //     title: "wash car",
+  //     body: "with soap",
+  //     done: false
+  //   },
+  //   2: {
+  //     id: 2,
+  //     title: "wash dog",
+  //     body: "with shampoo",
+  //     done: true
+  //   }
 }; // This works
 
 var todosReducer = function todosReducer() {

@@ -1,27 +1,27 @@
 import { RECEIVE_STEPS, RECEIVE_STEP, REMOVE_STEP } from '../actions/steps_actions.js'
 
 const initialState = {
-  1: {
-    id: 1,
-    todo_id: 1,
-    title: "Step1",
-    body: "Smoek Weed",
-    done: false
-  },
-  2: {
-    id: 2,
-    todo_id: 2,
-    title: "Step1",
-    body: "AWW YEAH",
-    done: true
-  },
-  3: {
-    id: 3,
-    todo_id: 1,
-    title: "Step2",
-    body: "Step2 of 1",
-    done: false
-  },
+  // 1: {
+  //   id: 1,
+  //   todo_id: 1,
+  //   title: "Step1",
+  //   body: "Smoek Weed",
+  //   done: false
+  // },
+  // 2: {
+  //   id: 2,
+  //   todo_id: 2,
+  //   title: "Step1",
+  //   body: "AWW YEAH",
+  //   done: true
+  // },
+  // 3: {
+  //   id: 3,
+  //   todo_id: 1,
+  //   title: "Step2",
+  //   body: "Step2 of 1",
+  //   done: false
+  // },
 };
 
 
