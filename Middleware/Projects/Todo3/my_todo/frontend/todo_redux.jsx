@@ -28,6 +28,8 @@ window.removeStep = removeStep;
 // window.allTodos = allTodos;
 window.stepsByTodoId= stepsByTodoId;
 
+// Test for git removal.
+
 // Scratch Actions
 // Step
 const newStep = { id: 1, title: 'Dispatch actions', done: false, todo_id: 1 }
