@@ -1247,14 +1247,24 @@ var APIUtil = {
     $.ajax({
       method: 'GET',
       url: '/api/todos'
-    }).then(function (todos) {
-      return console.log(todos);
-    }, function (error) {
-      return console.log(error);
     });
   }
 };
-module.exports = APIUtil;
+module.exports = APIUtil; // export const fetchTodos = () => (
+//   $.ajax({
+//     method: 'GET',
+//     url: '/api/todos'
+//   })
+// );
+// fetchTodos: () => {
+//     $.ajax({
+//         method: 'GET',
+//         url: '/api/todos'
+//     }).then(
+//         todos => console.log(todos),
+//         error => console.log(error)
+//     )
+// }
 
 /***/ }),
 
