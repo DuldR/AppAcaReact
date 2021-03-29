@@ -1195,6 +1195,16 @@ var configureStore = (0,redux__WEBPACK_IMPORTED_MODULE_1__.createStore)(_reducer
 var APIUtil = {
   uniqueId: function uniqueId() {
     return new Date().getTime();
+  },
+  fetchTodos: function fetchTodos() {
+    $.ajax({
+      method: 'GET',
+      url: '/api/todos'
+    }).then(function (todos) {
+      return console.log(todos);
+    }, function (error) {
+      return console.log(error);
+    });
   }
 };
 module.exports = APIUtil;
@@ -34627,8 +34637,11 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _store_todo_store_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./store/todo_store.js */ "./frontend/store/todo_store.js");
 /* harmony import */ var _components_root_jsx__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./components/root.jsx */ "./frontend/components/root.jsx");
 /* harmony import */ var _reducers_selectors_js__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./reducers/selectors.js */ "./frontend/reducers/selectors.js");
-/* harmony import */ var _actions_todo_actions_js__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./actions/todo_actions.js */ "./frontend/actions/todo_actions.js");
-/* harmony import */ var _actions_steps_actions_js__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./actions/steps_actions.js */ "./frontend/actions/steps_actions.js");
+/* harmony import */ var _util_util_funcs_js__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./util/util_funcs.js */ "./frontend/util/util_funcs.js");
+/* harmony import */ var _util_util_funcs_js__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(_util_util_funcs_js__WEBPACK_IMPORTED_MODULE_5__);
+/* harmony import */ var _actions_todo_actions_js__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./actions/todo_actions.js */ "./frontend/actions/todo_actions.js");
+/* harmony import */ var _actions_steps_actions_js__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./actions/steps_actions.js */ "./frontend/actions/steps_actions.js");
+
 
 
 
@@ -34639,16 +34652,18 @@ __webpack_require__.r(__webpack_exports__);
 
 window.store = _store_todo_store_js__WEBPACK_IMPORTED_MODULE_2__.default; // Todos
 
-window.receiveTodos = _actions_todo_actions_js__WEBPACK_IMPORTED_MODULE_5__.receiveTodos;
-window.receiveTodo = _actions_todo_actions_js__WEBPACK_IMPORTED_MODULE_5__.receiveTodo;
-window.removeTodo = _actions_todo_actions_js__WEBPACK_IMPORTED_MODULE_5__.removeTodo; // Steps
+window.receiveTodos = _actions_todo_actions_js__WEBPACK_IMPORTED_MODULE_6__.receiveTodos;
+window.receiveTodo = _actions_todo_actions_js__WEBPACK_IMPORTED_MODULE_6__.receiveTodo;
+window.removeTodo = _actions_todo_actions_js__WEBPACK_IMPORTED_MODULE_6__.removeTodo; // Steps
 
-window.receiveSteps = _actions_steps_actions_js__WEBPACK_IMPORTED_MODULE_6__.receiveSteps;
-window.receiveStep = _actions_steps_actions_js__WEBPACK_IMPORTED_MODULE_6__.receiveStep;
-window.removeStep = _actions_steps_actions_js__WEBPACK_IMPORTED_MODULE_6__.removeStep; // Selectors
+window.receiveSteps = _actions_steps_actions_js__WEBPACK_IMPORTED_MODULE_7__.receiveSteps;
+window.receiveStep = _actions_steps_actions_js__WEBPACK_IMPORTED_MODULE_7__.receiveStep;
+window.removeStep = _actions_steps_actions_js__WEBPACK_IMPORTED_MODULE_7__.removeStep; // Selectors
 // window.allTodos = allTodos;
 
-window.stepsByTodoId = _reducers_selectors_js__WEBPACK_IMPORTED_MODULE_4__.stepsByTodoId; // Scratch Actions
+window.stepsByTodoId = _reducers_selectors_js__WEBPACK_IMPORTED_MODULE_4__.stepsByTodoId; // Test ajax
+
+window.fetchTodos = (_util_util_funcs_js__WEBPACK_IMPORTED_MODULE_5___default().fetchTodos); // Scratch Actions
 // Step
 
 var newStep = {

@@ -4,6 +4,7 @@ import configureStore from './store/todo_store.js'
 import Root from './components/root.jsx'
 import { allTodos } from './reducers/selectors.js'
 import { stepsByTodoId } from './reducers/selectors.js'
+import APIUtil from './util/util_funcs.js'
 
 
 
@@ -28,7 +29,9 @@ window.removeStep = removeStep;
 // window.allTodos = allTodos;
 window.stepsByTodoId= stepsByTodoId;
 
-// Test for git removal.
+// Test ajax
+
+window.fetchTodos = APIUtil.fetchTodos;
 
 // Scratch Actions
 // Step
