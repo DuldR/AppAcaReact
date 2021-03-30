@@ -8,7 +8,7 @@ import APIUtil from './util/util_funcs.js'
 
 
 
-import { receiveTodos, receiveTodo, removeTodo, fetchTodos } from './actions/todo_actions.js'
+import { receiveTodos, receiveTodo, removeTodo, fetchTodos, createTodo } from './actions/todo_actions.js'
 import { receiveSteps, receiveStep, removeStep } from './actions/steps_actions.js'
 
 window.store = configureStore();
@@ -34,6 +34,7 @@ window.stepsByTodoId= stepsByTodoId;
 // window.fetchTodos = APIUtil.fetchTodos;
 
 window.fetchTodos = fetchTodos
+window.createTodo = createTodo
 
 window.APIUtil = APIUtil
 

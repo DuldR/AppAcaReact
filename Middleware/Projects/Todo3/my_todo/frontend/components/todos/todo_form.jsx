@@ -7,19 +7,24 @@ class ToDoForm extends React.Component {
         super(props);
 
 
-        this.state = { id: API.uniqueId(), title: "", body: "Test Body", done: false }
+        this.state = { title: "", body: "Test Body", done: false }
         
 
         this.handleSubmit = this.handleSubmit.bind(this);
         this.addTodo = this.addTodo.bind(this);
         this.addTodoBody = this.addTodoBody.bind(this);
+
     
     }
 
     handleSubmit(event) {
         event.preventDefault();
-        // Fire receive
-        this.props.receiveTodo(this.state);
+        // Fire receiv
+
+        let todo = {todo: this.state}
+        this.props.createTodo(todo).then(
+            () => this.setState({title: '', body: ''})
+        )
 
     }
 

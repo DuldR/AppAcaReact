@@ -115,7 +115,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "receiveTodos": () => (/* binding */ receiveTodos),
 /* harmony export */   "receiveTodo": () => (/* binding */ receiveTodo),
 /* harmony export */   "removeTodo": () => (/* binding */ removeTodo),
-/* harmony export */   "fetchTodos": () => (/* binding */ fetchTodos)
+/* harmony export */   "fetchTodos": () => (/* binding */ fetchTodos),
+/* harmony export */   "createTodo": () => (/* binding */ createTodo)
 /* harmony export */ });
 /* harmony import */ var _util_util_funcs_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../util/util_funcs.js */ "./frontend/util/util_funcs.js");
 /* harmony import */ var _util_util_funcs_js__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_util_util_funcs_js__WEBPACK_IMPORTED_MODULE_0__);
@@ -145,6 +146,13 @@ var fetchTodos = function fetchTodos() {
   return function (dispatch) {
     return _util_util_funcs_js__WEBPACK_IMPORTED_MODULE_0__.fetchTodos().then(function (todos) {
       return dispatch(receiveTodos(todos));
+    });
+  };
+};
+var createTodo = function createTodo(todo) {
+  return function (dispatch) {
+    return _util_util_funcs_js__WEBPACK_IMPORTED_MODULE_0__.createTodo(todo).then(function (todo) {
+      return dispatch(receiveTodo(todo));
     });
   };
 };
@@ -341,7 +349,6 @@ var ToDoForm = /*#__PURE__*/function (_React$Component) {
 
     _this = _super.call(this, props);
     _this.state = {
-      id: _frontend_util_util_funcs_js__WEBPACK_IMPORTED_MODULE_1___default().uniqueId(),
       title: "",
       body: "Test Body",
       done: false
@@ -355,9 +362,19 @@ var ToDoForm = /*#__PURE__*/function (_React$Component) {
   _createClass(ToDoForm, [{
     key: "handleSubmit",
     value: function handleSubmit(event) {
-      event.preventDefault(); // Fire receive
+      var _this2 = this;
 
-      this.props.receiveTodo(this.state);
+      event.preventDefault(); // Fire receiv
+
+      var todo = {
+        todo: this.state
+      };
+      this.props.createTodo(todo).then(function () {
+        return _this2.setState({
+          title: '',
+          body: ''
+        });
+      });
     }
   }, {
     key: "addTodo",
@@ -462,7 +479,8 @@ var TodoList = /*#__PURE__*/function (_React$Component) {
           todos = _this$props.todos,
           receiveTodo = _this$props.receiveTodo,
           updateTodo = _this$props.updateTodo,
-          errors = _this$props.errors;
+          errors = _this$props.errors,
+          createTodo = _this$props.createTodo;
       var todoItems = todos.map(function (todo) {
         return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_todo_list_item_jsx__WEBPACK_IMPORTED_MODULE_1__.default, {
           key: todo.id,
@@ -471,7 +489,7 @@ var TodoList = /*#__PURE__*/function (_React$Component) {
         });
       });
       return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_todo_form_jsx__WEBPACK_IMPORTED_MODULE_2__.default, {
-        receiveTodo: receiveTodo,
+        createTodo: createTodo,
         errors: errors
       }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("ul", {
         className: "todo-list"
@@ -562,7 +580,10 @@ var mapDispatchToProps = function mapDispatchToProps(dispatch) {
       return removeTodo;
     }(function (todo) {
       return dispatch(removeTodo(todo));
-    })
+    }),
+    createTodo: function createTodo(todo) {
+      return dispatch((0,_frontend_actions_todo_actions__WEBPACK_IMPORTED_MODULE_3__.createTodo)(todo));
+    }
   };
 };
 
@@ -34427,6 +34448,7 @@ window.stepsByTodoId = _reducers_selectors_js__WEBPACK_IMPORTED_MODULE_4__.steps
 // window.fetchTodos = APIUtil.fetchTodos;
 
 window.fetchTodos = _actions_todo_actions_js__WEBPACK_IMPORTED_MODULE_6__.fetchTodos;
+window.createTodo = _actions_todo_actions_js__WEBPACK_IMPORTED_MODULE_6__.createTodo;
 window.APIUtil = (_util_util_funcs_js__WEBPACK_IMPORTED_MODULE_5___default()); // Scratch Actions
 // Step
 

@@ -10,7 +10,7 @@ class TodoList extends React.Component {
   }
 
   render() {
-    const { todos, receiveTodo, updateTodo, errors } = this.props;
+    const { todos, receiveTodo, updateTodo, errors, createTodo } = this.props;
     const todoItems = todos.map(todo => (
         <ToDoItem
           key={ todo.id }
@@ -21,7 +21,7 @@ class TodoList extends React.Component {
 
     return(
       <div>
-        <ToDoForm receiveTodo={ receiveTodo } errors={ errors }/>
+        <ToDoForm createTodo={ createTodo } errors={ errors }/>
         <ul className="todo-list">
           { todoItems }
         </ul>
