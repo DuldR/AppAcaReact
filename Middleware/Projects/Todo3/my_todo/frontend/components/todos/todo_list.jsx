@@ -12,7 +12,6 @@ class TodoList extends React.Component {
   render() {
     const { todos, receiveTodo, updateTodo, errors, createTodo } = this.props;
 
-    console.log(errors)
     const todoItems = todos.map(todo => (
         <ToDoItem
           key={ todo.id }

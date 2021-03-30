@@ -18,6 +18,7 @@ class ToDoItem extends React.Component {
         this.showDetail = this.showDetail.bind(this);
         this.toggleDone = this.toggleDone.bind(this);
 
+
         
     }
 

@@ -14,6 +14,7 @@ class ToDoForm extends React.Component {
         this.addTodo = this.addTodo.bind(this);
         this.addTodoBody = this.addTodoBody.bind(this);
 
+        console.log(props);
     
     }
 
@@ -40,6 +41,9 @@ class ToDoForm extends React.Component {
     render() {
         return (
             <form onSubmit={this.handleSubmit} defaultValue={this.state.value}>
+                <label>Errors</label>
+                {this.props.errors}
+                <br></br>
                 <label>Title</label>
                 <br></br>
                 <input onChange={this.addTodo} type='text'></input>

@@ -390,6 +390,7 @@ var ToDoForm = /*#__PURE__*/function (_React$Component) {
     _this.handleSubmit = _this.handleSubmit.bind(_assertThisInitialized(_this));
     _this.addTodo = _this.addTodo.bind(_assertThisInitialized(_this));
     _this.addTodoBody = _this.addTodoBody.bind(_assertThisInitialized(_this));
+    console.log(props);
     return _this;
   }
 
@@ -432,7 +433,7 @@ var ToDoForm = /*#__PURE__*/function (_React$Component) {
       return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("form", {
         onSubmit: this.handleSubmit,
         defaultValue: this.state.value
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("label", null, "Title"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("input", {
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("label", null, "Errors"), this.props.errors, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("label", null, "Title"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("input", {
         onChange: this.addTodo,
         type: "text"
       }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("label", null, "Body"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("input", {
@@ -515,7 +516,6 @@ var TodoList = /*#__PURE__*/function (_React$Component) {
           updateTodo = _this$props.updateTodo,
           errors = _this$props.errors,
           createTodo = _this$props.createTodo;
-      console.log(errors);
       var todoItems = todos.map(function (todo) {
         return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_todo_list_item_jsx__WEBPACK_IMPORTED_MODULE_1__.default, {
           key: todo.id,
@@ -582,7 +582,7 @@ __webpack_require__.r(__webpack_exports__);
 var mapStateToProps = function mapStateToProps(state) {
   return {
     todos: (0,_frontend_reducers_selectors_js__WEBPACK_IMPORTED_MODULE_2__.allTodos)(state),
-    errors: (0,_frontend_reducers_selectors_js__WEBPACK_IMPORTED_MODULE_2__.allErrors)(state)
+    errors: state.errors
   };
 };
 
