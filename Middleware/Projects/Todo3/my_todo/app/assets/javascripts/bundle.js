@@ -384,7 +384,7 @@ var ToDoForm = /*#__PURE__*/function (_React$Component) {
     _this = _super.call(this, props);
     _this.state = {
       title: "",
-      body: "Test Body",
+      body: "",
       done: false
     };
     _this.handleSubmit = _this.handleSubmit.bind(_assertThisInitialized(_this));

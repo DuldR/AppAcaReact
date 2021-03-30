@@ -17,7 +17,7 @@ class Api::TodosController < ApplicationController
         if @todo.save
             render json: @todo
         else
-            render json: @todo.errors.full_message, status: 422
+            render json: @todo.errors.full_messages, status: 422
         end
     end
 
