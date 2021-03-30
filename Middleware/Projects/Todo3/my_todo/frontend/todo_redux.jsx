@@ -35,6 +35,8 @@ window.stepsByTodoId= stepsByTodoId;
 
 window.fetchTodos = fetchTodos
 
+window.APIUtil = APIUtil
+
 // Scratch Actions
 // Step
 const newStep = { id: 1, title: 'Dispatch actions', done: false, todo_id: 1 }

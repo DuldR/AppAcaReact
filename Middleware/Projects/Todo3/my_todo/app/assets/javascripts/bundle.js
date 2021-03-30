@@ -959,6 +959,14 @@ var APIUtil = {
       method: 'GET',
       url: '/api/todos'
     });
+  },
+  createTodo: function createTodo(todo) {
+    return $.ajax({
+      method: 'POST',
+      url: 'api/todos',
+      dataType: 'json',
+      data: todo
+    });
   }
 };
 module.exports = APIUtil;
@@ -34418,7 +34426,8 @@ window.removeStep = _actions_steps_actions_js__WEBPACK_IMPORTED_MODULE_7__.remov
 window.stepsByTodoId = _reducers_selectors_js__WEBPACK_IMPORTED_MODULE_4__.stepsByTodoId; // Test ajax
 // window.fetchTodos = APIUtil.fetchTodos;
 
-window.fetchTodos = _actions_todo_actions_js__WEBPACK_IMPORTED_MODULE_6__.fetchTodos; // Scratch Actions
+window.fetchTodos = _actions_todo_actions_js__WEBPACK_IMPORTED_MODULE_6__.fetchTodos;
+window.APIUtil = (_util_util_funcs_js__WEBPACK_IMPORTED_MODULE_5___default()); // Scratch Actions
 // Step
 
 var newStep = {
