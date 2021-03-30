@@ -13,8 +13,7 @@ export const receiveErrors = (errors) => {
 export const clearErrors = () => {
 
     return {
-        type: CLEAR_ERRORS,
-        errors
+        type: CLEAR_ERRORS
     }
 
 }

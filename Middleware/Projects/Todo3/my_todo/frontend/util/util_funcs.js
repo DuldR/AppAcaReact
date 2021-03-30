@@ -15,7 +15,6 @@ const APIUtil = {
 
             method: 'POST',
             url: 'api/todos',
-            dataType: 'json',
             data: todo
 
         })

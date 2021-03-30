@@ -3,6 +3,7 @@ export const RECEIVE_TODO = "RECEIVE_TODO";
 export const REMOVE_TODO = "REMOVE_TODO"
 
 import * as APIUtil from '../util/util_funcs.js'
+import { receiveErrors } from '../actions/error_actions'
 
 export const receiveTodos = (todos) => {
 
@@ -34,5 +35,8 @@ export const fetchTodos = () => dispatch => (
 )
 
 export const createTodo = (todo) => dispatch => (
-    APIUtil.createTodo(todo).then(todo => dispatch(receiveTodo(todo)))
+    APIUtil.createTodo(todo).then(
+        todo => dispatch(receiveTodo(todo)),
+        err => dispatch(receiveErrors(err.responseJSON))
+    )
 )

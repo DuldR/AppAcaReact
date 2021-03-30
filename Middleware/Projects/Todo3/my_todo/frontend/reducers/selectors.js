@@ -2,6 +2,10 @@ export const allTodos = state => {
     return Object.values(state.todos)
 }
 
+export const allErrors = state => {
+    return Object.values(state.errors)
+}
+
 export const stepsByTodoId = (state, todoId) => {
 
     let listSteps = Object.values(state.steps);

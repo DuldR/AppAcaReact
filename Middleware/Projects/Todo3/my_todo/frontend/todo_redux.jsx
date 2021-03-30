@@ -10,7 +10,7 @@ import APIUtil from './util/util_funcs.js'
 
 import { receiveTodos, receiveTodo, removeTodo, fetchTodos, createTodo } from './actions/todo_actions.js'
 import { receiveSteps, receiveStep, removeStep } from './actions/steps_actions.js'
-
+import { receiveErrors, clearErrors } from './actions/error_actions.js'
 window.store = configureStore();
 
 // Todos
@@ -23,6 +23,10 @@ window.removeTodo = removeTodo;
 window.receiveSteps = receiveSteps;
 window.receiveStep = receiveStep;
 window.removeStep = removeStep;
+
+// Errors
+
+window.receiveErrors = receiveErrors;
 
 // Selectors
 

@@ -20,7 +20,6 @@ class ToDoForm extends React.Component {
     handleSubmit(event) {
         event.preventDefault();
         // Fire receiv
-
         let todo = {todo: this.state}
         this.props.createTodo(todo).then(
             () => this.setState({title: '', body: ''})
