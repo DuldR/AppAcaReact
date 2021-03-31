@@ -10,7 +10,6 @@ class ToDoItem extends React.Component {
         // This deconstructs correctly
 
         
-        
         this.state = { todo: props.todo, detail: false }
 
         this.handleDelete = this.handleDelete.bind(this);
@@ -32,7 +31,9 @@ class ToDoItem extends React.Component {
         let newTodo = this.toggleDone(this.state.todo);
 
         // Theres a better way to write this
-        this.props.props.receiveTodo(newTodo);
+        // console.log(this.props);
+
+        this.props.updateTodo(newTodo)
     
     }
 

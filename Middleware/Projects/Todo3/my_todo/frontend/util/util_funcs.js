@@ -14,9 +14,17 @@ const APIUtil = {
         $.ajax({
 
             method: 'POST',
-            url: 'api/todos',
+            url: `api/todos`,
             data: todo
 
+        })
+    ),
+
+    updateTodo: (todo) => (
+        $.ajax({
+            method: "PATCH",
+            url: `api/todos + ${todo.id}`,
+            data: todo
         })
     )
 

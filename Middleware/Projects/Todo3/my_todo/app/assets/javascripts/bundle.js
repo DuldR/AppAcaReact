@@ -146,7 +146,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "receiveTodo": () => (/* binding */ receiveTodo),
 /* harmony export */   "removeTodo": () => (/* binding */ removeTodo),
 /* harmony export */   "fetchTodos": () => (/* binding */ fetchTodos),
-/* harmony export */   "createTodo": () => (/* binding */ createTodo)
+/* harmony export */   "createTodo": () => (/* binding */ createTodo),
+/* harmony export */   "updateTodo": () => (/* binding */ updateTodo)
 /* harmony export */ });
 /* harmony import */ var _util_util_funcs_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../util/util_funcs.js */ "./frontend/util/util_funcs.js");
 /* harmony import */ var _util_util_funcs_js__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_util_util_funcs_js__WEBPACK_IMPORTED_MODULE_0__);
@@ -184,6 +185,15 @@ var fetchTodos = function fetchTodos() {
 var createTodo = function createTodo(todo) {
   return function (dispatch) {
     return _util_util_funcs_js__WEBPACK_IMPORTED_MODULE_0__.createTodo(todo).then(function (todo) {
+      return dispatch(receiveTodo(todo));
+    }, function (err) {
+      return dispatch((0,_actions_error_actions__WEBPACK_IMPORTED_MODULE_1__.receiveErrors)(err.responseJSON));
+    });
+  };
+};
+var updateTodo = function updateTodo(todo) {
+  return function (dispatch) {
+    return _util_util_funcs_js__WEBPACK_IMPORTED_MODULE_0__.updateTodo(todo).then(function (todo) {
       return dispatch(receiveTodo(todo));
     }, function (err) {
       return dispatch((0,_actions_error_actions__WEBPACK_IMPORTED_MODULE_1__.receiveErrors)(err.responseJSON));
@@ -619,6 +629,9 @@ var mapDispatchToProps = function mapDispatchToProps(dispatch) {
     }),
     createTodo: function createTodo(todo) {
       return dispatch((0,_frontend_actions_todo_actions__WEBPACK_IMPORTED_MODULE_3__.createTodo)(todo));
+    },
+    updateTodo: function updateTodo(todo) {
+      return dispatch(receiveTodo(todo));
     }
   };
 };
@@ -699,8 +712,9 @@ var ToDoItem = /*#__PURE__*/function (_React$Component) {
     value: function handleDone(event) {
       event.preventDefault();
       var newTodo = this.toggleDone(this.state.todo); // Theres a better way to write this
+      // console.log(this.props);
 
-      this.props.props.receiveTodo(newTodo);
+      this.props.updateTodo(newTodo);
     }
   }, {
     key: "toggleDone",
@@ -1062,7 +1076,14 @@ var APIUtil = {
   createTodo: function createTodo(todo) {
     return $.ajax({
       method: 'POST',
-      url: 'api/todos',
+      url: "api/todos",
+      data: todo
+    });
+  },
+  updateTodo: function updateTodo(todo) {
+    return $.ajax({
+      method: "PATCH",
+      url: "api/todos + ".concat(todo.id),
       data: todo
     });
   }
