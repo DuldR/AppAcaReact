@@ -32,9 +32,6 @@ class ToDoItem extends React.Component {
         
         let newTodo = this.toggleDone(this.state.todo);
 
-        console.log(newTodo);
-        console.log(this.props.updateTodo);
-
         this.props.updateTodo(newTodo)
     
     }

@@ -203,8 +203,8 @@ var updateTodo = function updateTodo(todo) {
 };
 var deleteTodo = function deleteTodo(todo) {
   return function (dispatch) {
-    return _util_util_funcs_js__WEBPACK_IMPORTED_MODULE_0__.updateTodo(todo).then(function (todo) {
-      return dispatch(deleteTodo(todo));
+    return _util_util_funcs_js__WEBPACK_IMPORTED_MODULE_0__.deleteTodo(todo).then(function (todo) {
+      return dispatch(removeTodo(todo));
     }, function (err) {
       return dispatch((0,_actions_error_actions__WEBPACK_IMPORTED_MODULE_1__.receiveErrors)(err.responseJSON));
     });
@@ -703,20 +703,7 @@ var mapDispatchToProps = function mapDispatchToProps(dispatch) {
     },
     updateTodo: function updateTodo(todo) {
       return dispatch((0,_frontend_actions_todo_actions__WEBPACK_IMPORTED_MODULE_3__.updateTodo)(todo));
-    },
-    deleteTodo: function (_deleteTodo) {
-      function deleteTodo(_x2) {
-        return _deleteTodo.apply(this, arguments);
-      }
-
-      deleteTodo.toString = function () {
-        return _deleteTodo.toString();
-      };
-
-      return deleteTodo;
-    }(function (todo) {
-      return dispatch(deleteTodo(todo));
-    })
+    }
   };
 };
 
@@ -796,8 +783,6 @@ var ToDoItem = /*#__PURE__*/function (_React$Component) {
     value: function handleDone(event) {
       event.preventDefault();
       var newTodo = this.toggleDone(this.state.todo);
-      console.log(newTodo);
-      console.log(this.props.updateTodo);
       this.props.updateTodo(newTodo);
     }
   }, {

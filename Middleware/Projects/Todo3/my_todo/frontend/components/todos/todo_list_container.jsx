@@ -15,7 +15,6 @@ const mapDispatchToProps = dispatch => ({
   removeTodo: todo => dispatch(removeTodo(todo)),
   createTodo: todo => dispatch(createTodo(todo)),
   updateTodo: todo => dispatch(updateTodo(todo)),
-  deleteTodo: todo => dispatch(deleteTodo(todo))
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(TodoList);
