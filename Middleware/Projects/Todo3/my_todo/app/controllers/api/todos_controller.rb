@@ -38,10 +38,6 @@ class Api::TodosController < ApplicationController
         @todo = Todo.find(params[:id])
         @todo.destroy!
         
-        respond_to do |format|
-            format.html { redirect_to request.referrer }
-            format.json { render :index }
-        end
     end
 
     protected

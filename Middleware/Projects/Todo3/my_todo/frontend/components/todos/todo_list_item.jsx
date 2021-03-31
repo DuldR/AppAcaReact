@@ -18,20 +18,22 @@ class ToDoItem extends React.Component {
         this.toggleDone = this.toggleDone.bind(this);
 
 
-        
+   
     }
 
     handleDelete(event) {
         event.preventDefault();
-        this.props.removeTodo(todo);
+        console.log(this.props);
     }
 
     handleDone(event) {
         event.preventDefault();
+
+        
         let newTodo = this.toggleDone(this.state.todo);
 
-        // Theres a better way to write this
-        // console.log(this.props);
+        console.log(newTodo);
+        console.log(this.props.updateTodo);
 
         this.props.updateTodo(newTodo)
     
@@ -48,11 +50,14 @@ class ToDoItem extends React.Component {
     }
 
     render() {
+
+        const { deleteTodo } = this.props;
+
         return (
             <li>
                 <a onClick={this.showDetail}>{this.state.todo.title}</a>
                 <br></br>
-                {this.state.detail ? <TodoDetailViewContainer todo={this.props.todo}/> : ""}
+                {this.state.detail ? <TodoDetailViewContainer deleteTodo={ deleteTodo } todo={this.props.todo}/> : ""}
                 <button onClick={this.handleDone}>{this.state.todo.done ? 'Undo' : 'Done'}</button>
             </li>
         )

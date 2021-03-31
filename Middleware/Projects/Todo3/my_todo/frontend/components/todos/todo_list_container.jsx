@@ -12,11 +12,10 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = dispatch => ({
   requestTodos: () => dispatch(fetchTodos()),
-  receiveTodo: todo => dispatch(receiveTodo(todo)),
   removeTodo: todo => dispatch(removeTodo(todo)),
   createTodo: todo => dispatch(createTodo(todo)),
-  updateTodo: todo => dispatch(receiveTodo(todo))
-
+  updateTodo: todo => dispatch(updateTodo(todo)),
+  deleteTodo: todo => dispatch(deleteTodo(todo))
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(TodoList);

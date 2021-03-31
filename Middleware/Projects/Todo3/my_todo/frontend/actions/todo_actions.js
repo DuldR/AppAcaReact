@@ -47,3 +47,10 @@ export const updateTodo = (todo) => dispatch => (
         err => dispatch(receiveErrors(err.responseJSON))
     )
 )
+
+export const deleteTodo = (todo) => dispatch => (
+    APIUtil.updateTodo(todo).then(
+        todo => dispatch(deleteTodo(todo)),
+        err => dispatch(receiveErrors(err.responseJSON))
+    )
+)
