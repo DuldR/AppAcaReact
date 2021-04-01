@@ -33,3 +33,10 @@ export const removeStep = (step) => {
 export const fetchSteps = () => dispatch => (
     StepsAPIUtil.fetchSteps().then(steps => dispatch(receiveSteps(steps)))
 )
+
+export const createStep = (step) => dispatch => (
+    StepsAPIUtil.createStep(step).then(
+        step => dispatch(receiveStep(step)),
+        err => dispatch(receiveErrors(err.responseJSON))
+    )
+)

@@ -1,12 +1,12 @@
 import React from 'react';
-import API from '/frontend/util/util_funcs.js'
+
 
 class StepForm extends React.Component {
 
     constructor(props) {
         super(props);
 
-        this.state = { title: "", body: "Test Body", done: false }
+        this.state = { todo_id: this.props.todo_id, title: "", body: "", done: false }
         
 
         this.handleSubmit = this.handleSubmit.bind(this);
@@ -17,10 +17,9 @@ class StepForm extends React.Component {
 
     handleSubmit(event) {
         event.preventDefault();
-        // Fire receive
-        console.log("clicked");
-        console.log(this.state);
-        this.props.props.receiveStep(this.state);
+        let step = {step: this.state}
+        console.log(step);
+        this.props.createStep(step);
 
     }
 

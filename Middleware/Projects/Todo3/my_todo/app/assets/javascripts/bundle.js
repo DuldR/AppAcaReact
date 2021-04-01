@@ -105,7 +105,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "receiveSteps": () => (/* binding */ receiveSteps),
 /* harmony export */   "receiveStep": () => (/* binding */ receiveStep),
 /* harmony export */   "removeStep": () => (/* binding */ removeStep),
-/* harmony export */   "fetchSteps": () => (/* binding */ fetchSteps)
+/* harmony export */   "fetchSteps": () => (/* binding */ fetchSteps),
+/* harmony export */   "createStep": () => (/* binding */ createStep)
 /* harmony export */ });
 /* harmony import */ var _util_util_steps_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../util/util_steps.js */ "./frontend/util/util_steps.js");
 /* harmony import */ var _util_util_steps_js__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_util_util_steps_js__WEBPACK_IMPORTED_MODULE_0__);
@@ -137,6 +138,15 @@ var fetchSteps = function fetchSteps() {
   return function (dispatch) {
     return _util_util_steps_js__WEBPACK_IMPORTED_MODULE_0__.fetchSteps().then(function (steps) {
       return dispatch(receiveSteps(steps));
+    });
+  };
+};
+var createStep = function createStep(step) {
+  return function (dispatch) {
+    return _util_util_steps_js__WEBPACK_IMPORTED_MODULE_0__.createStep(step).then(function (step) {
+      return dispatch(receiveStep(step));
+    }, function (err) {
+      return dispatch((0,_actions_error_actions__WEBPACK_IMPORTED_MODULE_1__.receiveErrors)(err.responseJSON));
     });
   };
 };
@@ -293,8 +303,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var _frontend_util_util_funcs_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../../../../../../../../frontend/util/util_funcs.js */ "./frontend/util/util_funcs.js");
-/* harmony import */ var _frontend_util_util_funcs_js__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_frontend_util_util_funcs_js__WEBPACK_IMPORTED_MODULE_1__);
 function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -319,7 +327,6 @@ function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.g
 
 
 
-
 var StepForm = /*#__PURE__*/function (_React$Component) {
   _inherits(StepForm, _React$Component);
 
@@ -332,8 +339,9 @@ var StepForm = /*#__PURE__*/function (_React$Component) {
 
     _this = _super.call(this, props);
     _this.state = {
+      todo_id: _this.props.todo_id,
       title: "",
-      body: "Test Body",
+      body: "",
       done: false
     };
     _this.handleSubmit = _this.handleSubmit.bind(_assertThisInitialized(_this));
@@ -345,11 +353,12 @@ var StepForm = /*#__PURE__*/function (_React$Component) {
   _createClass(StepForm, [{
     key: "handleSubmit",
     value: function handleSubmit(event) {
-      event.preventDefault(); // Fire receive
-
-      console.log("clicked");
-      console.log(this.state);
-      this.props.props.receiveStep(this.state);
+      event.preventDefault();
+      var step = {
+        step: this.state
+      };
+      console.log(step);
+      this.props.createStep(step);
     }
   }, {
     key: "addStep",
@@ -451,7 +460,7 @@ var StepList = /*#__PURE__*/function (_React$Component) {
     value: function render() {
       var _this$props = this.props,
           steps = _this$props.steps,
-          requestSteps = _this$props.requestSteps,
+          createStep = _this$props.createStep,
           receiveSteps = _this$props.receiveSteps,
           todo = _this$props.todo;
       var listSteps = steps.map(function (ele, idx) {
@@ -461,7 +470,8 @@ var StepList = /*#__PURE__*/function (_React$Component) {
         });
       });
       return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("ul", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_step_form_jsx__WEBPACK_IMPORTED_MODULE_2__.default, {
-        todo_id: todo.id,
+        createStep: createStep,
+        todo_id: todo,
         receiveStep: receiveStep
       }), listSteps);
     }
@@ -508,6 +518,9 @@ var mapDispatchToProps = function mapDispatchToProps(dispatch) {
     },
     fetchSteps: function fetchSteps(step) {
       return dispatch(receiveStep(step));
+    },
+    createStep: function createStep(step) {
+      return dispatch((0,_frontend_actions_steps_actions__WEBPACK_IMPORTED_MODULE_3__.createStep)(step));
     }
   };
 };
@@ -1581,11 +1594,11 @@ var StepsAPIUtil = {
       url: '/api/steps'
     });
   },
-  createTodo: function createTodo(todo) {
+  createStep: function createStep(step) {
     return $.ajax({
       method: 'POST',
-      url: "api/todos",
-      data: todo
+      url: "api/steps",
+      data: step
     });
   },
   updateTodo: function updateTodo(todo) {

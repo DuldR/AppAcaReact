@@ -12,7 +12,7 @@ class StepList extends React.Component {
 
     render() {
 
-        const { steps, requestSteps, receiveSteps, todo } = this.props;
+        const { steps, createStep, receiveSteps, todo } = this.props;
 
 
         const listSteps = steps.map((ele, idx) => {
@@ -23,7 +23,7 @@ class StepList extends React.Component {
 
         return(
             <ul>
-                <StepForm todo_id={todo.id} receiveStep={receiveStep} />
+                <StepForm createStep={ createStep} todo_id={todo} receiveStep={receiveStep} />
                 {listSteps}
             </ul>
         )

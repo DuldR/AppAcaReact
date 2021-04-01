@@ -44,7 +44,7 @@ class Api::StepsController < ApplicationController
 
     protected
     def step_params
-        self.params.require(:step).permit(:title, :body, :done)
+        self.params.require(:step).permit(:title, :body, :done, :todo_id)
     end
 
 

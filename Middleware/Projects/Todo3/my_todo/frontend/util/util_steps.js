@@ -7,12 +7,12 @@ const StepsAPIUtil = {
         })
     ),
 
-    createTodo: (todo) => (
+    createStep: (step) => (
         $.ajax({
 
             method: 'POST',
-            url: `api/todos`,
-            data: todo
+            url: `api/steps`,
+            data: step
 
         })
     ),
