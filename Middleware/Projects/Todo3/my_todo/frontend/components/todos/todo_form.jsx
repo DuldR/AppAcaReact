@@ -14,7 +14,6 @@ class ToDoForm extends React.Component {
         this.addTodo = this.addTodo.bind(this);
         this.addTodoBody = this.addTodoBody.bind(this);
 
-        console.log(props);
     
     }
 
@@ -23,8 +22,12 @@ class ToDoForm extends React.Component {
         // Fire receiv
         let todo = {todo: this.state}
         this.props.createTodo(todo).then(
-            () => this.setState({title: '', body: ''})
+            () => this.setState({title: '', body: ''},
+            )
         )
+
+        let form = document.getElementById('todo-submit');
+        form.reset()
 
     }
 
@@ -40,7 +43,7 @@ class ToDoForm extends React.Component {
 
     render() {
         return (
-            <form onSubmit={this.handleSubmit} defaultValue={this.state.value}>
+            <form id="todo-submit" onSubmit={this.handleSubmit} defaultValue={this.state.value}>
                 <label>Errors</label>
                 {this.props.errors}
                 <br></br>

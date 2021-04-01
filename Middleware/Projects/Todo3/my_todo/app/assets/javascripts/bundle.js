@@ -483,7 +483,6 @@ var ToDoForm = /*#__PURE__*/function (_React$Component) {
     _this.handleSubmit = _this.handleSubmit.bind(_assertThisInitialized(_this));
     _this.addTodo = _this.addTodo.bind(_assertThisInitialized(_this));
     _this.addTodoBody = _this.addTodoBody.bind(_assertThisInitialized(_this));
-    console.log(props);
     return _this;
   }
 
@@ -503,6 +502,8 @@ var ToDoForm = /*#__PURE__*/function (_React$Component) {
           body: ''
         });
       });
+      var form = document.getElementById('todo-submit');
+      form.reset();
     }
   }, {
     key: "addTodo",
@@ -524,6 +525,7 @@ var ToDoForm = /*#__PURE__*/function (_React$Component) {
     key: "render",
     value: function render() {
       return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("form", {
+        id: "todo-submit",
         onSubmit: this.handleSubmit,
         defaultValue: this.state.value
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("label", null, "Errors"), this.props.errors, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("label", null, "Title"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("input", {
@@ -1135,9 +1137,6 @@ var configureStore = function configureStore() {
 /***/ ((module) => {
 
 var APIUtil = {
-  uniqueId: function uniqueId() {
-    return new Date().getTime();
-  },
   fetchTodos: function fetchTodos() {
     return $.ajax({
       method: 'GET',

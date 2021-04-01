@@ -1,4 +1,4 @@
-const APIUtil = {
+const StepsAPIUtil = {
 
     fetchTodos: () => (
         $.ajax({
@@ -36,4 +36,4 @@ const APIUtil = {
 
 }
 
-module.exports = APIUtil
+module.exports = StepsAPIUtil
