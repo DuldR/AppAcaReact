@@ -10,7 +10,7 @@ import StepForm from "./step_form.jsx"
 class StepList extends React.Component {
 
     componentDidMount() {
-        console.log(this.props);
+        console.log('step fire')
         this.props.requestSteps();
     }
     
@@ -18,6 +18,7 @@ class StepList extends React.Component {
     render() {
 
         const { steps, requestSteps, receiveSteps } = this.props;
+
 
         const listSteps = steps.map((ele, idx) => {
             return (

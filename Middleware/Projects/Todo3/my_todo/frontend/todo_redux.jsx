@@ -5,12 +5,13 @@ import Root from './components/root.jsx'
 import { allTodos } from './reducers/selectors.js'
 import { stepsByTodoId } from './reducers/selectors.js'
 import APIUtil from './util/util_funcs.js'
-
+import StepsAPIUtil from './util/util_steps.js'
 
 
 import { receiveTodos, receiveTodo, removeTodo, fetchTodos, createTodo } from './actions/todo_actions.js'
 import { receiveSteps, receiveStep, removeStep } from './actions/steps_actions.js'
 import { receiveErrors, clearErrors } from './actions/error_actions.js'
+
 window.store = configureStore();
 
 // Todos
@@ -41,6 +42,7 @@ window.fetchTodos = fetchTodos
 window.createTodo = createTodo
 
 window.APIUtil = APIUtil
+window.StepsAPIUtil = StepsAPIUtil
 
 // Scratch Actions
 // Step

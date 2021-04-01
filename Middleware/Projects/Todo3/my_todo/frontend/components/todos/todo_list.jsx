@@ -5,8 +5,9 @@ import ToDoForm from './todo_form.jsx';
 
 class TodoList extends React.Component {
   componentDidMount() {
-
+    console.log('fire')
     this.props.requestTodos();
+
   }
 
   render() {

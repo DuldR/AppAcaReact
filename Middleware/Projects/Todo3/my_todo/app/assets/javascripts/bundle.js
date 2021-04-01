@@ -445,7 +445,7 @@ var StepList = /*#__PURE__*/function (_React$Component) {
   _createClass(StepList, [{
     key: "componentDidMount",
     value: function componentDidMount() {
-      console.log(this.props);
+      console.log('step fire');
       this.props.requestSteps();
     }
   }, {
@@ -1009,6 +1009,7 @@ var TodoList = /*#__PURE__*/function (_React$Component) {
   _createClass(TodoList, [{
     key: "componentDidMount",
     value: function componentDidMount() {
+      console.log('fire');
       this.props.requestTodos();
     }
   }, {
@@ -1378,6 +1379,7 @@ var allErrors = function allErrors(state) {
   return Object.values(state.errors);
 };
 var stepsByTodoId = function stepsByTodoId(state, todoId) {
+  console.log(state);
   var listSteps = Object.values(state.steps);
   return listSteps.filter(function (ele) {
     return ele.todo_id === todoId;
@@ -1401,38 +1403,40 @@ __webpack_require__.r(__webpack_exports__);
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
 
-var initialState = {
-  1: {
-    id: 25,
-    todo_id: 1,
-    title: "Step1",
-    body: "Smoek Weed",
-    done: false
-  },
-  2: {
-    id: 576,
-    todo_id: 2,
-    title: "Step1",
-    body: "AWW YEAH",
-    done: true
-  },
-  3: {
-    id: 56756,
-    todo_id: 1,
-    title: "Step2",
-    body: "Step2 of 1",
-    done: false
-  }
+var initialState = {// 6: {
+  //   id: 25,
+  //   todo_id: 1,
+  //   title: "Step1",
+  //   body: "Smoek Weed",
+  //   done: false
+  // },
+  // 7: {
+  //   id: 576,
+  //   todo_id: 2,
+  //   title: "Step1",
+  //   body: "AWW YEAH",
+  //   done: true
+  // },
+  // 8: {
+  //   id: 56756,
+  //   todo_id: 1,
+  //   title: "Step2",
+  //   body: "Step2 of 1",
+  //   done: false
+  // },
 }; // I was mutating state. WRONG
 
 var stepsReducer = function stepsReducer() {
   var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : initialState;
   var action = arguments.length > 1 ? arguments[1] : undefined;
   Object.freeze(state);
+  var nextState = {};
 
   switch (action.type) {
     case _actions_steps_actions_js__WEBPACK_IMPORTED_MODULE_0__.RECEIVE_STEPS:
-      var nextState = Object.assign({}, state);
+      action.steps.forEach(function (step) {
+        nextState[step.id] = step;
+      });
       return nextState;
 
     case _actions_steps_actions_js__WEBPACK_IMPORTED_MODULE_0__.RECEIVE_STEP:
@@ -35050,9 +35054,12 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _reducers_selectors_js__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./reducers/selectors.js */ "./frontend/reducers/selectors.js");
 /* harmony import */ var _util_util_funcs_js__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./util/util_funcs.js */ "./frontend/util/util_funcs.js");
 /* harmony import */ var _util_util_funcs_js__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(_util_util_funcs_js__WEBPACK_IMPORTED_MODULE_5__);
-/* harmony import */ var _actions_todo_actions_js__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./actions/todo_actions.js */ "./frontend/actions/todo_actions.js");
-/* harmony import */ var _actions_steps_actions_js__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./actions/steps_actions.js */ "./frontend/actions/steps_actions.js");
-/* harmony import */ var _actions_error_actions_js__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./actions/error_actions.js */ "./frontend/actions/error_actions.js");
+/* harmony import */ var _util_util_steps_js__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./util/util_steps.js */ "./frontend/util/util_steps.js");
+/* harmony import */ var _util_util_steps_js__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__webpack_require__.n(_util_util_steps_js__WEBPACK_IMPORTED_MODULE_6__);
+/* harmony import */ var _actions_todo_actions_js__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./actions/todo_actions.js */ "./frontend/actions/todo_actions.js");
+/* harmony import */ var _actions_steps_actions_js__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./actions/steps_actions.js */ "./frontend/actions/steps_actions.js");
+/* harmony import */ var _actions_error_actions_js__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./actions/error_actions.js */ "./frontend/actions/error_actions.js");
+
 
 
 
@@ -35065,23 +35072,24 @@ __webpack_require__.r(__webpack_exports__);
 
 window.store = (0,_store_todo_store_js__WEBPACK_IMPORTED_MODULE_2__.default)(); // Todos
 
-window.receiveTodos = _actions_todo_actions_js__WEBPACK_IMPORTED_MODULE_6__.receiveTodos;
-window.receiveTodo = _actions_todo_actions_js__WEBPACK_IMPORTED_MODULE_6__.receiveTodo;
-window.removeTodo = _actions_todo_actions_js__WEBPACK_IMPORTED_MODULE_6__.removeTodo; // Steps
+window.receiveTodos = _actions_todo_actions_js__WEBPACK_IMPORTED_MODULE_7__.receiveTodos;
+window.receiveTodo = _actions_todo_actions_js__WEBPACK_IMPORTED_MODULE_7__.receiveTodo;
+window.removeTodo = _actions_todo_actions_js__WEBPACK_IMPORTED_MODULE_7__.removeTodo; // Steps
 
-window.receiveSteps = _actions_steps_actions_js__WEBPACK_IMPORTED_MODULE_7__.receiveSteps;
-window.receiveStep = _actions_steps_actions_js__WEBPACK_IMPORTED_MODULE_7__.receiveStep;
-window.removeStep = _actions_steps_actions_js__WEBPACK_IMPORTED_MODULE_7__.removeStep; // Errors
+window.receiveSteps = _actions_steps_actions_js__WEBPACK_IMPORTED_MODULE_8__.receiveSteps;
+window.receiveStep = _actions_steps_actions_js__WEBPACK_IMPORTED_MODULE_8__.receiveStep;
+window.removeStep = _actions_steps_actions_js__WEBPACK_IMPORTED_MODULE_8__.removeStep; // Errors
 
-window.receiveErrors = _actions_error_actions_js__WEBPACK_IMPORTED_MODULE_8__.receiveErrors; // Selectors
+window.receiveErrors = _actions_error_actions_js__WEBPACK_IMPORTED_MODULE_9__.receiveErrors; // Selectors
 // window.allTodos = allTodos;
 
 window.stepsByTodoId = _reducers_selectors_js__WEBPACK_IMPORTED_MODULE_4__.stepsByTodoId; // Test ajax
 // window.fetchTodos = APIUtil.fetchTodos;
 
-window.fetchTodos = _actions_todo_actions_js__WEBPACK_IMPORTED_MODULE_6__.fetchTodos;
-window.createTodo = _actions_todo_actions_js__WEBPACK_IMPORTED_MODULE_6__.createTodo;
-window.APIUtil = (_util_util_funcs_js__WEBPACK_IMPORTED_MODULE_5___default()); // Scratch Actions
+window.fetchTodos = _actions_todo_actions_js__WEBPACK_IMPORTED_MODULE_7__.fetchTodos;
+window.createTodo = _actions_todo_actions_js__WEBPACK_IMPORTED_MODULE_7__.createTodo;
+window.APIUtil = (_util_util_funcs_js__WEBPACK_IMPORTED_MODULE_5___default());
+window.StepsAPIUtil = (_util_util_steps_js__WEBPACK_IMPORTED_MODULE_6___default()); // Scratch Actions
 // Step
 
 var newStep = {

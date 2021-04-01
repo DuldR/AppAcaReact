@@ -5,6 +5,7 @@ import Root from './components/root.jsx'
 import { allTodos } from './reducers/selectors.js'
 import { stepsByTodoId } from './reducers/selectors.js'
 import APIUtil from './util/util_funcs.js'
+import StepsAPIUtil from './util/util_steps.js'
 
 
 
@@ -36,6 +37,7 @@ window.stepsByTodoId= stepsByTodoId;
 window.fetchTodos = fetchTodos
 
 window.APIUtil = APIUtil
+window.StepsAPIUtil = StepsAPIUtil.fetchSteps
 
 
 // Scratch Actions
