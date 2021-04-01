@@ -12,7 +12,7 @@ class StepList extends React.Component {
 
     render() {
 
-        const { steps, createStep, receiveSteps, todo } = this.props;
+        const { steps, createStep, todo } = this.props;
 
 
         const listSteps = steps.map((ele, idx) => {

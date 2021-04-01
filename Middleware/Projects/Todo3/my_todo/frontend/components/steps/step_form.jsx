@@ -17,8 +17,8 @@ class StepForm extends React.Component {
 
     handleSubmit(event) {
         event.preventDefault();
+        
         let step = {step: this.state}
-        console.log(step);
         this.props.createStep(step);
 
     }

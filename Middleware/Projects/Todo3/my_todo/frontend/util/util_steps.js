@@ -17,19 +17,19 @@ const StepsAPIUtil = {
         })
     ),
 
-    updateTodo: (todo) => (
+    updateStep: (step) => (
         $.ajax({
             method: "PATCH",
-            url: `api/todos/${todo.id}`,
-            data: { todo }
+            url: `api/steps/${step.id}`,
+            data: { step }
         })
     ),
 
-    deleteTodo: (todo) => (
+    deleteStep: (step) => (
         $.ajax({
             method: "DELETE",
-            url: `api/todos/${todo.id}`,
-            data: todo
+            url: `api/steps/${step.id}`,
+            data: step
         })
     )
 

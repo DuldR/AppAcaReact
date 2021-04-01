@@ -40,3 +40,15 @@ export const createStep = (step) => dispatch => (
         err => dispatch(receiveErrors(err.responseJSON))
     )
 )
+
+export const updateStep = (step) => dispatch => (
+    StepsAPIUtil.updateStep(step).then(
+        step => dispatch(receiveStep(step))
+    )
+)
+
+export const deleteStep = (step) => dispatch => (
+    StepsAPIUtil.deleteStep(step).then(
+        step => dispatch(removeStep(step))
+    )
+)

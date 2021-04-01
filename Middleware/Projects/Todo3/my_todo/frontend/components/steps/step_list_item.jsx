@@ -19,7 +19,8 @@ class StepListItem extends React.Component {
 
     handleDelete(event) {
         event.preventDefault();
-        this.props.removeStep(this.state.step);
+        console.log(this.props.step)
+        this.props.deleteStep(this.props.step);
 
     }
 
@@ -28,7 +29,7 @@ class StepListItem extends React.Component {
         event.preventDefault();
         let newStep = this.toggleDone(this.state.step);
 
-        this.props.receiveStep(this.state.step);
+        this.props.updateStep(newStep);
 
         
     }
