@@ -8,3 +8,6 @@
 
 
 Todo.create!(title: "Test Todo", body: "Test Body", done: false);
+Step.create!(todo_id: 1, title: "Test Step1", body: "Body1", done: true);
+Step.create!(todo_id: 1, title: "Test Step2", body: "Body2", done: false);
+Step.create!(todo_id: 1, title: "Test Step3", body: "Body3", done: false);

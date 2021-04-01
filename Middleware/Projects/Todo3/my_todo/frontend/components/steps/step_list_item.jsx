@@ -14,6 +14,8 @@ class StepListItem extends React.Component {
         this.handleDone = this.handleDone.bind(this);
         this.showDetail = this.showDetail.bind(this);
         this.toggleDone = this.toggleDone.bind(this);
+
+        console.log(props);
     }
 
     handleDelete(event) {

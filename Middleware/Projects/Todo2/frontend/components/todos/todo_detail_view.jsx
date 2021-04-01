@@ -18,6 +18,9 @@ export const TodoDetailView = ({todo, removeTodo}) => {
             <label>Done: </label>
             {todo.done ? 'Yes' : 'No' }
             <br></br>
+        
+            <br></br>
+
             <button onClick={handleDelete}>Delete</button>
             <br></br>
         </div>

@@ -1,14 +1,13 @@
 import React from 'react';
+import StepListContainer from '../steps/step_list_container.jsx'
 
 class TodoDetailView extends React.Component {
     constructor(props) {
         super(props);
-
         this.state = {todo: props.todo }
-
-        console.log(props);
-
         this.handleDelete = this.handleDelete.bind(this);
+
+
     }
 
     handleDelete(event) {
@@ -19,6 +18,7 @@ class TodoDetailView extends React.Component {
     }
 
     render() {
+        const { receiveSteps, deleteTodo, removeTodo, todo } = this.props
         return (
             <div>
                 <br></br>
@@ -27,6 +27,11 @@ class TodoDetailView extends React.Component {
                 <br></br>
                 <label>Done: </label>
                 {this.props.todo.done ? 'Yes' : 'No' }
+                <br></br>
+
+                <div>
+                    <StepListContainer todo_id={ todo.id } receiveSteps={receiveSteps}/>
+                </div>
                 <br></br>
                 <button onClick={this.handleDelete}>Delete</button>
                 <br></br>
@@ -38,26 +43,3 @@ class TodoDetailView extends React.Component {
 }
 
 export default TodoDetailView   
-// export const TodoDetailView = ({props, todo, deleteTodo }) => {
-
-//     const handleDelete = (event) => {
-//         event.preventDefault();
-//         console.log(todo);
-//         console.log(deleteTodo);
-//         deleteTodo(todo);
-//     }
-
-//     return (
-//         <div>
-//             <br></br>
-//             <label>Body: </label>
-//             {todo.body}
-//             <br></br>
-//             <label>Done: </label>
-//             {todo.done ? 'Yes' : 'No' }
-//             <br></br>
-//             <button onClick={handleDelete}>Delete</button>
-//             <br></br>
-//         </div>
-//     )
-// }
