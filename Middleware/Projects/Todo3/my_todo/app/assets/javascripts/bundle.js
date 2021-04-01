@@ -374,6 +374,8 @@ var StepForm = /*#__PURE__*/function (_React$Component) {
         step: this.state
       };
       this.props.createStep(step);
+      var form = document.getElementById('step-submit');
+      form.reset();
     }
   }, {
     key: "addStep",
@@ -395,6 +397,7 @@ var StepForm = /*#__PURE__*/function (_React$Component) {
     key: "render",
     value: function render() {
       return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("form", {
+        id: "step-submit",
         onSubmit: this.handleSubmit,
         defaultValue: this.state.value
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("label", null, "Step Title"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("input", {

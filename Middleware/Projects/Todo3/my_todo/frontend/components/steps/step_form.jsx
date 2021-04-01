@@ -17,9 +17,12 @@ class StepForm extends React.Component {
 
     handleSubmit(event) {
         event.preventDefault();
-        
+
         let step = {step: this.state}
         this.props.createStep(step);
+
+        let form = document.getElementById('step-submit');
+        form.reset()
 
     }
 
@@ -35,7 +38,7 @@ class StepForm extends React.Component {
 
     render() {
         return (
-            <form onSubmit={this.handleSubmit} defaultValue={this.state.value}>
+            <form id="step-submit" onSubmit={this.handleSubmit} defaultValue={this.state.value}>
                 <label>Step Title</label>
                 <br></br>
                 <input onChange={this.addStep} type='text'></input>
