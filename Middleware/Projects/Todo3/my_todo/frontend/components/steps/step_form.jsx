@@ -6,7 +6,7 @@ class StepForm extends React.Component {
     constructor(props) {
         super(props);
 
-        this.state = { todo_id: this.props.props.todo_id, title: "", body: "Test Body", done: false }
+        this.state = { title: "", body: "Test Body", done: false }
         
 
         this.handleSubmit = this.handleSubmit.bind(this);

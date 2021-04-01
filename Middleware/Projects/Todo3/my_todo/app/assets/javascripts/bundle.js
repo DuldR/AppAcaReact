@@ -332,7 +332,6 @@ var StepForm = /*#__PURE__*/function (_React$Component) {
 
     _this = _super.call(this, props);
     _this.state = {
-      todo_id: _this.props.props.todo_id,
       title: "",
       body: "Test Body",
       done: false
@@ -445,7 +444,6 @@ var StepList = /*#__PURE__*/function (_React$Component) {
   _createClass(StepList, [{
     key: "componentDidMount",
     value: function componentDidMount() {
-      console.log('step fire');
       this.props.requestSteps();
     }
   }, {
@@ -454,39 +452,25 @@ var StepList = /*#__PURE__*/function (_React$Component) {
       var _this$props = this.props,
           steps = _this$props.steps,
           requestSteps = _this$props.requestSteps,
-          receiveSteps = _this$props.receiveSteps;
+          receiveSteps = _this$props.receiveSteps,
+          todo = _this$props.todo;
       var listSteps = steps.map(function (ele, idx) {
         return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_step_list_item_container_jsx__WEBPACK_IMPORTED_MODULE_1__.default, {
           step: ele,
           key: "step-item-" + idx
         });
       });
-      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("ul", null, listSteps);
+      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("ul", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_step_form_jsx__WEBPACK_IMPORTED_MODULE_2__.default, {
+        todo_id: todo.id,
+        receiveStep: receiveStep
+      }), listSteps);
     }
   }]);
 
   return StepList;
 }(react__WEBPACK_IMPORTED_MODULE_0__.Component);
 
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (StepList); // export const StepList = ( {todo_id, steps, receiveStep} ) => {
-//     // This allows me to update. Why? i dont understand
-//     let props = {receiveStep}
-//     let formProps = {todo_id, receiveStep}
-//     console.log(props);
-//     const listSteps = steps.map((ele, idx) => {
-//         return (
-//             <StepListItemContainer step={ele} key={"step-item-" + idx} props={props}/>
-//         )
-//     })
-//     return (
-//         <div>
-//             <StepForm props={formProps} />
-//             <ul>
-//                 {listSteps}
-//             </ul>
-//         </div>
-//     )
-// }
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (StepList);
 
 /***/ }),
 
@@ -1379,7 +1363,6 @@ var allErrors = function allErrors(state) {
   return Object.values(state.errors);
 };
 var stepsByTodoId = function stepsByTodoId(state, todoId) {
-  console.log(state);
   var listSteps = Object.values(state.steps);
   return listSteps.filter(function (ele) {
     return ele.todo_id === todoId;
