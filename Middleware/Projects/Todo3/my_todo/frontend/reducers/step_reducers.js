@@ -2,21 +2,21 @@ import { RECEIVE_STEPS, RECEIVE_STEP, REMOVE_STEP } from '../actions/steps_actio
 
 const initialState = {
   1: {
-    id: 1,
+    id: 25,
     todo_id: 1,
     title: "Step1",
     body: "Smoek Weed",
     done: false
   },
   2: {
-    id: 2,
+    id: 576,
     todo_id: 2,
     title: "Step1",
     body: "AWW YEAH",
     done: true
   },
   3: {
-    id: 3,
+    id: 56756,
     todo_id: 1,
     title: "Step2",
     body: "Step2 of 1",

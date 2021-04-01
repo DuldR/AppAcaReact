@@ -1,9 +1,9 @@
 const StepsAPIUtil = {
 
-    fetchTodos: () => (
+    fetchSteps: () => (
         $.ajax({
             method: 'GET',
-            url: '/api/todos'
+            url: '/api/steps'
         })
     ),
 

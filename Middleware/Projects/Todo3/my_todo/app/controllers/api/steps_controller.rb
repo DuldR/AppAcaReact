@@ -1,4 +1,4 @@
-class Api:StepsController < ApplicationController
+class Api::StepsController < ApplicationController
 
     def show
         render json: Step.find(params[:id])
@@ -8,7 +8,7 @@ class Api:StepsController < ApplicationController
 
         @step = Step.all
         
-        render json: @steps
+        render json: @step
     end
 
     def create

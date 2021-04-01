@@ -104,11 +104,17 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "REMOVE_STEP": () => (/* binding */ REMOVE_STEP),
 /* harmony export */   "receiveSteps": () => (/* binding */ receiveSteps),
 /* harmony export */   "receiveStep": () => (/* binding */ receiveStep),
-/* harmony export */   "removeStep": () => (/* binding */ removeStep)
+/* harmony export */   "removeStep": () => (/* binding */ removeStep),
+/* harmony export */   "fetchSteps": () => (/* binding */ fetchSteps)
 /* harmony export */ });
+/* harmony import */ var _util_util_steps_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../util/util_steps.js */ "./frontend/util/util_steps.js");
+/* harmony import */ var _util_util_steps_js__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_util_util_steps_js__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _actions_error_actions__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../actions/error_actions */ "./frontend/actions/error_actions.js");
 var RECEIVE_STEPS = "RECEIVE_STEPS";
 var RECEIVE_STEP = "RECEIVE_STEP";
 var REMOVE_STEP = "REMOVE_STEP";
+
+
 var receiveSteps = function receiveSteps(steps) {
   return {
     type: RECEIVE_STEPS,
@@ -125,6 +131,13 @@ var removeStep = function removeStep(step) {
   return {
     type: REMOVE_STEP,
     step: step
+  };
+};
+var fetchSteps = function fetchSteps() {
+  return function (dispatch) {
+    return _util_util_steps_js__WEBPACK_IMPORTED_MODULE_0__.fetchSteps().then(function (steps) {
+      return dispatch(receiveSteps(steps));
+    });
   };
 };
 
@@ -319,7 +332,6 @@ var StepForm = /*#__PURE__*/function (_React$Component) {
 
     _this = _super.call(this, props);
     _this.state = {
-      id: _frontend_util_util_funcs_js__WEBPACK_IMPORTED_MODULE_1___default().uniqueId(),
       todo_id: _this.props.props.todo_id,
       title: "",
       body: "Test Body",
@@ -388,35 +400,93 @@ var StepForm = /*#__PURE__*/function (_React$Component) {
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "StepList": () => (/* binding */ StepList)
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var _step_list_item_container_jsx__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./step_list_item_container.jsx */ "./frontend/components/steps/step_list_item_container.jsx");
 /* harmony import */ var _step_form_jsx__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./step_form.jsx */ "./frontend/components/steps/step_form.jsx");
+function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+function _createSuper(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct(); return function _createSuperInternal() { var Super = _getPrototypeOf(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = _getPrototypeOf(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return _possibleConstructorReturn(this, result); }; }
+
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Boolean.prototype.valueOf.call(Reflect.construct(Boolean, [], function () {})); return true; } catch (e) { return false; } }
+
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
 
 
 
-var StepList = function StepList(_ref) {
-  var todo_id = _ref.todo_id,
-      steps = _ref.steps,
-      receiveStep = _ref.receiveStep;
-  // This allows me to update. Why? i dont understand
-  var props = {
-    receiveStep: receiveStep
-  };
-  var formProps = {
-    todo_id: todo_id,
-    receiveStep: receiveStep
-  };
-  var listSteps = steps.map(function (ele, idx) {
-    return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_step_list_item_container_jsx__WEBPACK_IMPORTED_MODULE_1__.default, {
-      step: ele,
-      key: "step-item-" + idx,
-      props: props
-    });
-  });
-  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("ul", null, listSteps));
-};
+
+
+var StepList = /*#__PURE__*/function (_React$Component) {
+  _inherits(StepList, _React$Component);
+
+  var _super = _createSuper(StepList);
+
+  function StepList() {
+    _classCallCheck(this, StepList);
+
+    return _super.apply(this, arguments);
+  }
+
+  _createClass(StepList, [{
+    key: "componentDidMount",
+    value: function componentDidMount() {
+      console.log(this.props);
+      this.props.requestSteps();
+    }
+  }, {
+    key: "render",
+    value: function render() {
+      var _this$props = this.props,
+          steps = _this$props.steps,
+          requestSteps = _this$props.requestSteps,
+          receiveSteps = _this$props.receiveSteps;
+      var listSteps = steps.map(function (ele, idx) {
+        return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_step_list_item_container_jsx__WEBPACK_IMPORTED_MODULE_1__.default, {
+          step: ele,
+          key: "step-item-" + idx
+        });
+      });
+      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("ul", null, listSteps);
+    }
+  }]);
+
+  return StepList;
+}(react__WEBPACK_IMPORTED_MODULE_0__.Component);
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (StepList); // export const StepList = ( {todo_id, steps, receiveStep} ) => {
+//     // This allows me to update. Why? i dont understand
+//     let props = {receiveStep}
+//     let formProps = {todo_id, receiveStep}
+//     console.log(props);
+//     const listSteps = steps.map((ele, idx) => {
+//         return (
+//             <StepListItemContainer step={ele} key={"step-item-" + idx} props={props}/>
+//         )
+//     })
+//     return (
+//         <div>
+//             <StepForm props={formProps} />
+//             <ul>
+//                 {listSteps}
+//             </ul>
+//         </div>
+//     )
+// }
 
 /***/ }),
 
@@ -434,6 +504,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
 /* harmony import */ var _step_list_jsx__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./step_list.jsx */ "./frontend/components/steps/step_list.jsx");
 /* harmony import */ var _frontend_reducers_selectors_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../../../../../../../frontend/reducers/selectors.js */ "./frontend/reducers/selectors.js");
+/* harmony import */ var _frontend_actions_steps_actions__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../../../../../../../../frontend/actions/steps_actions */ "./frontend/actions/steps_actions.js");
+
 
 
 
@@ -447,23 +519,16 @@ var mapStateToProps = function mapStateToProps(state, ownProps) {
 
 var mapDispatchToProps = function mapDispatchToProps(dispatch) {
   return {
-    receiveStep: function (_receiveStep) {
-      function receiveStep(_x) {
-        return _receiveStep.apply(this, arguments);
-      }
-
-      receiveStep.toString = function () {
-        return _receiveStep.toString();
-      };
-
-      return receiveStep;
-    }(function (step) {
+    requestSteps: function requestSteps() {
+      return dispatch((0,_frontend_actions_steps_actions__WEBPACK_IMPORTED_MODULE_3__.fetchSteps)());
+    },
+    fetchSteps: function fetchSteps(step) {
       return dispatch(receiveStep(step));
-    })
+    }
   };
 };
 
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ((0,react_redux__WEBPACK_IMPORTED_MODULE_0__.connect)(mapStateToProps, mapDispatchToProps)(_step_list_jsx__WEBPACK_IMPORTED_MODULE_1__.StepList));
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ((0,react_redux__WEBPACK_IMPORTED_MODULE_0__.connect)(mapStateToProps, mapDispatchToProps)(_step_list_jsx__WEBPACK_IMPORTED_MODULE_1__.default));
 
 /***/ }),
 
@@ -522,7 +587,6 @@ var StepListItem = /*#__PURE__*/function (_React$Component) {
     _this.handleDone = _this.handleDone.bind(_assertThisInitialized(_this));
     _this.showDetail = _this.showDetail.bind(_assertThisInitialized(_this));
     _this.toggleDone = _this.toggleDone.bind(_assertThisInitialized(_this));
-    console.log(props);
     return _this;
   }
 
@@ -1339,21 +1403,21 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 
 var initialState = {
   1: {
-    id: 1,
+    id: 25,
     todo_id: 1,
     title: "Step1",
     body: "Smoek Weed",
     done: false
   },
   2: {
-    id: 2,
+    id: 576,
     todo_id: 2,
     title: "Step1",
     body: "AWW YEAH",
     done: true
   },
   3: {
-    id: 3,
+    id: 56756,
     todo_id: 1,
     title: "Step2",
     body: "Step2 of 1",
@@ -1514,6 +1578,47 @@ var APIUtil = {
   }
 };
 module.exports = APIUtil;
+
+/***/ }),
+
+/***/ "./frontend/util/util_steps.js":
+/*!*************************************!*\
+  !*** ./frontend/util/util_steps.js ***!
+  \*************************************/
+/***/ ((module) => {
+
+var StepsAPIUtil = {
+  fetchSteps: function fetchSteps() {
+    return $.ajax({
+      method: 'GET',
+      url: '/api/steps'
+    });
+  },
+  createTodo: function createTodo(todo) {
+    return $.ajax({
+      method: 'POST',
+      url: "api/todos",
+      data: todo
+    });
+  },
+  updateTodo: function updateTodo(todo) {
+    return $.ajax({
+      method: "PATCH",
+      url: "api/todos/".concat(todo.id),
+      data: {
+        todo: todo
+      }
+    });
+  },
+  deleteTodo: function deleteTodo(todo) {
+    return $.ajax({
+      method: "DELETE",
+      url: "api/todos/".concat(todo.id),
+      data: todo
+    });
+  }
+};
+module.exports = StepsAPIUtil;
 
 /***/ }),
 
