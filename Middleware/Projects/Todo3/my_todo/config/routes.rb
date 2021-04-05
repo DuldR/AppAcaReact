@@ -8,4 +8,7 @@ Rails.application.routes.draw do
     resources :steps, only: [:create, :index, :show, :destroy, :update ], defaults: { format: :json }
   end
 
+  resources :users, only: [:create, :new, :show]
+  resource :session, only: [:create, :new, :destroy]
+
 end
