@@ -8,14 +8,14 @@ class Api::TodosController < ApplicationController
 
         @todos = Todo.all
         
-        render json: @todos
+        render json: @todos, include: :tags
     end
 
     def create
         @todo = Todo.new(todo_params)
 
         if @todo.save
-            render json: @todo
+            render json: @todo, include: :tags
         else
             render json: @todo.errors.full_messages, status: 422
         end
@@ -26,7 +26,7 @@ class Api::TodosController < ApplicationController
         @todo = Todo.find(params[:id])
         
         if @todo.update_attributes(todo_params)
-            render json: @todo
+            render json: @todo, include: :tags
         else
             render json: @todo.errors.full_messages, status: 422
         end
@@ -44,7 +44,7 @@ class Api::TodosController < ApplicationController
 
     protected
     def todo_params
-        self.params.require(:todo).permit(:title, :body, :done)
+        self.params.require(:todo).permit(:title, :body, :done, :tag_names => [])
     end
 
 end

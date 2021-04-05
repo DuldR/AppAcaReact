@@ -913,11 +913,14 @@ var ToDoForm = /*#__PURE__*/function (_React$Component) {
     _this.state = {
       title: "",
       body: "",
-      done: false
+      done: false,
+      tag_names: []
     };
     _this.handleSubmit = _this.handleSubmit.bind(_assertThisInitialized(_this));
     _this.addTodo = _this.addTodo.bind(_assertThisInitialized(_this));
     _this.addTodoBody = _this.addTodoBody.bind(_assertThisInitialized(_this));
+    _this.addTag = _this.addTag.bind(_assertThisInitialized(_this));
+    _this.listTags = _this.listTags.bind(_assertThisInitialized(_this));
     return _this;
   }
 
@@ -934,7 +937,8 @@ var ToDoForm = /*#__PURE__*/function (_React$Component) {
       this.props.createTodo(todo).then(function () {
         return _this2.setState({
           title: '',
-          body: ''
+          body: '',
+          tag_names: []
         });
       });
       var form = document.getElementById('todo-submit');
@@ -957,6 +961,26 @@ var ToDoForm = /*#__PURE__*/function (_React$Component) {
       });
     }
   }, {
+    key: "addTag",
+    value: function addTag(e) {
+      e.preventDefault();
+      var tagInput = document.getElementsByClassName('tag-input'); // console.log(tagInput[0].value);
+
+      this.setState({
+        tag_names: this.state.tag_names.concat(tagInput[0].value)
+      });
+    }
+  }, {
+    key: "listTags",
+    value: function listTags() {
+      var tagList = this.state.tag_names.map(function (tag, idx) {
+        return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("li", {
+          key: 'added-tag-' + idx
+        }, tag);
+      });
+      return tagList;
+    }
+  }, {
     key: "render",
     value: function render() {
       return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("form", {
@@ -969,7 +993,13 @@ var ToDoForm = /*#__PURE__*/function (_React$Component) {
       }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("label", null, "Body"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("input", {
         onChange: this.addTodoBody,
         type: "text"
-      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("button", null, "Submit"));
+      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("label", null, "Tage"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("ul", null, this.listTags()), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("input", {
+        className: "tag-input",
+        type: "text"
+      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("button", {
+        type: "button",
+        onClick: this.addTag
+      }, "Add Tag"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("button", null, "Submit"));
     }
   }]);
 
@@ -1035,7 +1065,6 @@ var TodoList = /*#__PURE__*/function (_React$Component) {
   _createClass(TodoList, [{
     key: "componentDidMount",
     value: function componentDidMount() {
-      console.log('fire');
       this.props.requestTodos();
     }
   }, {
@@ -1051,6 +1080,7 @@ var TodoList = /*#__PURE__*/function (_React$Component) {
         return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_todo_list_item_jsx__WEBPACK_IMPORTED_MODULE_1__.default, {
           key: todo.id,
           todo: todo,
+          tags: todo.tags,
           updateTodo: updateTodo,
           deleteTodo: deleteTodo
         });
@@ -1203,14 +1233,35 @@ var ToDoItem = /*#__PURE__*/function (_React$Component) {
       todo: props.todo,
       detail: false
     };
+    console.log(props);
     _this.handleDelete = _this.handleDelete.bind(_assertThisInitialized(_this));
     _this.handleDone = _this.handleDone.bind(_assertThisInitialized(_this));
     _this.showDetail = _this.showDetail.bind(_assertThisInitialized(_this));
     _this.toggleDone = _this.toggleDone.bind(_assertThisInitialized(_this));
+    _this.listTag = _this.listTag.bind(_assertThisInitialized(_this));
     return _this;
   }
 
   _createClass(ToDoItem, [{
+    key: "listTag",
+    value: function listTag() {
+      // console.log(this.props);
+      // if (this.state.todo.tags === undefined) {
+      //     return <li>No Tags!</li>
+      // } else {
+      //     let tagList = this.state.todo.tags.map((tag,idx) => {
+      //         <li key={'tag-' + idx}>{tag.name}</li>
+      //     })
+      //     return tagList
+      // }
+      var tagList = this.props.tags.map(function (tag, idx) {
+        return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("li", {
+          key: 'tag-' + idx
+        }, tag.name);
+      });
+      return tagList;
+    }
+  }, {
     key: "handleDelete",
     value: function handleDelete(event) {
       event.preventDefault();
@@ -1248,7 +1299,7 @@ var ToDoItem = /*#__PURE__*/function (_React$Component) {
         todo: this.props.todo
       }) : "", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("button", {
         onClick: this.handleDone
-      }, this.state.todo.done ? 'Undo' : 'Done'));
+      }, this.state.todo.done ? 'Undo' : 'Done'), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("ul", null, this.listTag()));
     }
   }]);
 

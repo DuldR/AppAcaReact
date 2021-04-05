@@ -8,17 +8,43 @@ class ToDoItem extends React.Component {
         super(props);
 
         // This deconstructs correctly
-
-        
+   
         this.state = { todo: props.todo, detail: false }
 
+        console.log(props);
         this.handleDelete = this.handleDelete.bind(this);
         this.handleDone = this.handleDone.bind(this);
         this.showDetail = this.showDetail.bind(this);
         this.toggleDone = this.toggleDone.bind(this);
+        this.listTag = this.listTag.bind(this);
 
 
    
+    }
+
+    listTag() {
+
+        // console.log(this.props);
+
+        // if (this.state.todo.tags === undefined) {
+        //     return <li>No Tags!</li>
+        // } else {
+
+        //     let tagList = this.state.todo.tags.map((tag,idx) => {
+
+        //         <li key={'tag-' + idx}>{tag.name}</li>
+        //     })
+
+        //     return tagList
+        // }
+
+        let tagList = this.props.tags.map((tag, idx) => {
+            return <li key={'tag-' + idx}>{tag.name}</li>
+        })
+
+        
+        return tagList
+
     }
 
     handleDelete(event) {
@@ -56,6 +82,9 @@ class ToDoItem extends React.Component {
                 <br></br>
                 {this.state.detail ? <TodoDetailViewContainer deleteTodo={ deleteTodo } todo={this.props.todo}/> : ""}
                 <button onClick={this.handleDone}>{this.state.todo.done ? 'Undo' : 'Done'}</button>
+                <ul>
+                    {this.listTag()}
+                </ul>
             </li>
         )
 
