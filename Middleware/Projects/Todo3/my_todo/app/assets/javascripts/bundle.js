@@ -1233,7 +1233,6 @@ var ToDoItem = /*#__PURE__*/function (_React$Component) {
       todo: props.todo,
       detail: false
     };
-    console.log(props);
     _this.handleDelete = _this.handleDelete.bind(_assertThisInitialized(_this));
     _this.handleDone = _this.handleDone.bind(_assertThisInitialized(_this));
     _this.showDetail = _this.showDetail.bind(_assertThisInitialized(_this));
@@ -35179,12 +35178,22 @@ var newTodo = {
   title: 'Learn Redux',
   body: 'It is fundamental',
   done: false
-};
-document.addEventListener("DOMContentLoaded", function () {
+}; // document.addEventListener("DOMContentLoaded", function(){
+//   const store = configureStore();
+//   ReactDOM.render(<Root store={store} />, document.getElementById('root'));
+// });
+
+document.addEventListener('DOMContentLoaded', function () {
   var store = (0,_store_todo_store_js__WEBPACK_IMPORTED_MODULE_2__.default)();
-  react_dom__WEBPACK_IMPORTED_MODULE_1__.render( /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_components_root_jsx__WEBPACK_IMPORTED_MODULE_3__.default, {
-    store: store
-  }), document.getElementById('root'));
+  var root = document.getElementById('root');
+
+  if (root === null) {
+    return;
+  } else {
+    react_dom__WEBPACK_IMPORTED_MODULE_1__.render( /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_components_root_jsx__WEBPACK_IMPORTED_MODULE_3__.default, {
+      store: store
+    }), root);
+  }
 });
 })();
 

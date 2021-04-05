@@ -11,7 +11,6 @@ class ToDoItem extends React.Component {
    
         this.state = { todo: props.todo, detail: false }
 
-        console.log(props);
         this.handleDelete = this.handleDelete.bind(this);
         this.handleDone = this.handleDone.bind(this);
         this.showDetail = this.showDetail.bind(this);

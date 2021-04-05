@@ -51,7 +51,19 @@ const newTodo = { id: 1, title: 'Learn Redux', body: 'It is fundamental', done: 
 
 
 
-document.addEventListener("DOMContentLoaded", function(){
+// document.addEventListener("DOMContentLoaded", function(){
+//   const store = configureStore();
+//   ReactDOM.render(<Root store={store} />, document.getElementById('root'));
+// });
+
+document.addEventListener('DOMContentLoaded', () => {
   const store = configureStore();
-  ReactDOM.render(<Root store={store} />, document.getElementById('root'));
+  const root = document.getElementById('root');
+  if (root === null) {
+    return
+  } else {
+    ReactDOM.render(<Root store={store} />, root);
+  }
+
 });
+
