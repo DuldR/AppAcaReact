@@ -96,8 +96,23 @@
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _util_api_util__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../util/api_util */ "./util/api_util.js");
-/* harmony import */ var _util_api_util__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_util_api_util__WEBPACK_IMPORTED_MODULE_0__);
 
+
+/***/ }),
+
+/***/ "./api_store/api.js":
+/*!**************************!*\
+  !*** ./api_store/api.js ***!
+  \**************************/
+/*! exports provided: APIKey */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "APIKey", function() { return APIKey; });
+var APIKey = {
+  key: "YWZvknjaqqB7n3bGcjUBc06n2lb0tA6R"
+};
 
 /***/ }),
 
@@ -199,10 +214,13 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react_dom__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react_dom__WEBPACK_IMPORTED_MODULE_1__);
 /* harmony import */ var _store_store__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./store/store */ "./store/store.js");
 /* harmony import */ var _components_root__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./components/root */ "./components/root.jsx");
+/* harmony import */ var _util_api_util__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./util/api_util */ "./util/api_util.js");
 
 
 
 
+
+window.fetchGIFs = _util_api_util__WEBPACK_IMPORTED_MODULE_4__["APIUtil"].fetchGIFs;
 
 /***/ }),
 
@@ -23943,10 +23961,22 @@ __webpack_require__.r(__webpack_exports__);
 /*!**************************!*\
   !*** ./util/api_util.js ***!
   \**************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
+/*! exports provided: APIUtil */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
 
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "APIUtil", function() { return APIUtil; });
+/* harmony import */ var _api_store_api__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../api_store/api */ "./api_store/api.js");
 
+var APIUtil = {
+  fetchGIFs: function fetchGIFs(searchTerm) {
+    return $.ajax({
+      method: 'GET',
+      url: "http://api.giphy.com/v1/gifs/search?q=".concat(searchTerm, "&api_key=").concat(_api_store_api__WEBPACK_IMPORTED_MODULE_0__["APIKey"].key, "&limit=2")
+    });
+  }
+};
 
 /***/ })
 
