@@ -90,13 +90,30 @@
 /*!**********************************!*\
   !*** ./actions/giphy_actions.js ***!
   \**********************************/
-/*! no exports provided */
+/*! exports provided: RECEIVE_SEARCH_GIPHYS, receiveSearchGiphys, fetchGiphys */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "RECEIVE_SEARCH_GIPHYS", function() { return RECEIVE_SEARCH_GIPHYS; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "receiveSearchGiphys", function() { return receiveSearchGiphys; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "fetchGiphys", function() { return fetchGiphys; });
 /* harmony import */ var _util_api_util__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../util/api_util */ "./util/api_util.js");
+var RECEIVE_SEARCH_GIPHYS = "RECEIVE_SEARCH_GIPHYS";
 
+var receiveSearchGiphys = function receiveSearchGiphys(giphys) {
+  return {
+    type: RECEIVE_SEARCH_GIPHYS,
+    giphys: giphys
+  };
+};
+var fetchGiphys = function fetchGiphys(search) {
+  return function (dispatch) {
+    return _util_api_util__WEBPACK_IMPORTED_MODULE_0__["APIUtil"].fetchGIFs(search).then(function (giphys) {
+      return dispatch(receiveSearchGiphys(giphys.data));
+    });
+  };
+};
 
 /***/ }),
 
@@ -215,12 +232,18 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _store_store__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./store/store */ "./store/store.js");
 /* harmony import */ var _components_root__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./components/root */ "./components/root.jsx");
 /* harmony import */ var _util_api_util__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./util/api_util */ "./util/api_util.js");
+/* harmony import */ var _actions_giphy_actions__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./actions/giphy_actions */ "./actions/giphy_actions.js");
 
 
 
 
 
-window.fetchGIFs = _util_api_util__WEBPACK_IMPORTED_MODULE_4__["APIUtil"].fetchGIFs;
+
+var store = Object(_store_store__WEBPACK_IMPORTED_MODULE_2__["default"])();
+window.APIUtil = _util_api_util__WEBPACK_IMPORTED_MODULE_4__["APIUtil"];
+window.receiveSearchGiphys = _actions_giphy_actions__WEBPACK_IMPORTED_MODULE_5__["receiveSearchGiphys"];
+window.fetchGiphys = _actions_giphy_actions__WEBPACK_IMPORTED_MODULE_5__["fetchGiphys"];
+window.store = store;
 
 /***/ }),
 
@@ -23913,7 +23936,7 @@ module.exports = function(originalModule) {
 /*!************************************!*\
   !*** ./reducers/giphys_reducer.js ***!
   \************************************/
-/*! no exports provided */
+/*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -23921,13 +23944,30 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _actions_giphy_actions__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../actions/giphy_actions */ "./actions/giphy_actions.js");
 
 
+var giphysReducer = function giphysReducer() {
+  var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : [];
+  var action = arguments.length > 1 ? arguments[1] : undefined;
+  Object.freeze(state);
+  var nextState = [];
+
+  switch (action.type) {
+    case _actions_giphy_actions__WEBPACK_IMPORTED_MODULE_0__["RECEIVE_SEARCH_GIPHYS"]:
+      return action.giphys;
+
+    default:
+      return state;
+  }
+};
+
+/* harmony default export */ __webpack_exports__["default"] = (giphysReducer);
+
 /***/ }),
 
 /***/ "./reducers/root_reducer.js":
 /*!**********************************!*\
   !*** ./reducers/root_reducer.js ***!
   \**********************************/
-/*! no exports provided */
+/*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -23936,6 +23976,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _giphys_reducer__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./giphys_reducer */ "./reducers/giphys_reducer.js");
 
 
+/* harmony default export */ __webpack_exports__["default"] = (Object(redux__WEBPACK_IMPORTED_MODULE_0__["combineReducers"])({
+  giphys: _giphys_reducer__WEBPACK_IMPORTED_MODULE_1__["default"]
+}));
 
 /***/ }),
 
@@ -23943,7 +23986,7 @@ __webpack_require__.r(__webpack_exports__);
 /*!************************!*\
   !*** ./store/store.js ***!
   \************************/
-/*! no exports provided */
+/*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -23954,6 +23997,13 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
+
+var configureStore = function configureStore() {
+  var preloadedState = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
+  return Object(redux__WEBPACK_IMPORTED_MODULE_0__["createStore"])(_reducers_root_reducer__WEBPACK_IMPORTED_MODULE_2__["default"], preloadedState, Object(redux__WEBPACK_IMPORTED_MODULE_0__["applyMiddleware"])(redux_thunk__WEBPACK_IMPORTED_MODULE_1__["default"]));
+};
+
+/* harmony default export */ __webpack_exports__["default"] = (configureStore);
 
 /***/ }),
 

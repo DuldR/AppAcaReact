@@ -5,4 +5,13 @@ import Root from './components/root';
 
 import { APIUtil } from './util/api_util'
 
-window.fetchGIFs = APIUtil.fetchGIFs;
+import { fetchGiphys, receiveSearchGiphys } from './actions/giphy_actions'
+
+
+const store = configureStore();
+
+window.APIUtil = APIUtil
+window.receiveSearchGiphys = receiveSearchGiphys
+window.fetchGiphys = fetchGiphys
+window.store = store
+
