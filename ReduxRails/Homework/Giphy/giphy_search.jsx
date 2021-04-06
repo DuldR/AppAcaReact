@@ -8,10 +8,15 @@ import { APIUtil } from './util/api_util'
 import { fetchGiphys, receiveSearchGiphys } from './actions/giphy_actions'
 
 
-const store = configureStore();
+document.addEventListener('DOMContentLoaded', () => {
+    const store = configureStore();
+    window.store = store
+    const root = document.getElementById('root');
+    ReactDOM.render(<Root store={store} />, root)
+})
 
-window.APIUtil = APIUtil
-window.receiveSearchGiphys = receiveSearchGiphys
-window.fetchGiphys = fetchGiphys
-window.store = store
+// window.APIUtil = APIUtil
+// window.receiveSearchGiphys = receiveSearchGiphys
+// window.fetchGiphys = fetchGiphys
+
 
