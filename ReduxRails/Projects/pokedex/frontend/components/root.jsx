@@ -1,11 +1,12 @@
 import React from 'react';
 import App from './app.jsx'
 import { Provider} from 'react-redux';
+import PokemonIndexContainer from './pokemon/pokemon_index_container'
 
 const Root = ({ store }) => (
 
     <Provider store={store}>
-        <App />
+        <PokemonIndexContainer />
     </Provider>
 )
 
