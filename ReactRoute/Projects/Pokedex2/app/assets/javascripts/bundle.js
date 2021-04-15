@@ -410,10 +410,11 @@ document.addEventListener("DOMContentLoaded", function () {
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var redux__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! redux */ "./node_modules/redux/es/redux.js");
 /* harmony import */ var _pokemon_reducer__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./pokemon_reducer */ "./frontend/reducers/pokemon_reducer.js");
+/* harmony import */ var _pokemon_reducer__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_pokemon_reducer__WEBPACK_IMPORTED_MODULE_1__);
 
 
 var entitiesReducer = Object(redux__WEBPACK_IMPORTED_MODULE_0__["combineReducers"])({
-  pokemon: _pokemon_reducer__WEBPACK_IMPORTED_MODULE_1__["default"]
+  pokemon: _pokemon_reducer__WEBPACK_IMPORTED_MODULE_1___default.a
 });
 /* harmony default export */ __webpack_exports__["default"] = (entitiesReducer);
 
@@ -423,35 +424,46 @@ var entitiesReducer = Object(redux__WEBPACK_IMPORTED_MODULE_0__["combineReducers
 /*!**********************************************!*\
   !*** ./frontend/reducers/pokemon_reducer.js ***!
   \**********************************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
+/*! no static exports found */
+/***/ (function(module, exports) {
 
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _actions_pokemon_actions__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./../actions/pokemon_actions */ "./frontend/actions/pokemon_actions.js");
-
-
-var pokemonReducer = function pokemonReducer() {
-  var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
-  var action = arguments.length > 1 ? arguments[1] : undefined;
-  Object.freeze(state);
-  var newState = {};
-
-  switch (action.type) {
-    case _actions_pokemon_actions__WEBPACK_IMPORTED_MODULE_0__["RECEIVE_ALL_POKEMON"]:
-      newState = Object.assign({}, action.pokemon, state);
-      return newState;
-
-    case _actions_pokemon_actions__WEBPACK_IMPORTED_MODULE_0__["RECEIVE_ONE_POKEMON"]:
-      newState = Object.assign({}, action.pokemon);
-      return newState;
-
-    default:
-      return state;
-  }
-};
-
-/* harmony default export */ __webpack_exports__["default"] = (pokemonReducer);
+// import { RECEIVE_ALL_POKEMON, RECEIVE_ONE_POKEMON } from './../actions/pokemon_actions';
+// const pokemonReducer = (state = {}, action) => {
+//   Object.freeze(state);
+//   // const newState = Object.assign({}, state);
+//   let newState = {}
+//   switch (action.type){
+//   case RECEIVE_ALL_POKEMON:
+//     newState = Object.assign({}, state, action.pokemon);
+//     // return Object.assign({}, action.pokemon, state)
+//     return newState
+//   case RECEIVE_ONE_POKEMON:
+//     // newState = Object.assign({}, action.pokemon)
+//     // newState[action.pokemon.id] = action.pokemon
+//     // console.log(newState)
+//     newState = Object.assign({}, state, {[action.pokemon.id]: action.pokemon});
+//     return newState
+//   default:
+//     return state;
+//   }
+// }
+// export default pokemonReducer;
+// You're technically added a new object into the state. Its why the receive All component is adding the udnefined after mew
+// import { RECEIVE_ALL_POKEMON, RECEIVE_ONE_POKEMON } from './../actions/pokemon_actions';
+// const pokemonReducer = (state = {}, action) => {
+//   Object.freeze(state);
+//   const nextState = Object.assign({}, state);
+//   switch (action.type){
+//   case RECEIVE_ALL_POKEMON:
+//     return Object.assign({}, action.pokemon, state);
+//   case RECEIVE_ONE_POKEMON:
+//     nextState[action.pokemon.id] = action.pokemon;
+//     return nextState;
+//   default:
+//     return state;
+//   }
+// }
+// export default pokemonReducer;
 
 /***/ }),
 
