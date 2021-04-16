@@ -8,6 +8,7 @@ class PokemonDetail extends React.Component {
         super(props)
 
         this.isLoaded = this.isLoaded.bind(this)
+        this.isDetailLoaded = this.isDetailLoaded.bind(this)
     }
 
     componentDidMount() {
@@ -22,7 +23,18 @@ class PokemonDetail extends React.Component {
     }
 
     isLoaded() {
-        return (this.props.pokemon === undefined)
+        return (this.props.pokemon !== undefined)
+    }
+
+    isDetailLoaded() {
+        if (this.isLoaded() === true) {
+
+            return (this.props.pokemon.attack !== undefined)
+
+        }
+
+
+
     }
 
 
@@ -31,11 +43,19 @@ class PokemonDetail extends React.Component {
         const { pokemon } = this.props
 
         // console.log(this.props)
-        console.log(pokemon);
         return (
             <section className="pokemon-detail">
                 
-                <span>{this.isLoaded() ? "Pick a poke" : pokemon.name}</span>
+                <figure>
+                    <img src={this.isLoaded() ? pokemon.imageUrl : "loading"}></img>
+                    <ul>
+                        <li>{this.isLoaded() ? pokemon.name : "Loading" }</li>
+                        <li>{this.isDetailLoaded() ? "Attack: " + pokemon.attack : "Attack: Loading"}</li>
+                        <li>{this.isDetailLoaded() ? "Defense: " + pokemon.defense : "Defense: Loading"}</li>
+                        
+                    </ul>
+
+                </figure>
                 
             </section>
         )

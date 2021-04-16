@@ -207,6 +207,7 @@ var PokemonDetail = /*#__PURE__*/function (_React$Component) {
 
     _this = _super.call(this, props);
     _this.isLoaded = _this.isLoaded.bind(_assertThisInitialized(_this));
+    _this.isDetailLoaded = _this.isDetailLoaded.bind(_assertThisInitialized(_this));
     return _this;
   }
 
@@ -225,17 +226,25 @@ var PokemonDetail = /*#__PURE__*/function (_React$Component) {
   }, {
     key: "isLoaded",
     value: function isLoaded() {
-      return this.props.pokemon === undefined;
+      return this.props.pokemon !== undefined;
+    }
+  }, {
+    key: "isDetailLoaded",
+    value: function isDetailLoaded() {
+      if (this.isLoaded() === true) {
+        return this.props.pokemon.attack !== undefined;
+      }
     }
   }, {
     key: "render",
     value: function render() {
       var pokemon = this.props.pokemon; // console.log(this.props)
 
-      console.log(pokemon);
       return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("section", {
         className: "pokemon-detail"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, this.isLoaded() ? "Pick a poke" : pokemon.name));
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("figure", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+        src: this.isLoaded() ? pokemon.imageUrl : "loading"
+      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, this.isLoaded() ? pokemon.name : "Loading"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, this.isDetailLoaded() ? "Attack: " + pokemon.attack : "Attack: Loading"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, this.isDetailLoaded() ? "Defense: " + pokemon.defense : "Defense: Loading"))));
     }
   }]);
 
