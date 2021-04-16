@@ -5,6 +5,7 @@ class PokemonIndex extends React.Component{
   constructor(props){
   super(props)
 
+
   }
   
   componentDidMount(){
@@ -15,6 +16,7 @@ class PokemonIndex extends React.Component{
     
 
     const listPokemon = this.props.pokemon.map((poke, idx) => {
+
       return <PokemonIndexItem pokeName={poke.name} pokeImg={poke.imageUrl} pokeId={poke.id} key={"pokeIndex " + idx}/>
     })
 
@@ -22,17 +24,7 @@ class PokemonIndex extends React.Component{
     return (
     <section className="pokedex">
       <ul>
-      {/* {this.props.pokemon.map((poke, idx) => (
-        <li key={"poke " + idx}className="pokemon-index-item">
-          <span>{poke.id}</span>
-          <img src={poke.imageUrl}/>
-          <span>{poke.name}</span>
-        </li>
-      ))} */}
-
-    
-
-      {listPokemon}
+        {listPokemon}
       </ul>
     </section>
     )

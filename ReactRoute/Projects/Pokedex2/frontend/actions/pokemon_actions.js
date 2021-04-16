@@ -3,14 +3,14 @@ import * as APIUtil from '../util/api_util';
 export const RECEIVE_ALL_POKEMON = "RECEIVE_ALL_POKEMON";
 export const RECEIVE_ONE_POKEMON = "RECEIVE_ONE_POKEMON";
 
-export const receiveAllPokemon = (pokemon) => ({
+export const receiveAllPokemon = (payload) => ({
   type: RECEIVE_ALL_POKEMON,
-  pokemon
+  payload
 })
 
-export const receiveOnePokemon = (pokemon) => ({
+export const receiveOnePokemon = (payload) => ({
   type: RECEIVE_ONE_POKEMON,
-  pokemon
+  payload
 })
 
 export const requestAllPokemon = () => (dispatch) => (

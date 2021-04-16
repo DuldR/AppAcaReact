@@ -105,16 +105,16 @@ __webpack_require__.r(__webpack_exports__);
 
 var RECEIVE_ALL_POKEMON = "RECEIVE_ALL_POKEMON";
 var RECEIVE_ONE_POKEMON = "RECEIVE_ONE_POKEMON";
-var receiveAllPokemon = function receiveAllPokemon(pokemon) {
+var receiveAllPokemon = function receiveAllPokemon(payload) {
   return {
     type: RECEIVE_ALL_POKEMON,
-    pokemon: pokemon
+    payload: payload
   };
 };
-var receiveOnePokemon = function receiveOnePokemon(pokemon) {
+var receiveOnePokemon = function receiveOnePokemon(payload) {
   return {
     type: RECEIVE_ONE_POKEMON,
-    pokemon: pokemon
+    payload: payload
   };
 };
 var requestAllPokemon = function requestAllPokemon() {
@@ -410,13 +410,82 @@ document.addEventListener("DOMContentLoaded", function () {
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var redux__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! redux */ "./node_modules/redux/es/redux.js");
 /* harmony import */ var _pokemon_reducer__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./pokemon_reducer */ "./frontend/reducers/pokemon_reducer.js");
-/* harmony import */ var _pokemon_reducer__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_pokemon_reducer__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _items_reducer__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./items_reducer */ "./frontend/reducers/items_reducer.js");
+/* harmony import */ var _moves_reducer__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./moves_reducer */ "./frontend/reducers/moves_reducer.js");
+
+
 
 
 var entitiesReducer = Object(redux__WEBPACK_IMPORTED_MODULE_0__["combineReducers"])({
-  pokemon: _pokemon_reducer__WEBPACK_IMPORTED_MODULE_1___default.a
+  pokemon: _pokemon_reducer__WEBPACK_IMPORTED_MODULE_1__["default"],
+  items: _items_reducer__WEBPACK_IMPORTED_MODULE_2__["default"],
+  moves: _moves_reducer__WEBPACK_IMPORTED_MODULE_3__["default"]
 });
 /* harmony default export */ __webpack_exports__["default"] = (entitiesReducer);
+
+/***/ }),
+
+/***/ "./frontend/reducers/items_reducer.js":
+/*!********************************************!*\
+  !*** ./frontend/reducers/items_reducer.js ***!
+  \********************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _actions_pokemon_actions__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../actions/pokemon_actions */ "./frontend/actions/pokemon_actions.js");
+
+
+var itemsReducer = function itemsReducer() {
+  var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
+  var action = arguments.length > 1 ? arguments[1] : undefined;
+  Object.freeze(state);
+  var newState = {};
+
+  switch (action.type) {
+    case _actions_pokemon_actions__WEBPACK_IMPORTED_MODULE_0__["RECEIVE_ONE_POKEMON"]:
+      newState = Object.assign({}, state, action.payload.items);
+      return newState;
+
+    default:
+      return state;
+  }
+};
+
+/* harmony default export */ __webpack_exports__["default"] = (itemsReducer);
+
+/***/ }),
+
+/***/ "./frontend/reducers/moves_reducer.js":
+/*!********************************************!*\
+  !*** ./frontend/reducers/moves_reducer.js ***!
+  \********************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _actions_pokemon_actions__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../actions/pokemon_actions */ "./frontend/actions/pokemon_actions.js");
+
+
+var movesReducer = function movesReducer() {
+  var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
+  var action = arguments.length > 1 ? arguments[1] : undefined;
+  Object.freeze(state);
+  var newState = {};
+
+  switch (action.type) {
+    case _actions_pokemon_actions__WEBPACK_IMPORTED_MODULE_0__["RECEIVE_ONE_POKEMON"]:
+      newState = Object.assign({}, state, action.payload.moves);
+      return newState;
+
+    default:
+      return state;
+  }
+};
+
+/* harmony default export */ __webpack_exports__["default"] = (movesReducer);
 
 /***/ }),
 
@@ -424,46 +493,38 @@ var entitiesReducer = Object(redux__WEBPACK_IMPORTED_MODULE_0__["combineReducers
 /*!**********************************************!*\
   !*** ./frontend/reducers/pokemon_reducer.js ***!
   \**********************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
 
-// import { RECEIVE_ALL_POKEMON, RECEIVE_ONE_POKEMON } from './../actions/pokemon_actions';
-// const pokemonReducer = (state = {}, action) => {
-//   Object.freeze(state);
-//   // const newState = Object.assign({}, state);
-//   let newState = {}
-//   switch (action.type){
-//   case RECEIVE_ALL_POKEMON:
-//     newState = Object.assign({}, state, action.pokemon);
-//     // return Object.assign({}, action.pokemon, state)
-//     return newState
-//   case RECEIVE_ONE_POKEMON:
-//     // newState = Object.assign({}, action.pokemon)
-//     // newState[action.pokemon.id] = action.pokemon
-//     // console.log(newState)
-//     newState = Object.assign({}, state, {[action.pokemon.id]: action.pokemon});
-//     return newState
-//   default:
-//     return state;
-//   }
-// }
-// export default pokemonReducer;
-// You're technically added a new object into the state. Its why the receive All component is adding the udnefined after mew
-// import { RECEIVE_ALL_POKEMON, RECEIVE_ONE_POKEMON } from './../actions/pokemon_actions';
-// const pokemonReducer = (state = {}, action) => {
-//   Object.freeze(state);
-//   const nextState = Object.assign({}, state);
-//   switch (action.type){
-//   case RECEIVE_ALL_POKEMON:
-//     return Object.assign({}, action.pokemon, state);
-//   case RECEIVE_ONE_POKEMON:
-//     nextState[action.pokemon.id] = action.pokemon;
-//     return nextState;
-//   default:
-//     return state;
-//   }
-// }
-// export default pokemonReducer;
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _actions_pokemon_actions__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./../actions/pokemon_actions */ "./frontend/actions/pokemon_actions.js");
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+
+
+var pokemonReducer = function pokemonReducer() {
+  var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
+  var action = arguments.length > 1 ? arguments[1] : undefined;
+  Object.freeze(state); // const newState = Object.assign({}, state);
+
+  var newState = {};
+
+  switch (action.type) {
+    case _actions_pokemon_actions__WEBPACK_IMPORTED_MODULE_0__["RECEIVE_ALL_POKEMON"]:
+      newState = Object.assign({}, state, action.payload);
+      return newState;
+
+    case _actions_pokemon_actions__WEBPACK_IMPORTED_MODULE_0__["RECEIVE_ONE_POKEMON"]:
+      newState = Object.assign({}, state, _defineProperty({}, action.payload.pokemon.id, action.payload.pokemon));
+      return newState;
+
+    default:
+      return state;
+  }
+};
+
+/* harmony default export */ __webpack_exports__["default"] = (pokemonReducer);
 
 /***/ }),
 
@@ -478,10 +539,13 @@ var entitiesReducer = Object(redux__WEBPACK_IMPORTED_MODULE_0__["combineReducers
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var redux__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! redux */ "./node_modules/redux/es/redux.js");
 /* harmony import */ var _entities_reducer__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./entities_reducer */ "./frontend/reducers/entities_reducer.js");
+/* harmony import */ var _ui_reducer__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./ui_reducer */ "./frontend/reducers/ui_reducer.js");
+
 
 
 var rootReducer = Object(redux__WEBPACK_IMPORTED_MODULE_0__["combineReducers"])({
-  entities: _entities_reducer__WEBPACK_IMPORTED_MODULE_1__["default"]
+  entities: _entities_reducer__WEBPACK_IMPORTED_MODULE_1__["default"],
+  ui: _ui_reducer__WEBPACK_IMPORTED_MODULE_2__["default"]
 });
 /* harmony default export */ __webpack_exports__["default"] = (rootReducer);
 
@@ -500,6 +564,31 @@ __webpack_require__.r(__webpack_exports__);
 var selectAllPokemon = function selectAllPokemon(state) {
   return Object.values(state.entities.pokemon);
 };
+
+/***/ }),
+
+/***/ "./frontend/reducers/ui_reducer.js":
+/*!*****************************************!*\
+  !*** ./frontend/reducers/ui_reducer.js ***!
+  \*****************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+var uiReducer = function uiReducer() {
+  var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
+  var action = arguments.length > 1 ? arguments[1] : undefined;
+  Object.freeze(state);
+  var newState = {};
+
+  switch (action.type) {
+    default:
+      return state;
+  }
+};
+
+/* harmony default export */ __webpack_exports__["default"] = (uiReducer);
 
 /***/ }),
 
