@@ -201,9 +201,13 @@ var PokemonDetail = /*#__PURE__*/function (_React$Component) {
   var _super = _createSuper(PokemonDetail);
 
   function PokemonDetail(props) {
+    var _this;
+
     _classCallCheck(this, PokemonDetail);
 
-    return _super.call(this, props);
+    _this = _super.call(this, props);
+    console.log(_this.props);
+    return _this;
   }
 
   _createClass(PokemonDetail, [{
@@ -212,11 +216,20 @@ var PokemonDetail = /*#__PURE__*/function (_React$Component) {
       this.props.requestOnePokemon(this.props.match.params.pokemonId);
     }
   }, {
+    key: "componentDidUpdate",
+    value: function componentDidUpdate(prevProps) {
+      if (this.props.match.params.pokemonId !== prevProps.match.params.pokemonId) {
+        this.props.requestOnePokemon(this.props.match.params.pokemonId);
+      }
+    }
+  }, {
     key: "render",
     value: function render() {
-      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", {
+      var pokemon = this.props.pokemon; // console.log(pokemon);
+
+      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("section", {
         className: "pokemon-detail"
-      }, "howdy");
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null));
     }
   }]);
 
@@ -247,7 +260,8 @@ __webpack_require__.r(__webpack_exports__);
 
 var mapStateToProps = function mapStateToProps(state, ownProps) {
   return {
-    pokemon: Object(_reducers_selectors__WEBPACK_IMPORTED_MODULE_3__["selectOnePokemon"])(state)
+    pokemon: state.entities.pokemon // [ownProps.match.params.pokemonId]
+
   };
 };
 

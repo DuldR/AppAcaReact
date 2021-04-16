@@ -4,7 +4,8 @@ import { requestOnePokemon } from '../../actions/pokemon_actions'
 import { selectOnePokemon } from '../../reducers/selectors'
 
 const mapStateToProps = (state, ownProps) => ({
-    pokemon: selectOnePokemon(state)
+    pokemon: state.entities.pokemon
+    // [ownProps.match.params.pokemonId]
 
 })
 
