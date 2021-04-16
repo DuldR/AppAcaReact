@@ -7,7 +7,7 @@ class PokemonDetail extends React.Component {
     constructor(props) {
         super(props)
 
-        console.log(this.props)
+        this.isLoaded = this.isLoaded.bind(this)
     }
 
     componentDidMount() {
@@ -21,16 +21,21 @@ class PokemonDetail extends React.Component {
         }
     }
 
+    isLoaded() {
+        return (this.props.pokemon === undefined)
+    }
+
 
     render() {
 
         const { pokemon } = this.props
 
-        // console.log(pokemon);
+        // console.log(this.props)
+        console.log(pokemon);
         return (
             <section className="pokemon-detail">
                 
-                <span></span>
+                <span>{this.isLoaded() ? "Pick a poke" : pokemon.name}</span>
                 
             </section>
         )

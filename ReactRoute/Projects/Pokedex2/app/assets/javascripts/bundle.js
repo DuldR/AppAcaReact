@@ -206,7 +206,7 @@ var PokemonDetail = /*#__PURE__*/function (_React$Component) {
     _classCallCheck(this, PokemonDetail);
 
     _this = _super.call(this, props);
-    console.log(_this.props);
+    _this.isLoaded = _this.isLoaded.bind(_assertThisInitialized(_this));
     return _this;
   }
 
@@ -223,13 +223,19 @@ var PokemonDetail = /*#__PURE__*/function (_React$Component) {
       }
     }
   }, {
+    key: "isLoaded",
+    value: function isLoaded() {
+      return this.props.pokemon === undefined;
+    }
+  }, {
     key: "render",
     value: function render() {
-      var pokemon = this.props.pokemon; // console.log(pokemon);
+      var pokemon = this.props.pokemon; // console.log(this.props)
 
+      console.log(pokemon);
       return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("section", {
         className: "pokemon-detail"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null));
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, this.isLoaded() ? "Pick a poke" : pokemon.name));
     }
   }]);
 
@@ -260,8 +266,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var mapStateToProps = function mapStateToProps(state, ownProps) {
   return {
-    pokemon: state.entities.pokemon // [ownProps.match.params.pokemonId]
-
+    pokemon: state.entities.pokemon[ownProps.match.params.pokemonId]
   };
 };
 
