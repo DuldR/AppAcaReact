@@ -15,3 +15,12 @@ export const selectPokemonMovesNames = (state) => {
   return returnMoves
 
 }
+
+export const selectPokemonItems = (state) => {
+  let returnItems = Object.values(state.entities.items).map((item) => {
+    return [item.name, item.imageUrl]
+  })
+
+  return returnItems
+
+}

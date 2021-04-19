@@ -37,16 +37,23 @@ class PokemonDetail extends React.Component {
 
     render() {
 
-        const { pokemon, moves } = this.props
+        const { pokemon, moves, items } = this.props
 
         // const listMoves = moves.map((move,idx) => {
         //     return <li key={"move " + idx}>{move}</li>
         // })
         
-        let listMoves = ""
         
-        listMoves = moves.join(", ");
+        const listMoves = moves.join(", ");
+        const listItems = items.map((item, idx) => (
 
+            <li>
+                Name: {item[0]}
+                <img src={item[1]}></img>
+            </li>
+        ))
+
+    
 
         return (
             <section className="pokemon-detail">
@@ -65,7 +72,11 @@ class PokemonDetail extends React.Component {
 
                 <ul>
                     <li>Moves: {listMoves}</li>
-            
+                </ul>
+
+                <ul className="toys">
+                    <h2>Items</h2>
+                    {listItems}
                 </ul>
             
             </section>
