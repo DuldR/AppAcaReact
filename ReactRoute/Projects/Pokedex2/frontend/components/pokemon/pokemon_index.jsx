@@ -5,26 +5,19 @@ import PokemonDetailContainer from './pokemon_detail_container'
 
 class PokemonIndex extends React.Component{
   constructor(props){
-  super(props)
-
+    super(props)
 
   }
   
   componentDidMount(){
-  this.props.requestAllPokemon()
+    this.props.requestAllPokemon()
   }
   
   render(){
-
-
-    
-
     const listPokemon = this.props.pokemon.map((poke, idx) => {
 
       return <PokemonIndexItem pokeName={poke.name} pokeImg={poke.imageUrl} pokeId={poke.id} key={"pokeIndex " + idx}/>
     })
-
-
     return (
     <section className="pokedex">
       <Route path='/pokemon/:pokemonId' component={PokemonDetailContainer} />
