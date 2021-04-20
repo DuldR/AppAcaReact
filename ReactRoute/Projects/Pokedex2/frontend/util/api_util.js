@@ -14,12 +14,12 @@ export const fetchOnePokemon = (pokeId) => {
 
 }
 
-export const createPokemon = (pokemon) => {
+export const createPokemon = (poke) => {
 
   return $.ajax({
     method: "POST",
     url: '/api/pokemon',
-    data: { pokemon }
+    data: poke
   })
 
 

@@ -1041,13 +1041,11 @@ var fetchOnePokemon = function fetchOnePokemon(pokeId) {
     url: "/api/pokemon/".concat(pokeId)
   });
 };
-var createPokemon = function createPokemon(pokemon) {
+var createPokemon = function createPokemon(poke) {
   return $.ajax({
     method: "POST",
     url: '/api/pokemon',
-    data: {
-      pokemon: pokemon
-    }
+    data: poke
   });
 };
 
