@@ -29,8 +29,5 @@ class Api::PokemonController < ApplicationController
   def poke_params
       self.params.require(:pokemon).permit(:name, :attack, :defense, :poke_type, :image_url, :move_names => [])
   end
-  # def poke_params
-  #   self.params.require(:pokemon).permit(:move_names => [])
-  # end
 
 end

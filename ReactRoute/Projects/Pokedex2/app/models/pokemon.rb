@@ -25,17 +25,13 @@ class Pokemon < ApplicationRecord
 
   has_many :items
 
-  has_many :poke_moves
+  has_many :poke_moves, dependent: :destroy
 
   has_many :moves,
   through: :poke_moves,
   source: :move
 
   def move_names=(move_names)
-    puts move_names
-    # self.moves = move_names.map do |move_name|
-    #   Move.find_or_create_by(name: move_name)
-    # end
 
     self.moves = move_names.map do |move|
       Move.find_or_create_by(name: move)
