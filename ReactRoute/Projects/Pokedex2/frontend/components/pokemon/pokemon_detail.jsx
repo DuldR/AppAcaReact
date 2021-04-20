@@ -1,4 +1,6 @@
 import React from 'react'
+import { Route } from 'react-router-dom'
+import ItemDetailContainer from '../items/item_detail_container'
 
 
 class PokemonDetail extends React.Component {
@@ -47,7 +49,7 @@ class PokemonDetail extends React.Component {
         const listMoves = moves.join(", ");
         const listItems = items.map((item, idx) => (
 
-            <li>
+            <li key={"list-" + idx}>
                 Name: {item[0]}
                 <img src={item[1]}></img>
             </li>
@@ -57,6 +59,7 @@ class PokemonDetail extends React.Component {
 
         return (
             <section className="pokemon-detail">
+
                 
                 <figure>
                     <img src={this.isLoaded() ? pokemon.imageUrl : ""}></img>
@@ -76,7 +79,10 @@ class PokemonDetail extends React.Component {
 
                 <ul className="toys">
                     <h2>Items</h2>
-                    {listItems}
+                    {/* {listItems} */}
+
+                    <Route path='/pokemon/:pokemonId/items/:itemId' component={ItemDetailContainer} />
+
                 </ul>
             
             </section>
