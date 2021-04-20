@@ -9,7 +9,7 @@ class PokemonForm extends React.Component {
 
     render() {
         return (
-            <form id="todo-submit" onSubmit={this.handleSubmit} defaultValue={this.state.value}>
+            <form className="pokemon-form" id="todo-submit">
                 <label>Name</label>
                 <br></br>
                 <label>Attack</label>
@@ -32,3 +32,5 @@ class PokemonForm extends React.Component {
         )
     }
 }
+
+export default PokemonForm

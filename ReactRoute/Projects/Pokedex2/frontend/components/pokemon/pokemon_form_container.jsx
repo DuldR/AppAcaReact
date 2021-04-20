@@ -7,7 +7,7 @@ const mapStateToProps = (state) => ({
 })
 
 const mapDispatchToProps = dispatch => ({
-
+    deets: {}
 })
 
-export default connect(mapStateToProps, mapDispatchToProps)(PokemonForm)
+export default connect(null, mapDispatchToProps)(PokemonForm)
