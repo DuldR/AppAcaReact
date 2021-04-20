@@ -17,7 +17,7 @@ class Api::PokemonController < ApplicationController
     @pokemon = Pokemon.new(poke_params)
 
     if @pokemon.save
-      render json: @pokemon, include: :moves
+      render json: @pokemon
     else
       render json: @pokemon.errors.full_messages
     end
@@ -27,7 +27,10 @@ class Api::PokemonController < ApplicationController
 
   protected
   def poke_params
-      self.params.require(:poke).permit(:name, :attack, :defense, :poke_type, :image_url, :move_names => [])
+      self.params.require(:pokemon).permit(:name, :attack, :defense, :poke_type, :image_url, :move_names => [])
   end
+  # def poke_params
+  #   self.params.require(:pokemon).permit(:move_names => [])
+  # end
 
 end

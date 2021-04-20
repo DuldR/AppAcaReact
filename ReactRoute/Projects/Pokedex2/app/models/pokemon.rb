@@ -32,8 +32,13 @@ class Pokemon < ApplicationRecord
   source: :move
 
   def move_names=(move_names)
-    self.moves = move_names.map do |move_name|
-      Move.find_or_create_by(name: move_name)
+    puts move_names
+    # self.moves = move_names.map do |move_name|
+    #   Move.find_or_create_by(name: move_name)
+    # end
+
+    self.moves = move_names.map do |move|
+      Move.find_or_create_by(name: move)
     end
   end
   
