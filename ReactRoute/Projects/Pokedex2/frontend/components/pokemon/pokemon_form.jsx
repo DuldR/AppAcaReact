@@ -4,6 +4,26 @@ class PokemonForm extends React.Component {
 
     constructor(props) {
         super(props);
+
+        this.state = { name: "", poke_type: "", attack: "", defense: "", image_url: "", move_names: []}
+
+        this.handleSubmit = this.handleSubmit.bind(this)
+        this.addMove = this.addMove.bind(this)
+    }
+
+
+    handleSubmit(e) {
+        e.preventDefault();
+
+        let poke = {pokemon: this.state}
+
+        this.props.createPokemon(poke)
+
+        form.reset()
+    }
+
+    addMove(e) {
+
     }
 
 

@@ -40,11 +40,6 @@ class PokemonDetail extends React.Component {
     render() {
 
         const { pokemon, moves, items } = this.props
-
-        // const listMoves = moves.map((move,idx) => {
-        //     return <li key={"move " + idx}>{move}</li>
-        // })
-        
         
         const listMoves = moves.join(", ");
         const listItems = items.map((item, idx) => (
@@ -55,11 +50,10 @@ class PokemonDetail extends React.Component {
             </li>
         ))
 
-    
+
 
         return (
             <section className="pokemon-detail">
-                {console.log(pokemon)}
                 
                 <figure>
                     <img src={this.isLoaded() ? pokemon.imageUrl : ""}></img>
@@ -79,7 +73,6 @@ class PokemonDetail extends React.Component {
 
                 <ul className="toys">
                     <h2>Items</h2>
-                    {/* {listItems} */}
 
                     <Route path='/pokemon/:pokemonId/items/:itemId' component={ItemDetailContainer} />
 

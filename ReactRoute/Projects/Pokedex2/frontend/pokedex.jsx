@@ -3,9 +3,9 @@ import ReactDOM from 'react-dom';
 import configureStore from './store/store';
 import Root from './components/root';
 
-import { fetchOnePokemon, createPokemon } from './util/api_util'
+import { fetchOnePokemon } from './util/api_util'
 
-import { receiveAllPokemon, receiveOnePokemon, requestOnePokemon, requestAllPokemon } from './actions/pokemon_actions'
+import { receiveAllPokemon, receiveOnePokemon, requestOnePokemon, requestAllPokemon, createPokemon } from './actions/pokemon_actions'
 import { selectPokemonMovesNames, selectPokemonItems } from './reducers/selectors'
 
 // actions
