@@ -59,7 +59,7 @@ class PokemonDetail extends React.Component {
 
         return (
             <section className="pokemon-detail">
-
+                {console.log(pokemon)}
                 
                 <figure>
                     <img src={this.isLoaded() ? pokemon.imageUrl : ""}></img>

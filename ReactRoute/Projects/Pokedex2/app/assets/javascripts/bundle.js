@@ -127,8 +127,8 @@ var requestAllPokemon = function requestAllPokemon() {
 };
 var requestOnePokemon = function requestOnePokemon(poke) {
   return function (dispatch) {
-    return _util_api_util__WEBPACK_IMPORTED_MODULE_0__["fetchOnePokemon"](poke).then(function (pokemon) {
-      return dispatch(receiveOnePokemon(pokemon));
+    return _util_api_util__WEBPACK_IMPORTED_MODULE_0__["fetchOnePokemon"](poke).then(function (payload) {
+      return dispatch(receiveOnePokemon(payload.pokemon));
     });
   };
 };
@@ -368,7 +368,7 @@ var PokemonDetail = /*#__PURE__*/function (_React$Component) {
       });
       return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("section", {
         className: "pokemon-detail"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("figure", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+      }, console.log(pokemon), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("figure", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
         src: this.isLoaded() ? pokemon.imageUrl : ""
       })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", null, this.isLoaded() ? pokemon.name : "Loading")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, this.isDetailLoaded() ? "Type: " + pokemon.pokeType : "Type: Loading"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, this.isDetailLoaded() ? "Attack: " + pokemon.attack : "Attack: Loading"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, this.isDetailLoaded() ? "Defense: " + pokemon.defense : "Defense: Loading")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, "Moves: ", listMoves)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", {
         className: "toys"
@@ -894,7 +894,7 @@ var pokemonReducer = function pokemonReducer() {
       return newState;
 
     case _actions_pokemon_actions__WEBPACK_IMPORTED_MODULE_0__["RECEIVE_ONE_POKEMON"]:
-      newState = Object.assign({}, state, _defineProperty({}, action.payload.pokemon.id, action.payload.pokemon));
+      newState = Object.assign({}, state, _defineProperty({}, action.payload.id, action.payload));
       return newState;
 
     default:
