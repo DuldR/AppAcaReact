@@ -19,13 +19,13 @@ import { selectPokemonMovesNames, selectPokemonItems } from './reducers/selector
 
 // window.fetchOnePokemon = fetchOnePokemon
 
-window.createPokemon = createPokemon
+// window.createPokemon = createPokemon
 
 document.addEventListener("DOMContentLoaded", () => {
   const rootEl = document.getElementById("root");
 
   const store = configureStore();
 
-  window.store = store
+  // window.store = store
   ReactDOM.render(<Root store={store} />, rootEl)
 })

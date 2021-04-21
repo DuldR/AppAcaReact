@@ -1,23 +1,27 @@
 import React from 'react';
 
-const POKE_TYPES = [
-    'fire',
-    'electric',
-    'normal',
-    'ghost',
-    'psychic',
-    'water',
-    'bug',
-    'dragon',
-    'grass',
-    'fighting',
-    'ice',
-    'flying',
-    'poison',
-    'ground',
-    'rock',
-    'steel'
-]
+// const POKE_TYPES = [
+//     'fire',
+//     'electric',
+//     'normal',
+//     'ghost',
+//     'psychic',
+//     'water',
+//     'bug',
+//     'dragon',
+//     'grass',
+//     'fighting',
+//     'ice',
+//     'flying',
+//     'poison',
+//     'ground',
+//     'rock',
+//     'steel'
+// ]
+
+// const POKE_TYPES = window.POKEMON_TYPES
+
+
 class PokemonForm extends React.Component {
 
     constructor(props) {
@@ -30,6 +34,8 @@ class PokemonForm extends React.Component {
         this.addPoke = this.addPoke.bind(this)
         this.listPokeTypes = this.listPokeTypes.bind(this)
         this.listErrors = this.listErrors.bind(this)
+
+
 
     }
 
@@ -78,7 +84,7 @@ class PokemonForm extends React.Component {
     }
 
     listPokeTypes() {
-        let pokeTypes = POKE_TYPES.map((poke, idx) => {
+        let pokeTypes = window.POKEMON_TYPES.map((poke, idx) => {
             return <option key={"type-" + idx}>{poke}</option>
         })
 

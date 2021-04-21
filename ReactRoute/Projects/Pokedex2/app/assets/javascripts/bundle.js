@@ -539,8 +539,25 @@ function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Re
 
 function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
 
-
-var POKE_TYPES = ['fire', 'electric', 'normal', 'ghost', 'psychic', 'water', 'bug', 'dragon', 'grass', 'fighting', 'ice', 'flying', 'poison', 'ground', 'rock', 'steel'];
+ // const POKE_TYPES = [
+//     'fire',
+//     'electric',
+//     'normal',
+//     'ghost',
+//     'psychic',
+//     'water',
+//     'bug',
+//     'dragon',
+//     'grass',
+//     'fighting',
+//     'ice',
+//     'flying',
+//     'poison',
+//     'ground',
+//     'rock',
+//     'steel'
+// ]
+// const POKE_TYPES = window.POKEMON_TYPES
 
 var PokemonForm = /*#__PURE__*/function (_React$Component) {
   _inherits(PokemonForm, _React$Component);
@@ -633,7 +650,7 @@ var PokemonForm = /*#__PURE__*/function (_React$Component) {
   }, {
     key: "listPokeTypes",
     value: function listPokeTypes() {
-      var pokeTypes = POKE_TYPES.map(function (poke, idx) {
+      var pokeTypes = window.POKEMON_TYPES.map(function (poke, idx) {
         return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
           key: "type-" + idx
         }, poke);
@@ -981,12 +998,12 @@ __webpack_require__.r(__webpack_exports__);
 // window.selectPokemonMovesNames = selectPokemonMovesNames
 // window.selectPokemonItems = selectPokemonItems
 // window.fetchOnePokemon = fetchOnePokemon
+// window.createPokemon = createPokemon
 
-window.createPokemon = _actions_pokemon_actions__WEBPACK_IMPORTED_MODULE_5__["createPokemon"];
 document.addEventListener("DOMContentLoaded", function () {
   var rootEl = document.getElementById("root");
-  var store = Object(_store_store__WEBPACK_IMPORTED_MODULE_2__["default"])();
-  window.store = store;
+  var store = Object(_store_store__WEBPACK_IMPORTED_MODULE_2__["default"])(); // window.store = store
+
   react_dom__WEBPACK_IMPORTED_MODULE_1___default.a.render( /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_root__WEBPACK_IMPORTED_MODULE_3__["default"], {
     store: store
   }), rootEl);
