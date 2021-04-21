@@ -1,6 +1,7 @@
 import React from 'react'
 import { Route } from 'react-router-dom'
 import ItemDetailContainer from '../items/item_detail_container'
+import LoadingIcon from './loading_icon';
 
 
 class PokemonDetail extends React.Component {
@@ -13,6 +14,7 @@ class PokemonDetail extends React.Component {
 
         this.isLoaded = this.isLoaded.bind(this)
         this.isDetailLoaded = this.isDetailLoaded.bind(this)
+        console.log(this.props)
     }
 
     componentDidMount() {
@@ -39,6 +41,8 @@ class PokemonDetail extends React.Component {
 
     render() {
 
+        if (this.props.loading) { return <LoadingIcon /> }
+
         const { pokemon, moves, items } = this.props
         
         const listMoves = moves.join(", ");
@@ -53,6 +57,7 @@ class PokemonDetail extends React.Component {
 
 
         return (
+            
             <section className="pokemon-detail">
                 
                 <figure>

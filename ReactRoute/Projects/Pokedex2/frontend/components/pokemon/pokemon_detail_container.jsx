@@ -6,7 +6,8 @@ import { selectOnePokemon, selectPokemonMovesNames, selectPokemonItems } from '.
 const mapStateToProps = (state, ownProps) => ({
     pokemon: state.entities.pokemon[ownProps.match.params.pokemonId],
     moves: selectPokemonMovesNames(state),
-    items: selectPokemonItems(state)
+    items: selectPokemonItems(state),
+    loading: state.ui.loading.detailLoading
 
 })
 
