@@ -9,6 +9,7 @@ class PokemonForm extends React.Component {
 
         this.handleSubmit = this.handleSubmit.bind(this)
         this.addMove = this.addMove.bind(this)
+        this.addPoke = this.addPoke.bind(this)
     }
 
 
@@ -26,11 +27,20 @@ class PokemonForm extends React.Component {
 
     }
 
+    addPoke(e) {
+
+        console.log(e.currentTarget)
+        // This givezs me the correct input
+        console.log(e.currentTarget.classList.contains('form-name'))
+
+    }
+
 
     render() {
         return (
             <form className="pokemon-form" id="todo-submit">
-                <label>Name</label>
+                <label >Name</label>
+                <input className="form-name" onChange={this.addPoke} type='text'></input>
                 <br></br>
                 <label>Attack</label>
                 <br></br>
