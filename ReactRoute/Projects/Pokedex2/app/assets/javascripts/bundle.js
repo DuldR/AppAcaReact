@@ -455,6 +455,7 @@ function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Re
 function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
 
 
+var POKE_TYPES = ['fire', 'electric', 'normal', 'ghost', 'psychic', 'water', 'bug', 'dragon', 'grass', 'fighting', 'ice', 'flying', 'poison', 'ground', 'rock', 'steel'];
 
 var PokemonForm = /*#__PURE__*/function (_React$Component) {
   _inherits(PokemonForm, _React$Component);
@@ -470,14 +471,15 @@ var PokemonForm = /*#__PURE__*/function (_React$Component) {
     _this.state = {
       name: "",
       poke_type: "",
-      attack: "",
-      defense: "",
+      attack: 0,
+      defense: 0,
       image_url: "",
       move_names: []
     };
     _this.handleSubmit = _this.handleSubmit.bind(_assertThisInitialized(_this));
     _this.addMove = _this.addMove.bind(_assertThisInitialized(_this));
     _this.addPoke = _this.addPoke.bind(_assertThisInitialized(_this));
+    _this.listPokeTypes = _this.listPokeTypes.bind(_assertThisInitialized(_this));
     return _this;
   }
 
@@ -489,34 +491,103 @@ var PokemonForm = /*#__PURE__*/function (_React$Component) {
         pokemon: this.state
       };
       this.props.createPokemon(poke);
+      var form = document.getElementById('poke-submit');
       form.reset();
     }
   }, {
     key: "addMove",
-    value: function addMove(e) {}
+    value: function addMove(e) {
+      e.preventDefault();
+      var moveInput1 = document.getElementsByClassName('form-move1');
+      var moveInput2 = document.getElementsByClassName('form-move2');
+      this.setState({
+        move_names: this.state.move_names.concat(moveInput1[0].value).concat(moveInput2[0].value)
+      });
+    }
   }, {
     key: "addPoke",
     value: function addPoke(e) {
-      console.log(e.currentTarget); // This givezs me the correct input
+      switch (e.currentTarget.classList[0]) {
+        case "form-name":
+          this.setState({
+            name: e.currentTarget.value
+          });
+          break;
 
-      console.log(e.currentTarget.classList.contains('form-name'));
+        case 'form-type':
+          this.setState({
+            poke_type: e.currentTarget.value
+          });
+          break;
+
+        case 'form-attack':
+          this.setState({
+            attack: parseInt(e.currentTarget.value)
+          });
+          break;
+
+        case 'form-defense':
+          this.setState({
+            defense: parseInt(e.currentTarget.value)
+          });
+          break;
+
+        case 'form-image':
+          this.setState({
+            image_url: e.currentTarget.value
+          });
+          break;
+
+        default:
+          break;
+      }
+    }
+  }, {
+    key: "listPokeTypes",
+    value: function listPokeTypes() {
+      var pokeTypes = POKE_TYPES.map(function (poke, idx) {
+        return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
+          key: "type-" + idx
+        }, poke);
+      });
+      return pokeTypes;
     }
   }, {
     key: "render",
     value: function render() {
       return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", {
+        onSubmit: this.handleSubmit,
         className: "pokemon-form",
-        id: "todo-submit"
+        id: "poke-submit"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", null, "Name"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
         className: "form-name",
         onChange: this.addPoke,
         type: "text"
-      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", null, "Attack"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", null, "Defense"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", null, "Tag"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
-        className: "tag-input",
+      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", null, "PokeType"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("select", {
+        className: "form-type",
+        onChange: this.addPoke
+      }, this.listPokeTypes()), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", null, "Attack"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+        className: "form-attack",
+        onChange: this.addPoke,
         type: "text"
-      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", null, "Defense"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+        className: "form-defense",
+        onChange: this.addPoke,
+        type: "text"
+      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", null, "Image URL"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+        className: "form-image",
+        onChange: this.addPoke,
+        type: "text"
+      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", null, "Move1"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+        className: "form-move1",
+        type: "text"
+      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", null, "Move2"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+        className: "form-move2",
+        type: "text"
+      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+        onClick: this.addMove,
         type: "button"
-      }, "Add Tag"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", null, "Submit"));
+      }, "Add Move"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", null, "Submit"));
     }
   }]);
 
