@@ -63,7 +63,7 @@ class ToDoForm extends React.Component {
         return (
             <form id="todo-submit" onSubmit={this.handleSubmit} defaultValue={this.state.value}>
                 <label>Errors</label>
-                {this.props.errors}
+                
                 <br></br>
                 <label>Title</label>
                 <br></br>

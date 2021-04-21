@@ -29,7 +29,7 @@ class PokemonForm extends React.Component {
         this.addMove = this.addMove.bind(this)
         this.addPoke = this.addPoke.bind(this)
         this.listPokeTypes = this.listPokeTypes.bind(this)
-
+        this.listErrors = this.listErrors.bind(this)
 
     }
 
@@ -38,13 +38,9 @@ class PokemonForm extends React.Component {
         e.preventDefault();
 
         let poke = {pokemon: this.state}
-
         this.props.createPokemon(poke).then(newPoke => {
             this.props.history.push(`pokemon/${newPoke.id}`);
         });
-
-        // let form = document.getElementById('poke-submit');
-        // form.reset()
     }
 
     addMove(e) {
@@ -89,10 +85,27 @@ class PokemonForm extends React.Component {
         return pokeTypes
     }
 
+    listErrors() {
+
+
+        let errors = this.props.errors.map((err, idx) => {
+            return <li key={"err-" + idx}>{err}</li>
+        })
+
+
+        return errors
+    }
+
 
     render() {
         return (
             <form onSubmit={this.handleSubmit} className="pokemon-form" id="poke-submit">
+                <label>Errors</label>
+                <ul>
+                    {this.listErrors()}
+
+                </ul>
+                <br></br>
                 <label >Name</label>
                 <input className="form-name" onChange={this.addPoke} type='text'></input>
                 <br></br>

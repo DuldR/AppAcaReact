@@ -1,11 +1,11 @@
-const uiReducer = (state ={}, action) => {
-    Object.freeze(state);
-    let newState = {};
+import {combineReducers} from 'redux';
+import errorsReducer from './errors_reducer';
+import loadingReducer from './loading_reducer';
 
-    switch (action.type) {
-        default:
-            return state;
-    }
-}
+
+const uiReducer = combineReducers({
+    errors: errorsReducer,
+    loading: loadingReducer
+})
 
 export default uiReducer

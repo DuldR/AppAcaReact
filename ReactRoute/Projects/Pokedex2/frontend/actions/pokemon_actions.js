@@ -1,4 +1,5 @@
 import * as APIUtil from '../util/api_util';
+import { receiveErrors } from '../actions/error_actions'
 
 export const RECEIVE_ALL_POKEMON = "RECEIVE_ALL_POKEMON";
 export const RECEIVE_ONE_POKEMON = "RECEIVE_ONE_POKEMON";
@@ -24,8 +25,14 @@ export const requestOnePokemon = (poke) => (dispatch) => (
 )
 
 export const createPokemon = (poke) => dispatch => (
-  APIUtil.createPokemon(poke).then(pokemon => {
-    dispatch(receiveOnePokemon(pokemon));
-    return pokemon;
-  })
-)
+  APIUtil.createPokemon(poke).then(
+    pokemon => {
+      dispatch(receiveOnePokemon(pokemon));
+      return pokemon
+    })
+    .fail( 
+      err => {
+        dispatch(receiveErrors(err.responseJSON))
+      }
+    )
+  )

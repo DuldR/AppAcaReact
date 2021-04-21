@@ -4,6 +4,7 @@ import { createPokemon } from '../../actions/pokemon_actions'
 
 
 const mapStateToProps = (state) => ({
+    errors: state.ui.errors
 
 })
 
@@ -11,4 +12,4 @@ const mapDispatchToProps = dispatch => ({
     createPokemon: poke => dispatch(createPokemon(poke))
 })
 
-export default connect(null, mapDispatchToProps)(PokemonForm)
+export default connect(mapStateToProps, mapDispatchToProps)(PokemonForm)
