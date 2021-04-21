@@ -135,7 +135,8 @@ var requestOnePokemon = function requestOnePokemon(poke) {
 var createPokemon = function createPokemon(poke) {
   return function (dispatch) {
     return _util_api_util__WEBPACK_IMPORTED_MODULE_0__["createPokemon"](poke).then(function (pokemon) {
-      return dispatch(receiveOnePokemon(pokemon));
+      dispatch(receiveOnePokemon(pokemon));
+      return pokemon;
     });
   };
 };
@@ -486,13 +487,16 @@ var PokemonForm = /*#__PURE__*/function (_React$Component) {
   _createClass(PokemonForm, [{
     key: "handleSubmit",
     value: function handleSubmit(e) {
+      var _this2 = this;
+
       e.preventDefault();
       var poke = {
         pokemon: this.state
       };
-      this.props.createPokemon(poke);
-      var form = document.getElementById('poke-submit');
-      form.reset();
+      this.props.createPokemon(poke).then(function (newPoke) {
+        _this2.props.history.push("pokemon/".concat(newPoke.id));
+      }); // let form = document.getElementById('poke-submit');
+      // form.reset()
     }
   }, {
     key: "addMove",

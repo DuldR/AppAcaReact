@@ -29,6 +29,8 @@ class PokemonForm extends React.Component {
         this.addMove = this.addMove.bind(this)
         this.addPoke = this.addPoke.bind(this)
         this.listPokeTypes = this.listPokeTypes.bind(this)
+
+
     }
 
 
@@ -37,10 +39,12 @@ class PokemonForm extends React.Component {
 
         let poke = {pokemon: this.state}
 
-        this.props.createPokemon(poke)
+        this.props.createPokemon(poke).then(newPoke => {
+            this.props.history.push(`pokemon/${newPoke.id}`);
+        });
 
-        let form = document.getElementById('poke-submit');
-        form.reset()
+        // let form = document.getElementById('poke-submit');
+        // form.reset()
     }
 
     addMove(e) {
