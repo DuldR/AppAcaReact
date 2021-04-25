@@ -33,11 +33,6 @@ class User < ApplicationRecord
         SecureRandom::urlsafe_base64
     end
 
-    def fired?
-        puts "Anus"
-    end
-    
-
     def reset_session_token!
         self.session_token = User.generate_session_token
         self.save!
@@ -52,9 +47,13 @@ class User < ApplicationRecord
         check = BCrypt::Password.new(password_digest)
         check.is_password?(password)
     end
+
+
+    private
     def ensure_session_token
-        self.session_token || User.generate_session_token
+        self.session_token ||= User.generate_session_token
     end
+    
 
 
 end
