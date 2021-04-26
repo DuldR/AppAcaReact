@@ -4,11 +4,12 @@ class Api::UsersController < ApplicationController
         @user = User.new(user_params)
         @user.password = user_params[:password]
 
-        if @user.save!
+        if @user.save
             render json: @user
         else
-            render json: @user.errors.full_messages
+            render json: ["You a fool"], status: 422
         end
+        
 
     end
 

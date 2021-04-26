@@ -38,6 +38,24 @@ export const logout = () => (dispatch) => {
     return APIUtil.logout().then(dispatch(logoutCurrentUser()))
 }
 
-export const signup = (user) => (dispatch) => {
-    return APIUtil.signup({user: user}).then(payload => dispatch(receiveCurrentUser(payload)))
-}
+export const signup = (user) => (dispatch) => (
+    APIUtil.signup( { user: user } ).then(payload => {
+        dispatch(receiveCurrentUser(payload));
+        return payload }
+        ).fail(
+            err => {
+                console.log(err)
+            }
+        )
+)
+
+
+
+
+
+
+
+
+// {
+//     return APIUtil.signup({user: user}).then(payload => dispatch(receiveCurrentUser(payload)))
+// }

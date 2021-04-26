@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 
 
 class SessionForm extends React.Component {
@@ -10,6 +11,7 @@ class SessionForm extends React.Component {
         this.handleSubmit = this.handleSubmit.bind(this);
         this.addData = this.addData.bind(this)
         this.displayHeader = this.displayHeader.bind(this)
+        this.listErrors = this.listErrors.bind(this)
 
     }
 
@@ -36,12 +38,29 @@ class SessionForm extends React.Component {
 
     }
 
+    listErrors() {
+
+
+        let errors = this.props.errors.map((err, idx) => {
+            return <li key={"err-" + idx}>{err}</li>
+        })
+
+
+        return errors
+    }
+
     displayHeader() {
 
         if (this.props.formType === "login") {
-            return <h1>Login Baby</h1>
+            return <div>
+                Log in Baby 
+                <Link to='/signup'>Signup</Link>
+            </div>
         } else {
-            return <h1>Signup Baby</h1>
+            return <div>
+                Signup Baby 
+                <Link to='/login'>Login</Link>
+            </div>
         }
 
     }
@@ -51,6 +70,9 @@ class SessionForm extends React.Component {
         return ( 
             <form onSubmit={this.handleSubmit} className="user-form">
                 {this.displayHeader()}
+                <ul>
+                    {this.listErrors()}
+                </ul>
                 <label>Username:</label>
                 <input className="form-username" onChange={this.addData} type='text'></input>
                 <label>Password</label>
