@@ -5,8 +5,9 @@ import { logout } from '../../actions/session_actions'
 const mapStateToProps = state => {
 
     const {users} = state.entities
+ 
 
-    return { currentUser: state.entities.users[state.session.id] }
+    return { currentUser: users[state.session.id] }
 }
 
 const mapDispatchToProps = dispatch => ({
