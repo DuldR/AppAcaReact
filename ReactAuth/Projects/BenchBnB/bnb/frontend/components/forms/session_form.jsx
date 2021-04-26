@@ -20,7 +20,12 @@ class SessionForm extends React.Component {
 
         const user = Object.assign({}, this.state);
 
-            this.props.signup( user )
+        if (this.props.formType === "signup") { 
+            this.props.signup(user)
+        } else {
+            this.props.login(user)
+        }
+            
     }
 
     addData(e) {

@@ -26,12 +26,3 @@ export const signup = (user) => {
     })
 
 }
-
-// Scratch
-let u = {username: "2", password: "2"}
-$.ajax({
-        method: "POST",
-        url: "api/users",
-        data: {user: {username: "2", password: "2"}},
-        dataType: 'json'
-    })

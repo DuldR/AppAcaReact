@@ -44,7 +44,7 @@ export const signup = (user) => (dispatch) => (
         return payload }
         ).fail(
             err => {
-                console.log(err)
+                dispatch(receiveErrors(err.responseJSON))
             }
         )
 )

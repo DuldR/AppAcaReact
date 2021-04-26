@@ -7,7 +7,7 @@ class Api::UsersController < ApplicationController
         if @user.save
             render json: @user
         else
-            render json: ["You a fool"], status: 422
+            render json: ["username taken"], status: 422
         end
         
 
