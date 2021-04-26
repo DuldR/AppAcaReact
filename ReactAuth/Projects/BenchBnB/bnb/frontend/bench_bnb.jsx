@@ -4,11 +4,17 @@ import configureStore from './store/store'
 
 import * as userUtil from '../frontend/util/util_users' 
 import * as sessionUtil from '../frontend/util/util_sessions' 
+import * as api from '../frontend/util/session_api_util'
 
-window.makeUser = userUtil.createUser
+import * as sessions from '../frontend/actions/session_actions'
 
-window.makeSession = sessionUtil.createSession
-window.logout = sessionUtil.destroySession
+// window.makeUser = userUtil.createUser
+
+// window.makeSession = sessionUtil.createSession
+// window.logout = sessionUtil.destroySession
+
+window.api = api;
+window.sessions = sessions
 
 document.addEventListener("DOMContentLoaded", () => {
   const root = document.getElementById("root");

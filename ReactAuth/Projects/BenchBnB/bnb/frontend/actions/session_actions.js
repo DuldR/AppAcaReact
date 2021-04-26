@@ -12,3 +12,15 @@ export const receiveCurrentUser = (payload) => ({
 export const logoutCurrentUser = () => ({
     type: LOGOUT_CURRENT_USER
 })
+
+export const login = (user) => (dispatch) => {
+    return APIUtil.login({session: user}).then(payload => dispatch(receiveCurrentUser(payload)))
+}
+
+export const logout = () => (dispatch) => {
+    return APIUtil.logout().then(dispatch(logoutCurrentUser()))
+}
+
+export const signup = (user) => (dispatch) => {
+    return APIUtil.signup({user: user}).then(payload => dispatch(receiveCurrentUser(payload)))
+}
