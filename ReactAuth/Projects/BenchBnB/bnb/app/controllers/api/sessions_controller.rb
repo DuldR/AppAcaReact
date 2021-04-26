@@ -2,11 +2,9 @@ class Api::SessionsController < ApplicationController
 
     def create
         @user = User.find_by_credentials(sessions_params[:username], sessions_params[:password])
-        @user.reset_session_token!
         
         if @user.nil?
-            flash.now[:errors] = ["Invalid credentials"]
-            render json: @user.errors.full_messages
+            render json: ['Wrong credz'], status: 401
         else
             login!(@user)
             render json: @user
