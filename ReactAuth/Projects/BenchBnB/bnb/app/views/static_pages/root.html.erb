@@ -7,6 +7,6 @@
   </script>
 <% end %>
 
-<%= logged_in? ? current_user : "Noone logged in" %>
+<%= logged_in? ? current_user.username : "Noone logged in" %>
 
 <main id="root"></main>
