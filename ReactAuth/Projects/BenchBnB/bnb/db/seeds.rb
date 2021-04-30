@@ -7,4 +7,5 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 Bench.create!(description: "Test Bench 1", lat: 37.747573, long: -122.442415)
-Bench.create!(description: "Test Bench 2", lat: 33.522053, long: -86.789035)
+Bench.create!(description: "Test Bench 2", lat: 37.771836, long: -122.480727)
+Bench.create!(description: "Test Bench 2", lat: 37.771841, long: -122.480727)

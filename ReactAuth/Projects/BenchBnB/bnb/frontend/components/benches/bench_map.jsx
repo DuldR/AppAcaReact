@@ -1,11 +1,28 @@
 import React from 'react'
 
-export const BenchMap = (props) => {
 
-    const mapRef = React.createRef()
+class BenchMap extends React.Component {
 
-    return (
-        <div id='map-container' ref={mapRef}>
-        </div>
-    )
+    constructor(props) {
+        super(props)
+    }
+
+    componentDidMount() {
+        const mapOptions = {
+            center: { lat: 37.7758, lng: -122.435 }, // this is SF
+            zoom: 13
+        };
+
+        this.map = new google.maps.Map(this.mapNode, mapOptions)
+    }
+
+
+    render() {
+        return (
+            <div id='map-container' ref={ map => this.mapNode = map }>
+            </div>
+        )
+    }
 }
+
+export default BenchMap

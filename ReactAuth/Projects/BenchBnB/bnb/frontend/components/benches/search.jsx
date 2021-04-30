@@ -1,4 +1,4 @@
-import { BenchMap } from './bench_map'
+import BenchMap from './bench_map'
 import BenchIndex from './bench_index'
 import React from 'react'
 
