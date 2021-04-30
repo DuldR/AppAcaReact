@@ -10,7 +10,7 @@ export const Search = (props) => {
         <div>
             
             <BenchIndex fetchBenches={fetchBenches} benches={benches} />
-            <BenchMap />
+            <BenchMap benches={benches} />
         </div>
     )
 }
