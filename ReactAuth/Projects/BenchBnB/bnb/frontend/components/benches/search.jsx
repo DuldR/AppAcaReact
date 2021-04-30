@@ -4,13 +4,13 @@ import React from 'react'
 
 export const Search = (props) => {
 
-    // const {benches} = this.props
+    const {fetchBenches, benches} = props
 
-    console.log(props)
     return (
         <div>
-            {/* <BenchMap /> */}
-            {/* <BenchIndex  /> */}
+            
+            <BenchIndex fetchBenches={fetchBenches} benches={benches} />
+            <BenchMap />
         </div>
     )
 }
