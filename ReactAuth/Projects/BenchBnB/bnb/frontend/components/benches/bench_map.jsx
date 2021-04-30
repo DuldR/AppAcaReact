@@ -24,13 +24,13 @@ class BenchMap extends React.Component {
         //     title: "Anus."
 
         // })
+        // Use 
         
-
         this.MarkerManager.updateMarkers();
     }
 
     componentDidUpdate() {
-        this.MarkerManager.updateMarkers();
+        this.MarkerManager.updateMarkers(this.props.benches);
     }
 
 
