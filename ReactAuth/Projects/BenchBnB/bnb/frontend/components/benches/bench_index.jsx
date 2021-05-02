@@ -15,7 +15,7 @@ class BenchIndex extends React.Component {
         }}
 
 
-        this.props.fetchBenches("TEST");
+        this.props.fetchBenches(testP);
     }
 
 
