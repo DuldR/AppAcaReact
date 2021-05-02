@@ -8,11 +8,12 @@ export const createBench = (bench) => {
 
 }
 
-export const getBenches = () => {
+export const getBenches = (filters) => {
 
     return $.ajax({
         method: "GET",
-        url: "api/benches"
+        url: "api/benches",
+        data: filters
     })
 
 }
