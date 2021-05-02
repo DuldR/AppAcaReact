@@ -1,6 +1,7 @@
 import React from 'react'
 import { BenchIndexItem } from './bench_index_item'
 
+
 class BenchIndex extends React.Component {
 
     constructor(props) {
@@ -8,7 +9,13 @@ class BenchIndex extends React.Component {
     }
 
     componentDidMount() {
-        this.props.fetchBenches();
+        let testP = { bounds: {
+            northEast: {lat: 37.80971, lng: -122.39208},
+            southWest: {lat: 36, lng: -123}
+        }}
+
+
+        this.props.fetchBenches("TEST");
     }
 
 

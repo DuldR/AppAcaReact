@@ -14,6 +14,8 @@ class Bench < ApplicationRecord
         southWestLong = bounds["southWest"]["lng"].to_f
 
 
+
+
         # This works
         @benches = Bench.where("lat < ? and long < ?", northEastLat, northEastLong).where("lat > ? and long > ?", southWestLat, southWestLong)
     end

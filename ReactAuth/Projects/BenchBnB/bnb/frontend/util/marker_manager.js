@@ -17,7 +17,5 @@ export default class MarkerManager {
         benches.forEach(bench => {
             this.markers[bench.id] = this.createMarkerFromBench(bench)
         })
-
-        console.log(this.markers)
     }
 }

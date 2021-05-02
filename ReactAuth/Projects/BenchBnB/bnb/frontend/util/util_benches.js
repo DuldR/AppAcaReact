@@ -9,7 +9,7 @@ export const createBench = (bench) => {
 }
 
 export const getBenches = (filters) => {
-
+    console.log(filters)
     return $.ajax({
         method: "GET",
         url: "api/benches",
@@ -17,3 +17,14 @@ export const getBenches = (filters) => {
     })
 
 }
+
+// Test Params
+// let testP ={
+//     "northEast"=> {"lat"=>"37.80971", "lng"=>"-122.39208"},
+//     "southWest"=> {"lat"=>"36", "lng"=>"-123"}
+// }
+
+// testP = {bounds: {
+//     northEast: {lat: 37.80971, lng: -122.39208},
+//     southWest: {lat: 36, lng: -123}
+// }}
