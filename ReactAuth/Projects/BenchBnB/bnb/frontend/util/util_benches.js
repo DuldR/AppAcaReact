@@ -9,7 +9,6 @@ export const createBench = (bench) => {
 }
 
 export const getBenches = (filters) => {
-    console.log(filters)
     return $.ajax({
         method: "GET",
         url: "api/benches",

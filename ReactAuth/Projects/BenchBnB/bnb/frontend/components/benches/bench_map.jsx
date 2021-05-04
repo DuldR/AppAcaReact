@@ -24,8 +24,31 @@ class BenchMap extends React.Component {
         //     title: "Anus."
 
         // })
-        // Use 
-        
+        //
+        // map.addListener("center_changed", () => {
+        // // 3 seconds after the center of the map has changed, pan back to the
+        // // marker.
+        // window.setTimeout(() => {
+        //     map.panTo(marker.getPosition());
+        // }, 3000);
+        // });
+
+        // this.map.addListener("bounds_changed", () => {
+        //     console.log("fired")
+        // })
+
+        this.map.addListener("idle", () => {
+            let boundsObject = {}
+            let b = this.map.getBounds()
+
+            boundsObject = { northEast: { lat: b.getNorthEast().lat(), lng: b.getNorthEast().lng() }, 
+                southWest: { lat: b.getSouthWest().lat(), lng: b.getSouthWest().lng() }
+            }
+
+            this.props.updateBounds(boundsObject)
+        })
+
+
         this.MarkerManager.updateMarkers();
     }
 
