@@ -14,8 +14,18 @@ export default class MarkerManager {
     }
 
     updateMarkers(benches = []) {
+        const lookupBench = {}
+
         benches.forEach(bench => {
-            this.markers[bench.id] = this.createMarkerFromBench(bench)
+            lookupBench[bench.id] = this.createMarkerFromBench(bench)
         })
+
+        for (const [key, value] of Object.entries(this.markers)) {
+            if (lookupBench[key] === undefined) {
+                this.markers[key].setMap(null);
+                delete this.markers[key]
+            }
+        }
+        this.markers = lookupBench
     }
 }
