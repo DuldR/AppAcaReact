@@ -10,6 +10,7 @@ import * as api from '../frontend/util/util_benches'
 
 import * as sessions from '../frontend/actions/session_actions'
 import * as bench from '../frontend/actions/bench_actions'
+import * as filter from '../frontend/actions/filter_actions'
 
 
 // Test
@@ -21,6 +22,7 @@ import * as bench from '../frontend/actions/bench_actions'
 window.api = api;
 window.sessions = sessions
 window.bench = bench
+window.filter = filter
 
 // Test
 

@@ -12,7 +12,8 @@ const mapStateToProps = state => ({
 const mapDispatchToProps = dispatch => ({
 
     fetchBenches: (filter) => dispatch(Actions.fetchBenches(filter)),
-    updateBounds: (bounds) => dispatch(Bounds.updateBounds(bounds))
+    updateBounds: (bounds) => dispatch(Bounds.updateBounds(bounds)),
+    fetchBounds: (bounds) => dispatch(Bounds.fetchBounds(bounds))
 
 })
 
