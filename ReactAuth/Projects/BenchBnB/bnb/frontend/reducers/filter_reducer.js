@@ -8,6 +8,7 @@ const filterReducer = (state = {}, action) => {
         case UPDATE_BOUNDS:
             return action.bounds
         case UPDATE_FILTER:
+            console.log(action)
             return action.filter
         default:
             return state;

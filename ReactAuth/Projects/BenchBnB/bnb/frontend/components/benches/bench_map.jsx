@@ -59,7 +59,9 @@ class BenchMap extends React.Component {
             boundsObject = { northEast: { lat: b.getNorthEast().lat(), lng: b.getNorthEast().lng() }, 
                 southWest: { lat: b.getSouthWest().lat(), lng: b.getSouthWest().lng() }
             }
-            this.props.fetchBounds(boundsObject)
+
+            // This is calling the filter
+            this.props.fetchFilter("bounds", boundsObject)
 
         })
 

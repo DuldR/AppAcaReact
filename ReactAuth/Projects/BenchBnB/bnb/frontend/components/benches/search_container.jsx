@@ -1,7 +1,7 @@
 import { connect } from 'react-redux'
 import { Search } from './search'
 import * as Actions from '../../actions/bench_actions'
-import * as Bounds from '../../actions/filter_actions'
+import * as Filters from '../../actions/filter_actions'
 
 const mapStateToProps = state => ({
 
@@ -11,9 +11,10 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = dispatch => ({
 
-    fetchBenches: (filter) => dispatch(Actions.fetchBenches(filter)),
+    fetchBenches: (filter) => dispatch(Actions.fetchBenches(filter,)),
     updateBounds: (bounds) => dispatch(Bounds.updateBounds(bounds)),
-    fetchBounds: (bounds) => dispatch(Bounds.fetchBounds(bounds))
+    fetchBounds: (filter, value) => dispatch(Bounds.fetchBounds(filter, value)),
+    fetchFilter: (filter, value) => dispatch(Filters.fetchFilter(filter, value))
 
 })
 
