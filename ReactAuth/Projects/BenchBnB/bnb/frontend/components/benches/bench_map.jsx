@@ -1,4 +1,5 @@
 import React from 'react'
+import { withRouter } from 'react-router-dom'
 import MarkerManager from '../../util/marker_manager'
 
 
@@ -6,6 +7,9 @@ class BenchMap extends React.Component {
 
     constructor(props) {
         super(props)
+
+        this.handleIdle = this.handleIdle.bind(this)
+        this.handleClick = this.handleClick.bind(this)
     }
 
     componentDidMount() {
@@ -37,9 +41,20 @@ class BenchMap extends React.Component {
         //     console.log("fired")
         // })
 
-        this.map.addListener("idle", () => {
+        this.handleIdle(this.map);
+        this.handleClick(this.map);
+        this.MarkerManager.updateMarkers();
+    }
+
+    componentDidUpdate() {
+        this.MarkerManager.updateMarkers(this.props.benches);
+    }
+
+    handleIdle(map) {
+
+        map.addListener("idle", () => {
             let boundsObject = {}
-            let b = this.map.getBounds()
+            let b = map.getBounds()
 
             boundsObject = { northEast: { lat: b.getNorthEast().lat(), lng: b.getNorthEast().lng() }, 
                 southWest: { lat: b.getSouthWest().lat(), lng: b.getSouthWest().lng() }
@@ -48,12 +63,20 @@ class BenchMap extends React.Component {
 
         })
 
-
-        this.MarkerManager.updateMarkers();
     }
 
-    componentDidUpdate() {
-        this.MarkerManager.updateMarkers(this.props.benches);
+    handleClick(map) {
+
+        map.addListener('click', (e) => {
+            // this.props.history.push({
+            //     pathname: "benches/new",
+            //     search: `lat=${coords.lat}&lng=${coords.lng}`
+            // })
+
+            // THis is how to get the coords
+            console.log(e.latLng.lat())
+        })
+
     }
 
 
@@ -65,4 +88,4 @@ class BenchMap extends React.Component {
     }
 }
 
-export default BenchMap
+export default withRouter(BenchMap)
