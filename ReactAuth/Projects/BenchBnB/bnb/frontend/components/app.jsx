@@ -5,8 +5,8 @@ import { AuthRoute } from '../util/route_util'
 import GreetingContainer from './home/greeting_container'
 import SignUpFormContainer from './forms/signup_form_container'
 import LoginFormContainer from './forms/login_form_container'
-import BenchIndexContainer from './benches/bench_index_container'
 import SearchContainer from './benches/search_container'
+import BenchFormContainer from './benches/bench_form_container'
 
 const App = () => (
   <div>
@@ -20,6 +20,7 @@ const App = () => (
       <AuthRoute path={"/login"} exact={true} component={LoginFormContainer} />
 
       <Route exact path="/" component={SearchContainer}/>
+      <Route path='/benches/new' component={BenchFormContainer} />
     
   </div>
 );
