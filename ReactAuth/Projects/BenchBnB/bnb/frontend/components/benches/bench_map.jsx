@@ -68,13 +68,16 @@ class BenchMap extends React.Component {
     handleClick(map) {
 
         map.addListener('click', (e) => {
-            // this.props.history.push({
-            //     pathname: "benches/new",
-            //     search: `lat=${coords.lat}&lng=${coords.lng}`
-            // })
 
             // THis is how to get the coords
-            console.log(e.latLng.lat())
+            // console.log(e.latLng.lat())
+
+            this.props.history.push({
+                pathname: "benches/new",
+                search: `lat=${e.latLng.lat()}&lng=${e.latLng.lng()}`
+            })
+
+    
         })
 
     }

@@ -1,4 +1,4 @@
-import { RECEIVE_BENCHES } from './../actions/bench_actions'
+import { RECEIVE_BENCHES, RECEIVE_ONE_BENCH } from './../actions/bench_actions'
 
 const benchesReducer = (state = {}, action) => {
     Object.freeze(state);
@@ -10,6 +10,8 @@ const benchesReducer = (state = {}, action) => {
 
         case RECEIVE_BENCHES:
             return action.benches
+        case RECEIVE_ONE_BENCH:
+            return [action.bench]
         default:
             return state;
     }

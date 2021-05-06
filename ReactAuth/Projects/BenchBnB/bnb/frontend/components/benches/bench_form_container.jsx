@@ -2,8 +2,11 @@ import { connect } from 'react-redux'
 import BenchForm from './bench_form'
 import { createBench } from '../../actions/bench_actions'
 
-const mapStateToProps = (state) => ({
-    errors: state.errors.session
+const mapStateToProps = (state, { location }) => ({
+
+    lat: new URLSearchParams(location.search).get("lat"),
+    lng: new URLSearchParams(location.search).get("lng")
+    
 })
 
 const mapDispatchToProps = dispatch => ({

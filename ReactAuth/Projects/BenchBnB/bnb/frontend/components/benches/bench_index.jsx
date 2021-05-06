@@ -22,6 +22,7 @@ class BenchIndex extends React.Component {
     render() {
 
         if (Object.entries(this.props.benches).length === 0) { return <h1> Loading </h1>}
+        if (this.props.benches === undefined) { return <h1> Loading </h1>}
 
         const listBenches = this.props.benches.map((bench, idx) => {
             return <BenchIndexItem desc={bench.description} lat={bench.lat} long={bench.long} key={"bench-item-" + idx}/>
