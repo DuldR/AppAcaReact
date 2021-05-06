@@ -8,14 +8,18 @@ class BenchIndex extends React.Component {
         super(props)
     }
 
+
+    // This isnt whats calling index.
     componentDidMount() {
-        let testP = { bounds: {
-            northEast: {lat: 37.80971, lng: -122.39208},
-            southWest: {lat: 36, lng: -123}
-        }}
+        // let testP = { bounds: {
+        //     northEast: {lat: 3.80971, lng: -122.39208},
+        //     southWest: {lat: 36, lng: -123},
+        //     max_seating: 99,
+        //     min_seating: 0
+        // }}
 
 
-        this.props.fetchBenches(testP);
+        // this.props.fetchBenches(testP);
     }
 
 
@@ -25,7 +29,7 @@ class BenchIndex extends React.Component {
         if (this.props.benches === undefined) { return <h1> Loading </h1>}
 
         const listBenches = this.props.benches.map((bench, idx) => {
-            return <BenchIndexItem desc={bench.description} lat={bench.lat} long={bench.long} key={"bench-item-" + idx}/>
+            return <BenchIndexItem desc={bench.description} lat={bench.lat} long={bench.long} seats={bench.seats} key={"bench-item-" + idx}/>
         })
 
 

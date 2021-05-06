@@ -19,4 +19,8 @@ class Bench < ApplicationRecord
         # This works
         @benches = Bench.where("lat < ? and long < ?", northEastLat, northEastLong).where("lat > ? and long > ?", southWestLat, southWestLong)
     end
+
+    def self.seat_filter(min, max)
+
+    end
 end

@@ -4,7 +4,9 @@ import filterReducer from './filter_reducer'
 
 
 const uiReducer = combineReducers({
-    boundsFilter: filterReducer
+    bounds: filterReducer,
+    minSeating: filterReducer,
+    maxSeating: filterReducer
 })
 
 export default uiReducer

@@ -8,10 +8,17 @@ export const BenchIndexItem = (props) => {
             {props.desc}
             <ul>
                 <li>
-                    <label> Lat </label>
+                    <label> Lat: </label>
                     {props.lat}
-                    <label> Long </label>
+                </li>
+                <li>
+                    <label> Long: </label>
                     {props.long}
+                </li>
+
+                <li>
+                    <label> Seats: </label>
+                    {props.seats}
                 </li>
             </ul>
         </li>
