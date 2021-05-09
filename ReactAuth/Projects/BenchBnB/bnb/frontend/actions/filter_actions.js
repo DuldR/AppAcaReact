@@ -20,8 +20,11 @@ export const updateFilter = (filter, value) => ({
 // This is working
 export const fetchFilter = (filter, payload) => (dispatch, getState) => {
 
+
     dispatch(updateFilter(filter, payload))
 
-    return dispatch(bench.fetchBenches({bounds: getState().ui.filters.bounds, max_seating: 5, min_seating: 1}))
+    const {bounds, minSeating, maxSeating} = getState().ui.filters
+
+    return dispatch(bench.fetchBenches({bounds: bounds, max_seating: maxSeating, min_seating: minSeating}))
     
 }

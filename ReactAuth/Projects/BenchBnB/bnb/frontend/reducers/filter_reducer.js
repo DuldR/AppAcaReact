@@ -16,8 +16,6 @@ const filterReducer = (state = defaultFilters, action) => {
         case UPDATE_BOUNDS:
             return action.bounds
         case UPDATE_FILTER:
-
-            console.log(state)
             
             return Object.assign({}, state, {[action.filter]: action.value})
         default:
