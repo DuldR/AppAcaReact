@@ -17,19 +17,11 @@ export const updateFilter = (filter, value) => ({
     value
 })
 
-// Legacy
-// export const fetchBounds = (filter, payload) => (dispatch, getState) => {
-
-//     dispatch(updateFilter(filter, payload))
-
-//     // return dispatch(bench.fetchBenches({bounds: getState().ui.bounds, max_seating: 5, min_seating: 1}))
-    
-// }
-
+// This is working
 export const fetchFilter = (filter, payload) => (dispatch, getState) => {
 
     dispatch(updateFilter(filter, payload))
 
-    // return dispatch(bench.fetchBenches({bounds: getState().ui.bounds, max_seating: 5, min_seating: 1}))
+    return dispatch(bench.fetchBenches({bounds: getState().ui.filters.bounds, max_seating: 5, min_seating: 1}))
     
 }
