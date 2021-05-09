@@ -5,15 +5,15 @@ import * as Filters from '../../actions/filter_actions'
 
 const mapStateToProps = state => ({
 
-    benches: state.entities.benches
+    benches: state.entities.benches,
+    maxSeating: state.ui.filters.maxSeating,
+    minSeating: state.ui.filters.minSeating
 
 })
 
 const mapDispatchToProps = dispatch => ({
 
-    fetchBenches: (filter) => dispatch(Actions.fetchBenches(filter,)),
-    updateBounds: (bounds) => dispatch(Bounds.updateBounds(bounds)),
-    fetchBounds: (filter, value) => dispatch(Bounds.fetchBounds(filter, value)),
+    fetchBenches: (filter) => dispatch(Actions.fetchBenches(filter)),
     fetchFilter: (filter, value) => dispatch(Filters.fetchFilter(filter, value))
 
 })

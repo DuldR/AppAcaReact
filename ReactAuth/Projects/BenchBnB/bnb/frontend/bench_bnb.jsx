@@ -13,6 +13,7 @@ import * as bench from '../frontend/actions/bench_actions'
 import * as filter from '../frontend/actions/filter_actions'
 
 
+
 // Test
 // window.makeUser = userUtil.createUser
 
@@ -23,6 +24,7 @@ window.api = api;
 window.sessions = sessions
 window.bench = bench
 window.filter = filter
+
 
 // Test
 

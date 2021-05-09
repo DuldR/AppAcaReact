@@ -44,6 +44,7 @@ class BenchMap extends React.Component {
         this.handleIdle(this.map);
         this.handleClick(this.map);
         this.MarkerManager.updateMarkers();
+
     }
 
     componentDidUpdate() {
@@ -61,6 +62,7 @@ class BenchMap extends React.Component {
             }
 
             // This is calling the filter
+
             this.props.fetchFilter("bounds", boundsObject)
 
         })
