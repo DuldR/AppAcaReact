@@ -1,5 +1,5 @@
 import { connect } from 'react-redux'
-import { Search } from './search'
+import Search from './search'
 import * as Actions from '../../actions/bench_actions'
 import * as Filters from '../../actions/filter_actions'
 
