@@ -12,8 +12,8 @@ const initialState = {
 const loadingReducer = (state = initialState, action) => {
   Object.freeze(state);
   switch (action.type) {
-    case RECEIVE_BENCHES:
-      return Object.assign({}, state, { indexLoading: true });
+    // case RECEIVE_BENCHES:
+    //   return Object.assign({}, state, { indexLoading: true });
     case START_LOADING_ALL_BENCHES:
       return Object.assign({}, state, { indexLoading: true });
     default:

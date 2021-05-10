@@ -23,8 +23,13 @@ export const startLoadingAllBenches = () => ({
     type: START_LOADING_ALL_BENCHES
 });
 
-export const fetchBenches = (filters) => (dispatch) => {
-    return APIUtil.getBenches(filters).then(benches => dispatch(receiveBenches(benches)))
+export const fetchBenches = (filters) => (dispatch, getState) => {
+    return APIUtil.getBenches(filters).then(benches => {
+        if (getState().ui.loaded.indexLoading === false) {
+            dispatch(startLoadingAllBenches())
+        }
+        dispatch(receiveBenches(benches))
+    })
 }
 
 export const createBench = (bench) => dispatch => (
