@@ -12,7 +12,18 @@ class FilterForm extends React.Component {
 
     handleChange(e) {
         e.preventDefault()
-        this.props.fetchFilter("maxSeating", parseInt(e.currentTarget.value))
+
+        switch(e.currentTarget.classList[0]) {
+            case ("form-maxSeating"):
+                this.props.fetchFilter("maxSeating", parseInt(e.currentTarget.value))
+                break
+            case ('form-minSeating'):
+                this.props.fetchFilter("minSeating", parseInt(e.currentTarget.value))
+                break
+            default:
+                break
+        }
+        
     }
 
 
@@ -22,10 +33,10 @@ class FilterForm extends React.Component {
             <form>
 
                 <label >Max Seating</label>
-                <input onChange={this.handleChange} type='text' ></input>
+                <input className={"form-maxSeating"} onChange={this.handleChange} type='text' ></input>
                 <br></br>
                 <label >Min Seating </label>
-                <input  type='text'></input>
+                <input className={"form-minSeating"} onChange={this.handleChange}type='text'></input>
                 <br></br>
 
             </form>

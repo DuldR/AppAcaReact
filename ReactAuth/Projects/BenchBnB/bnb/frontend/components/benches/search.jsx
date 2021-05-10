@@ -40,6 +40,7 @@ class Search extends React.Component {
         const {fetchBenches, fetchFilter, benches, maxSeating, minSeating, loaded } = this.props
 
         if (loaded === false) { return <h1>Loading</h1>}
+
         return (
             <div>
                 <FilterForm fetchFilter={fetchFilter} maxSeating={maxSeating} minSeating={minSeating} /> 
