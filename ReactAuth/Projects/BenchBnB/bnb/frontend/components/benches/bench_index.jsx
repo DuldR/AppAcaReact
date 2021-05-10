@@ -9,20 +9,6 @@ class BenchIndex extends React.Component {
     }
 
 
-    // This isnt whats calling index.
-    componentDidMount() {
-        // let testP = { bounds: {
-        //     northEast: {lat: 3.80971, lng: -122.39208},
-        //     southWest: {lat: 36, lng: -123},
-        //     max_seating: 99,
-        //     min_seating: 0
-        // }}
-
-
-        // this.props.fetchBenches(testP);
-    }
-
-
     render() {
 
         if (Object.entries(this.props.benches).length === 0) { return <h1> Loading </h1>}

@@ -21,6 +21,7 @@ class BenchMap extends React.Component {
         this.map = new google.maps.Map(this.mapNode, mapOptions)
         this.MarkerManager = new MarkerManager(this.map);
 
+
         // Sample Marker
         // this.myMarker = new google.maps.Marker({
         //     position: { lat: 37.781035, lng: -122.447908 },
@@ -60,8 +61,6 @@ class BenchMap extends React.Component {
             boundsObject = { northEast: { lat: b.getNorthEast().lat(), lng: b.getNorthEast().lng() }, 
                 southWest: { lat: b.getSouthWest().lat(), lng: b.getSouthWest().lng() }
             }
-
-            // This is calling the filter
 
             this.props.fetchFilter("bounds", boundsObject)
 

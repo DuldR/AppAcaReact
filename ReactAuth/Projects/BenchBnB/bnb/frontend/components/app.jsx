@@ -20,7 +20,7 @@ const App = () => (
       <AuthRoute path={"/login"} exact={true} component={LoginFormContainer} />
       <ProtectedRoute path={"/benches/new"} component={BenchFormContainer} />
 
-      <Route exact path="/" component={SearchContainer}/>
+      <ProtectedRoute path={"/"} component={SearchContainer} />
     
   </div>
 );
