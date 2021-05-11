@@ -24,7 +24,6 @@ class BenchIndex extends React.Component {
         return (
             <section>
                 <ul>
-
                     {listBenches}
                 </ul>
             </section>

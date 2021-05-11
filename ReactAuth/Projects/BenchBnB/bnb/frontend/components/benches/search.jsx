@@ -1,6 +1,7 @@
 import BenchMap from './bench_map'
 import BenchIndex from './bench_index'
 import FilterForm from './filter_form'
+import BenchShowContainer from './bench_show_container'
 import React from 'react'
 import { Route } from 'react-router-dom'
 
@@ -43,6 +44,8 @@ class Search extends React.Component {
                     <BenchIndex {...props} benches={benches}/>
                     )}
                 />
+
+                <Route exact path='/benches/:benchId' component={BenchShowContainer} />
                 
             </div>
 

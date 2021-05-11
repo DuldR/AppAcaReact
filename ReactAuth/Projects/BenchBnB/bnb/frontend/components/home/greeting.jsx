@@ -46,7 +46,7 @@ class Greeting extends React.Component{
 
 
     render() {
-        // const {currentUser} = this.props
+
 
         return (
             <div>
@@ -54,12 +54,6 @@ class Greeting extends React.Component{
             </div>
         )
 
-        // This is NG
-        // return (
-
-        //     {this.greeting()}
-
-        // )
 
     }
 }

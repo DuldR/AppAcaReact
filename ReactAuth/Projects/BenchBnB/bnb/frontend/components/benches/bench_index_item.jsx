@@ -13,6 +13,9 @@ export const BenchIndexItem = (props) => {
             </Link>
             <ul>
                 <li>
+                    {props.benchId}
+                </li>
+                <li>
                     <label> Lat: </label>
                     {props.lat}
                 </li>

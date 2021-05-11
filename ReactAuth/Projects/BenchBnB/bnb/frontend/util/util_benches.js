@@ -17,6 +17,13 @@ export const getBenches = (filters) => {
 
 }
 
+export const getOneBench = (bench) => {
+    return $.ajax({
+        method: "GET",
+        url: `/api/benches/${benchId}`
+    })
+}
+
 // Test Params
 // let testP ={
 //     "northEast"=> {"lat"=>"37.80971", "lng"=>"-122.39208"},

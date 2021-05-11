@@ -10,8 +10,18 @@ class BenchShow extends React.Component {
 
 
     render() {
+
+
+        const { description, lat, seats, long, loaded } = this.props
+
+        console.log(this.props)
+
         return (
-            <h1>BenchShow</h1>
+            <ul>
+                <li>
+                    {this.props.bench.id}
+                </li>
+            </ul>
         )
     }
 }

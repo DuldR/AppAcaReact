@@ -1,11 +1,11 @@
 import { connect } from 'react-redux'
 import BenchShow from './bench_show'
+import { toObj } from '/frontend/reducers/selectors'
 
 
 const mapStateToProps = (state, ownProps) => ({
 
-    bench: state.entities.benches[ownProps.match.params.benchId],
-    test: {}
+    bench: toObj(state.entities.benches)[ownProps.match.params.benchId]
 
 
 })
