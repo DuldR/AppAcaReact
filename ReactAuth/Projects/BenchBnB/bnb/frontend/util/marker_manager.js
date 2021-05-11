@@ -6,11 +6,17 @@ export default class MarkerManager {
     }
 
     createMarkerFromBench(bench) {
-        return new google.maps.Marker({
+        let newMarker = new google.maps.Marker({
             position: { lat: bench.lat, lng: bench.long },
             map: this.map,
             title: bench.description
         })
+
+        newMarker.addListener("click", () => {
+            console.log("Howdy!")
+        })
+
+        return newMarker
     }
 
     updateMarkers(benches = []) {

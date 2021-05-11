@@ -30,12 +30,10 @@ class BenchMap extends React.Component {
         if (this.props.location.pathname === "/") {
             this.handleIdle(this.map);
             this.handleClick(this.map);
+            this.MarkerManager.updateMarkers();
         } else {
-
+            this.MarkerManager.updateMarkers(this.props.benches);
         }
-
-        this.MarkerManager.updateMarkers();
-
     }
 
     componentDidUpdate() {

@@ -48,7 +48,6 @@ class Search extends React.Component {
                 />
 
                 <Switch>
-                    {/* <Route exact path={"/benches/new"} component={BenchFormContainer} /> */}
                     <NewRoute exact={true} path={"/benches/new"} component={BenchFormContainer} />
                     <Route exact path='/benches/:benchId' component={BenchShowContainer} />
                 </Switch>
