@@ -25,10 +25,23 @@ class BenchShow extends React.Component {
         return (
 
             <section>
-                <BenchMap  drag={false} />
+                <BenchMap  center={{lat: lat, lng: long}} drag={false} />
                 <ul>
                     <li>
+                        <label>Name: </label>
                         {description}
+                    </li>
+                    <li>
+                        <label>Seats: </label>
+                        {seats}
+                    </li>
+                    <li>
+                        <label>Lat: </label>
+                        {lat}
+                    </li>
+                    <li>
+                        <label>Long: </label>
+                        {long}
                     </li>
                 </ul>
 

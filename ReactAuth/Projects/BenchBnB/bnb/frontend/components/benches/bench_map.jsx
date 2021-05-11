@@ -14,8 +14,11 @@ class BenchMap extends React.Component {
 
     componentDidMount() {
 
+        // SF if needed
+        // { lat: 37.7758, lng: -122.435 }
+
         const mapOptions = {
-            center: { lat: 37.7758, lng: -122.435 }, // this is SF
+            center: this.props.center || { lat: 37.7758, lng: -122.435 },
             zoom: 13,
             draggable: this.props.drag
         };
@@ -56,7 +59,7 @@ class BenchMap extends React.Component {
     }
 
     handleShowIdle(map) {
-        
+
     }
 
     handleClick(map) {
