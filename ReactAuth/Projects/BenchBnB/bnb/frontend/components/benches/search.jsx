@@ -25,26 +25,25 @@ class Search extends React.Component {
     render() {
 
         
-        const {fetchBenches, fetchFilter, benches, bounds, maxSeating, minSeating, loaded } = this.props
+        const {fetchFilter, benches, bounds, maxSeating, minSeating, loaded } = this.props
 
         if (loaded === false) { return <h1>Loading</h1>}
 
         return (
             <div>
-                <section>
-                    <BenchMap fetchFilter={fetchFilter} benches={benches} />
-                </section>
-            
-                {/* <FilterForm fetchFilter={fetchFilter} maxSeating={maxSeating} minSeating={minSeating} />  */}
+    
+                
                 <Route exact path='/' render={(props) => (
-                    <FilterForm {...props} fetchFilter={fetchFilter} maxSeating={maxSeating} minSeating={minSeating} />
-                    )}
-                />
-                <Route exact path='/' render={(props) => (
-                    <BenchIndex {...props} bounds={bounds} fetchFilter={fetchFilter} benches={benches}/>
-                    )}
-                />
+                    <section>
+                        <BenchMap {...props} fetchFilter={fetchFilter} benches={benches} />
+                        <FilterForm {...props} fetchFilter={fetchFilter} maxSeating={maxSeating} minSeating={minSeating} />
+                        <BenchIndex {...props} bounds={bounds} fetchFilter={fetchFilter} benches={benches}/>
 
+                    </section>
+                    
+                    )}
+                />
+                
                 <Route exact path='/benches/:benchId' component={BenchShowContainer} />
                 
             </div>
