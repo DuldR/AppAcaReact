@@ -23,14 +23,3 @@ export const getOneBench = (bench) => {
         url: `/api/benches/${benchId}`
     })
 }
-
-// Test Params
-// let testP ={
-//     "northEast"=> {"lat"=>"37.80971", "lng"=>"-122.39208"},
-//     "southWest"=> {"lat"=>"36", "lng"=>"-123"}
-// }
-
-// testP = {bounds: {
-//     northEast: {lat: 37.80971, lng: -122.39208},
-//     southWest: {lat: 36, lng: -123}
-// }}
