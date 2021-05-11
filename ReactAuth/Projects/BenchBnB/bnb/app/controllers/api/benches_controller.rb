@@ -14,16 +14,14 @@ class Api::BenchesController < ApplicationController
 
     def index
 
-    
-        puts "Begin params"
-        # puts params
-        # You could refactor this a bit better
-        # This is a single DB hit
         @benches = Bench.in_bounds(params[:bounds]).where("seats >= ? and seats <= ?", params[:min_seating], params[:max_seating])
-
-
         render json: @benches
 
+    end
+
+    def show
+        @bench = Bench.find(params[:id])
+        render :show
     end
 
 
