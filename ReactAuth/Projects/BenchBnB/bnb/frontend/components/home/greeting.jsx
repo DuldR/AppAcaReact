@@ -38,6 +38,7 @@ class Greeting extends React.Component{
         return (
             <div>
                 <h1>Welcome, {currentUser.username}</h1>
+                <Link to="/">Return to Index</Link>
                 <button onClick={this.logout}>Log out?</button>
             </div>
         )
