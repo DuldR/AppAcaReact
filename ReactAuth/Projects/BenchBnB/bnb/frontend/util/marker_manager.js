@@ -1,3 +1,5 @@
+import { browserHistory } from 'react-router'
+
 export default class MarkerManager {
     constructor(map) {
         this.map = map;
@@ -5,16 +7,16 @@ export default class MarkerManager {
 
     }
 
-    createMarkerFromBench(bench) {
+    createMarkerFromBench(bench, benchId) {
         let newMarker = new google.maps.Marker({
             position: { lat: bench.lat, lng: bench.long },
             map: this.map,
             title: bench.description
         })
 
-        newMarker.addListener("click", () => {
-            console.log("Howdy!")
-        })
+        // newMarker.addListener("click", () => {
+        //     browserHistory.push(`/benches/${benchId}`)
+        // })
 
         return newMarker
     }
@@ -28,7 +30,7 @@ export default class MarkerManager {
 
         for (const [key, value] of Object.entries(lookupBench)) {
             if (this.markers[key] === undefined) {
-                this.markers[key] = this.createMarkerFromBench(lookupBench[key])
+                this.markers[key] = this.createMarkerFromBench(lookupBench[key], key)
             }
         }
 

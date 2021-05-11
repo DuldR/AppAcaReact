@@ -10,6 +10,7 @@ class BenchMap extends React.Component {
 
         this.handleIdle = this.handleIdle.bind(this)
         this.handleClick = this.handleClick.bind(this)
+        this.handleMarker = this.handleMarker.bind(this)
     }
 
     componentDidMount() {
@@ -33,11 +34,29 @@ class BenchMap extends React.Component {
             this.MarkerManager.updateMarkers();
         } else {
             this.MarkerManager.updateMarkers(this.props.benches);
+            
         }
+
     }
 
     componentDidUpdate() {
         this.MarkerManager.updateMarkers(this.props.benches);
+        this.handleMarker(this.MarkerManager)
+    }
+
+    handleMarker(markerHolder) {
+
+
+        for (let key in markerHolder.markers) {
+            google.maps.event.clearListeners(markerHolder.markers[key], "click")
+            google.maps.event.addListenerOnce(markerHolder.markers[key], "click", () => {
+                this.props.history.push({
+                    pathname: `benches/${key}`
+                })
+            })
+        }
+
+      
     }
 
     handleIdle(map) {
@@ -53,10 +72,6 @@ class BenchMap extends React.Component {
             this.props.fetchFilter("bounds", boundsObject)
 
         })
-
-    }
-
-    handleShowIdle(map) {
 
     }
 
