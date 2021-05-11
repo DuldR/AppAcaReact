@@ -3,6 +3,7 @@ import * as APIUtil from '../util/util_benches'
 export const RECEIVE_BENCHES = "RECEIVE_BENCHES"
 export const RECEIVE_ONE_BENCH = "RECEIVE_ONE_BENCH"
 export const START_LOADING_ALL_BENCHES = "START_LOADING_ALL_BENCHES"
+export const START_LOADING_ONE_BENCH = "START_LOADING_ONE_BENCH"
 
 
 export const receiveBenches = (benches) => {
@@ -23,6 +24,10 @@ export const startLoadingAllBenches = () => ({
     type: START_LOADING_ALL_BENCHES
 });
 
+export const startLoadingOneBench = () => ({
+    type: START_LOADING_ONE_BENCH
+});
+
 export const fetchBenches = (filters) => (dispatch, getState) => {
     return APIUtil.getBenches(filters).then(benches => {
         if (getState().ui.loaded.indexLoading === false) {
@@ -32,8 +37,11 @@ export const fetchBenches = (filters) => (dispatch, getState) => {
     })
 }
 
-export const fetchOnePokemon = (bench) => (dispatch) => {
-    return APIUtil.getOneBench(bench).then(bench => dispatch(receiveOneBench(bench)))
+export const fetchOneBench = (bench) => (dispatch, getState) => {
+    return APIUtil.getOneBench(bench).then(bench => {
+        dispatch(receiveOneBench(bench))
+        dispatch(startLoadingOneBench())
+    })
 }
 
 export const createBench = (bench) => dispatch => (

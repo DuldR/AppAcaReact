@@ -17,7 +17,7 @@ export const getBenches = (filters) => {
 
 }
 
-export const getOneBench = (bench) => {
+export const getOneBench = (benchId) => {
     return $.ajax({
         method: "GET",
         url: `/api/benches/${benchId}`

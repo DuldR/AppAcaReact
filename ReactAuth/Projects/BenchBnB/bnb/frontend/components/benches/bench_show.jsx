@@ -7,19 +7,26 @@ class BenchShow extends React.Component {
 
     }
 
+    componentDidMount() {
+
+        // console.log(this.props)
+        this.props.fetchBench(this.props.match.params.benchId)
+    }
+
 
 
     render() {
 
 
-        const { description, lat, seats, long, loaded } = this.props
 
-        console.log(this.props)
 
+        if ( this.props.loaded === false ) { return <h1>Loading</h1> }
+        
+        const { description, lat, seats, long } = this.props.bench
         return (
             <ul>
                 <li>
-                    {this.props.bench.id}
+                    {description}
                 </li>
             </ul>
         )
