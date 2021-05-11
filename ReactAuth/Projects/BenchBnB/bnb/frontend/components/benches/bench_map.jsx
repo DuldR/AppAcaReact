@@ -22,28 +22,13 @@ class BenchMap extends React.Component {
         this.MarkerManager = new MarkerManager(this.map);
 
 
-        // Sample Marker
-        // this.myMarker = new google.maps.Marker({
-        //     position: { lat: 37.781035, lng: -122.447908 },
-        //     map: this.map,
-        //     title: "Anus."
+        if (this.props.location.pathname === "/") {
+            this.handleIdle(this.map);
+            this.handleClick(this.map);
+        } else {
+            
+        }
 
-        // })
-        //
-        // map.addListener("center_changed", () => {
-        // // 3 seconds after the center of the map has changed, pan back to the
-        // // marker.
-        // window.setTimeout(() => {
-        //     map.panTo(marker.getPosition());
-        // }, 3000);
-        // });
-
-        // this.map.addListener("bounds_changed", () => {
-        //     console.log("fired")
-        // })
-
-        this.handleIdle(this.map);
-        this.handleClick(this.map);
         this.MarkerManager.updateMarkers();
 
     }

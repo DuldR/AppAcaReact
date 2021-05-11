@@ -1,4 +1,5 @@
 import React from 'react';
+import BenchMap from './bench_map'
 
 class BenchShow extends React.Component {
 
@@ -8,8 +9,6 @@ class BenchShow extends React.Component {
     }
 
     componentDidMount() {
-
-        // console.log(this.props)
         this.props.fetchBench(this.props.match.params.benchId)
     }
 
@@ -24,11 +23,17 @@ class BenchShow extends React.Component {
         
         const { description, lat, seats, long } = this.props.bench
         return (
-            <ul>
-                <li>
-                    {description}
-                </li>
-            </ul>
+
+            <section>
+                <BenchMap  />
+                <ul>
+                    <li>
+                        {description}
+                    </li>
+                </ul>
+
+            </section>
+                
         )
     }
 }
