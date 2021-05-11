@@ -13,9 +13,11 @@ class BenchMap extends React.Component {
     }
 
     componentDidMount() {
+
         const mapOptions = {
             center: { lat: 37.7758, lng: -122.435 }, // this is SF
-            zoom: 13
+            zoom: 13,
+            draggable: this.props.drag
         };
 
         this.map = new google.maps.Map(this.mapNode, mapOptions)
@@ -26,7 +28,7 @@ class BenchMap extends React.Component {
             this.handleIdle(this.map);
             this.handleClick(this.map);
         } else {
-            
+
         }
 
         this.MarkerManager.updateMarkers();
@@ -56,9 +58,6 @@ class BenchMap extends React.Component {
     handleClick(map) {
 
         map.addListener('click', (e) => {
-
-            // THis is how to get the coords
-            // console.log(e.latLng.lat())
 
             this.props.history.push({
                 pathname: "benches/new",

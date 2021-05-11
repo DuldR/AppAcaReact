@@ -25,7 +25,7 @@ class BenchShow extends React.Component {
         return (
 
             <section>
-                <BenchMap  />
+                <BenchMap  drag={false} />
                 <ul>
                     <li>
                         {description}
