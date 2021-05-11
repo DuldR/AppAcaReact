@@ -1,9 +1,12 @@
 import BenchMap from './bench_map'
 import BenchIndex from './bench_index'
 import FilterForm from './filter_form'
+import BenchFormContainer from './bench_form_container'
 import BenchShowContainer from './bench_show_container'
 import React from 'react'
-import { Route } from 'react-router-dom'
+import { NewRoute } from '/frontend/util/route_util'
+import { Route, Switch } from 'react-router-dom'
+import BenchForm from './bench_form'
 
 class Search extends React.Component {
     constructor(props) {
@@ -43,8 +46,13 @@ class Search extends React.Component {
                     
                     )}
                 />
+
+                <Switch>
+                    {/* <Route exact path={"/benches/new"} component={BenchFormContainer} /> */}
+                    <NewRoute exact={true} path={"/benches/new"} component={BenchFormContainer} />
+                    <Route exact path='/benches/:benchId' component={BenchShowContainer} />
+                </Switch>
                 
-                <Route exact path='/benches/:benchId' component={BenchShowContainer} />
                 
             </div>
 

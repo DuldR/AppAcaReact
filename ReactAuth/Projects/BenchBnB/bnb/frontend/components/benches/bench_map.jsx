@@ -55,6 +55,10 @@ class BenchMap extends React.Component {
 
     }
 
+    handleShowIdle(map) {
+        
+    }
+
     handleClick(map) {
 
         map.addListener('click', (e) => {

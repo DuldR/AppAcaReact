@@ -1,6 +1,7 @@
 import React from "react"
 import { Route, withRouter, Redirect } from 'react-router'
 import { connect } from 'react-redux'
+import { Component } from "react";
 
 const Auth = ({ component: Component, path, loggedIn, exact }) => (
   <Route
@@ -21,6 +22,20 @@ const ProRoute = ({ component: Component, path, loggedIn, exact }) => (
   />
 );
 
+const CreateRoute = ({ component: Component, path, exact}) => (
+  <Route
+    path={path}
+    exact={exact}
+    render={props =>
+      // console.log(props.location.search.length)
+
+      props.location.search.length === 0 ? <Redirect to='/' /> : <Component {...props} />
+    }
+  />
+)
+
+// <Redirect from="/benches/new" to="/" />
+
 const mapStateToProps = state => {
   return { loggedIn: Boolean(state.session.id) };
 };
@@ -37,4 +52,11 @@ export const ProtectedRoute = withRouter(
     mapStateToProps,
     null
   )(ProRoute)
+);
+
+export const NewRoute = withRouter(
+  connect(
+    mapStateToProps,
+    null
+  )(CreateRoute)
 );

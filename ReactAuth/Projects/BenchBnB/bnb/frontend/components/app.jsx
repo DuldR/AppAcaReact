@@ -18,7 +18,7 @@ const App = () => (
 
       <AuthRoute path={"/signup"} exact={true} component={SignUpFormContainer} />
       <AuthRoute path={"/login"} exact={true} component={LoginFormContainer} />
-      <ProtectedRoute path={"/benches/new"} component={BenchFormContainer} />
+      {/* <ProtectedRoute path={"/benches/new"} component={BenchFormContainer} /> */}
 
       <ProtectedRoute path={"/"} component={SearchContainer} />
     
