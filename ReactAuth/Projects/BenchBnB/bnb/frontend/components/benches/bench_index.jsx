@@ -1,7 +1,6 @@
 import React from 'react'
-import { Route } from 'react-router-dom'
 import { BenchIndexItem } from './bench_index_item'
-import BenchShowContainer from './bench_show_container'
+
 
 
 class BenchIndex extends React.Component {
@@ -24,8 +23,8 @@ class BenchIndex extends React.Component {
 
         return (
             <section>
-                <Route path='/benches/:benchId' component={BenchShowContainer} />
                 <ul>
+
                     {listBenches}
                 </ul>
             </section>

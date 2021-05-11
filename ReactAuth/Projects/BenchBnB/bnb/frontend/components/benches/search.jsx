@@ -2,20 +2,7 @@ import BenchMap from './bench_map'
 import BenchIndex from './bench_index'
 import FilterForm from './filter_form'
 import React from 'react'
-
-// export const Search = (props) => {
-
-//     const {fetchBenches, fetchFilter, benches, maxSeating, minSeating } = props
-
-//     return (
-//         <div>
-//             <FilterForm fetchFilter={fetchFilter} maxSeating={maxSeating} minSeating={minSeating} /> 
-//             <br></br>
-//             <BenchIndex fetchBenches={fetchBenches} benches={benches} />
-//             <BenchMap fetchFilter={fetchFilter} benches={benches} />
-//         </div>
-//     )
-// }
+import { Route } from 'react-router-dom'
 
 class Search extends React.Component {
     constructor(props) {
@@ -43,10 +30,19 @@ class Search extends React.Component {
 
         return (
             <div>
+                <section>
+                    <BenchMap fetchFilter={fetchFilter} benches={benches} />
+                </section>
+            
                 <FilterForm fetchFilter={fetchFilter} maxSeating={maxSeating} minSeating={minSeating} /> 
                 <br></br>
-                <BenchIndex fetchBenches={fetchBenches} benches={benches} />
-                <BenchMap fetchFilter={fetchFilter} benches={benches} />
+                {/* <BenchIndex benches={benches} /> */}
+
+                <Route path='/' render={(props) => (
+                    <BenchIndex {...props} benches={benches}/>
+                    )}
+                />
+                
             </div>
 
         )
