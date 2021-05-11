@@ -8,7 +8,8 @@ const mapStateToProps = state => ({
     benches: state.entities.benches,
     maxSeating: state.ui.filters.maxSeating,
     minSeating: state.ui.filters.minSeating,
-    loaded: state.ui.loaded.indexLoading
+    loaded: state.ui.loaded.indexLoading,
+    bounds: state.ui.filters.bounds
 
 })
 

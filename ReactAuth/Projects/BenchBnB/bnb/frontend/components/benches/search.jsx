@@ -25,7 +25,7 @@ class Search extends React.Component {
     render() {
 
         
-        const {fetchBenches, fetchFilter, benches, maxSeating, minSeating, loaded } = this.props
+        const {fetchBenches, fetchFilter, benches, bounds, maxSeating, minSeating, loaded } = this.props
 
         if (loaded === false) { return <h1>Loading</h1>}
 
@@ -41,7 +41,7 @@ class Search extends React.Component {
                     )}
                 />
                 <Route exact path='/' render={(props) => (
-                    <BenchIndex {...props} benches={benches}/>
+                    <BenchIndex {...props} bounds={bounds} fetchFilter={fetchFilter} benches={benches}/>
                     )}
                 />
 

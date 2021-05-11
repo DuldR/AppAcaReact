@@ -7,7 +7,19 @@ class BenchIndex extends React.Component {
 
     constructor(props) {
         super(props)
+
+        
     }
+
+
+
+    componentDidMount() {
+        this.props.fetchFilter("bounds", this.props.bounds)
+
+    }
+    
+
+
 
 
     render() {

@@ -12,6 +12,7 @@ class Greeting extends React.Component{
         this.signup = this.signup.bind(this)
         this.greeting = this.greeting.bind(this)
         this.logout = this.logout.bind(this)
+        this.refresh = this.refresh.bind(this)
     }
 
 
@@ -31,6 +32,11 @@ class Greeting extends React.Component{
 
     logout() {
         this.props.logout();
+    }
+
+    refresh(e) {
+        e.preventDefault()
+        window.location.reload();
     }
 
     greeting() {
