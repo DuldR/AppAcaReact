@@ -1,11 +1,16 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 
 
 export const BenchIndexItem = (props) => {
 
     return ( 
         <li>
-            {props.desc}
+            <Link to={`/benches/${props.benchId}`}>
+            
+                {props.desc}
+
+            </Link>
             <ul>
                 <li>
                     <label> Lat: </label>
@@ -21,6 +26,8 @@ export const BenchIndexItem = (props) => {
                     {props.seats}
                 </li>
             </ul>
+
+        
         </li>
     )
 }

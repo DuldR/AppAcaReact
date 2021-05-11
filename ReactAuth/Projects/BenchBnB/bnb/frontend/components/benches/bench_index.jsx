@@ -1,5 +1,7 @@
 import React from 'react'
+import { Route } from 'react-router-dom'
 import { BenchIndexItem } from './bench_index_item'
+import BenchShowContainer from './bench_show_container'
 
 
 class BenchIndex extends React.Component {
@@ -15,15 +17,18 @@ class BenchIndex extends React.Component {
         if (this.props.benches === undefined) { return <h1> Loading </h1>}
 
         const listBenches = this.props.benches.map((bench, idx) => {
-            return <BenchIndexItem desc={bench.description} lat={bench.lat} long={bench.long} seats={bench.seats} key={"bench-item-" + idx}/>
+            return <BenchIndexItem benchId={bench.id} desc={bench.description} lat={bench.lat} long={bench.long} seats={bench.seats} key={"bench-item-" + idx}/>
         })
 
 
 
         return (
-            <div>
-                {listBenches}
-            </div>
+            <section>
+                <Route path='/benches/:benchId' component={BenchShowContainer} />
+                <ul>
+                    {listBenches}
+                </ul>
+            </section>
         )
     }
 }
