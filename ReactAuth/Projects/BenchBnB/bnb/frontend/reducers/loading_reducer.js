@@ -5,10 +5,15 @@ import {
   START_LOADING_ONE_BENCH
 } from '../actions/bench_actions';
 
+import {
+  START_LOADING_ALL_REVIEWS
+} from '../actions/review_actions'
+
 
 const initialState = {
   indexLoading: false,
   detailLoading: false,
+  reviewLoading: false
 };
 
 const loadingReducer = (state = initialState, action) => {
@@ -18,6 +23,8 @@ const loadingReducer = (state = initialState, action) => {
       return Object.assign({}, state, { indexLoading: true });
     case START_LOADING_ONE_BENCH:
       return Object.assign({}, state, {detailLoading: true});
+    case START_LOADING_ALL_REVIEWS:
+      return Object.assign({}, state, {reviewLoading: true});
     default:
       return state;
   }

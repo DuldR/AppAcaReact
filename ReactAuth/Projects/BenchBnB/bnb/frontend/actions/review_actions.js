@@ -12,9 +12,14 @@ export const receiveReviews = (reviews) => {
     }
 }
 
+export const startLoadingAllReviews = () => ({
+    type: START_LOADING_ALL_REVIEWS
+});
+
 
 export const fetchReviews = (bench) => (dispatch) => {
     return APIUtil.getReviews(bench).then(reviews => {
         dispatch(receiveReviews(reviews))
+        dispatch(startLoadingAllReviews())
     })
 }

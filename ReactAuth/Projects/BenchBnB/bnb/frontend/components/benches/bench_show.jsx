@@ -1,5 +1,6 @@
 import React from 'react';
 import BenchMap from './bench_map'
+import ReviewIndexContainer from '../reviews/review_index_container'
 
 class BenchShow extends React.Component {
 
@@ -46,6 +47,7 @@ class BenchShow extends React.Component {
                     </li>
                 </ul>
 
+                <ReviewIndexContainer />
             </section>
                 
         )
