@@ -16,8 +16,16 @@ Bench.create!(description: "Test Bench 3", lat: 37.774343, long: -122.457431, se
 Bench.create!(description: "Test Bench 4", lat: 37.781894, long: -122.451058, seats: 4)
 
 # Reviews
-Review.create!(comment: "Test Review 1", rating: 5)
+Review.create!(comment: "Test Review 1", rating: 5, user_id: 1, bench_id: 1)
+Review.create!(comment: "Test Review 2", rating: 4, user_id: 1, bench_id: 1)
+Review.create!(comment: "Test Review 3", rating: 3, user_id: 1, bench_id: 2)
+Review.create!(comment: "Test Review 4", rating: 2, user_id: 1, bench_id: 3)
+Review.create!(comment: "Test Review 5", rating: 1, user_id: 1, bench_id: 4)
 
 # Bench Reviews
 
-BenchReview.create!(user_id: 1, bench_id: 1, review_id: 1)
+# BenchReview.create!(user_id: 1, bench_id: 1, review_id: 1)
+# BenchReview.create!(user_id: 1, bench_id: 1, review_id: 2)
+# BenchReview.create!(user_id: 1, bench_id: 1, review_id: 3)
+# BenchReview.create!(user_id: 1, bench_id: 2, review_id: 4)
+# BenchReview.create!(user_id: 1, bench_id: 2, review_id: 5)

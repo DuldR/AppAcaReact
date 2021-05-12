@@ -8,11 +8,12 @@ class User < ApplicationRecord
     validates :password, length: { minimum: 6, allow_nil: true }
 
 
-    has_many :bench_reviews, dependent: :destroy
+    # has_many :bench_reviews, dependent: :destroy
     
-    has_many :reviews,
-    through: :bench_reviews,
-    source: :review
+    # has_many :reviews,
+    # through: :bench_reviews,
+    # source: :review
+    has_many :reviews
 
    
 
