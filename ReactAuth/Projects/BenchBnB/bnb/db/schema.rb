@@ -10,10 +10,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_05_05_203243) do
+ActiveRecord::Schema.define(version: 2021_05_12_153315) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "bench_reviews", force: :cascade do |t|
+    t.integer "bench_id"
+    t.integer "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "benches", force: :cascade do |t|
     t.string "description"
@@ -22,6 +29,13 @@ ActiveRecord::Schema.define(version: 2021_05_05_203243) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "seats", null: false
+  end
+
+  create_table "reviews", force: :cascade do |t|
+    t.string "comment", null: false
+    t.integer "rating", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "users", force: :cascade do |t|
