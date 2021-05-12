@@ -2,6 +2,7 @@ import { connect } from 'react-redux'
 import BenchShow from './bench_show'
 import { toObj } from '/frontend/reducers/selectors'
 import * as Bench from '../../actions/bench_actions'
+import * as Review from '../../actions/review_actions'
 
 
 const mapStateToProps = (state, ownProps) => ({
@@ -14,7 +15,8 @@ const mapStateToProps = (state, ownProps) => ({
 
 const mapDispatchToProps = dispatch => ({
 
-    fetchBench: (bench) => dispatch(Bench.fetchOneBench(bench))
+    fetchBench: (bench) => dispatch(Bench.fetchOneBench(bench)),
+    fetchReviews: (bench) => dispatch(Review.fetchReviews(bench))
 
 })
 

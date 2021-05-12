@@ -10,6 +10,7 @@ class BenchShow extends React.Component {
 
     componentDidMount() {
         this.props.fetchBench(this.props.match.params.benchId)
+        this.props.fetchReviews({review:{lookup_bench_id: this.props.match.params.benchId}})
     }
 
 

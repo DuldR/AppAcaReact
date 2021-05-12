@@ -12,6 +12,7 @@ import * as api from '../frontend/util/util_reviews'
 // import * as sessions from '../frontend/actions/session_actions'
 // import * as bench from '../frontend/actions/bench_actions'
 // import * as filter from '../frontend/actions/filter_actions'
+import * as review from '../frontend/actions/review_actions'
 
 
 
@@ -22,6 +23,7 @@ import * as api from '../frontend/util/util_reviews'
 // window.logout = sessionUtil.destroySession
 
 window.api = api;
+window.review = review
 // window.sessions = sessions
 // window.bench = bench
 // window.filter = filter
