@@ -38,8 +38,8 @@ class Search extends React.Component {
                 
                 <Route exact path='/' render={(props) => (
                     <section>
-                        {/* <BenchMap {...props} fetchFilter={fetchFilter} benches={benches} drag={true}/>
-                        <FilterForm {...props} fetchFilter={fetchFilter} maxSeating={maxSeating} minSeating={minSeating} /> */}
+                        <BenchMap {...props} fetchFilter={fetchFilter} benches={benches} drag={true}/>
+                        <FilterForm {...props} fetchFilter={fetchFilter} maxSeating={maxSeating} minSeating={minSeating} />
                         <BenchIndex {...props} bounds={bounds} fetchFilter={fetchFilter} benches={benches}/>
 
                     </section>

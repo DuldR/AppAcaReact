@@ -7,17 +7,19 @@ class BenchShow extends React.Component {
     constructor(props) {
         super(props)
 
+    
+
     }
 
     componentDidMount() {
+        console.log(this.props)
         this.props.fetchBench(this.props.match.params.benchId)
-        this.props.fetchReviews({review:{lookup_bench_id: this.props.match.params.benchId}})
+        // this.props.fetchReviews({review:{lookup_bench_id: this.props.match.params.benchId}})
     }
 
 
 
     render() {
-
 
 
 

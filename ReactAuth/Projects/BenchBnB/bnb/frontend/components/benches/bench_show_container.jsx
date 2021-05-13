@@ -6,8 +6,9 @@ import * as Review from '../../actions/review_actions'
 
 
 const mapStateToProps = (state, ownProps) => ({
-
-    bench: toObj(state.entities.benches)[ownProps.match.params.benchId],
+    // NOT CORRECT
+    // bench: toObj(state.entities.benches)[ownProps.match.params.benchId],
+    bench: state.entities.benches[ownProps.match.params.benchId],
     loaded: state.ui.loaded.detailLoading
 
 

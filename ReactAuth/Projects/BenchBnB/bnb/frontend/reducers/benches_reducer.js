@@ -11,7 +11,7 @@ const benchesReducer = (state = {}, action) => {
         case RECEIVE_BENCHES:
             return action.benches
         case RECEIVE_ONE_BENCH:
-            return [action.bench]
+            return action.bench
         default:
             return state;
     }
