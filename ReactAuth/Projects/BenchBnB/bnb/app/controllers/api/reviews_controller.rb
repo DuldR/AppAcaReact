@@ -17,7 +17,6 @@ class Api::ReviewsController < ApplicationController
 
         @reviews = Review.where("bench_id = ?", review_params[:lookup_bench_id])
         render json: @reviews
-
     end
 
 

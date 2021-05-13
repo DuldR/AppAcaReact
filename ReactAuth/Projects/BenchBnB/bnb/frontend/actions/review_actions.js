@@ -13,7 +13,7 @@ export const receiveReviews = (reviews) => {
     }
 }
 
-export const receiveOneReviews = (review) => {
+export const receiveOneReview = (review) => {
     return {
         type: RECEIVE_ONE_REVIEW,
         review
@@ -30,4 +30,13 @@ export const fetchReviews = (bench) => (dispatch) => {
         dispatch(receiveReviews(reviews))
         dispatch(startLoadingAllReviews())
     })
+}
+
+export const createReview = (review) => (dispatch) => {
+    APIUtil.createReview(review).then(
+        review => {
+            dispatch(receiveOneReview(review))
+            return review
+        }
+    )
 }
