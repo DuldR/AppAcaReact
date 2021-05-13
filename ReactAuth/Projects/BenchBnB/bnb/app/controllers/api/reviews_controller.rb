@@ -13,9 +13,7 @@ class Api::ReviewsController < ApplicationController
 
 
     def index
-        # Does this work???
-        # @bench = Bench.find(review_params[:bench_id])
-        # @reviews = @bench.reviews
+
 
         @reviews = Review.where("bench_id = ?", review_params[:lookup_bench_id])
         render json: @reviews
