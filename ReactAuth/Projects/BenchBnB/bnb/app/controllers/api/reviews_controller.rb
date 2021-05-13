@@ -4,7 +4,7 @@ class Api::ReviewsController < ApplicationController
         @review = Review.new(review_params)
 
         if @review.save
-            render json: @review
+            render :create
         else
             render json: ["Not a valid review"], status: 422
         end

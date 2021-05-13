@@ -1,3 +1,3 @@
 json.set! :id do
-    json.extract! @review, :rating, :comment, :reviews
+    json.extract! @review, :rating, :comment
 end
