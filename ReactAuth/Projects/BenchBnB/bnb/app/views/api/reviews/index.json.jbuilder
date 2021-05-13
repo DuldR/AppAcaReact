@@ -1,5 +1,5 @@
-json.array! @reviews do |review|
+@reviews.each do |review|
     json.set! review.id do
-        json.rating review.rating
+        json.extract! review, :comment, :rating
     end
 end
