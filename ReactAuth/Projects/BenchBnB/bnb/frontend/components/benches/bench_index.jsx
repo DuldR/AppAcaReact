@@ -24,19 +24,19 @@ class BenchIndex extends React.Component {
 
     render() {
 
-        if (Object.entries(this.props.benches).length === 0) { return <h1> Loading </h1>}
-        if (this.props.benches === undefined) { return <h1> Loading </h1>}
+        // if (Object.entries(this.props.benches).length === 0) { return <h1> Loading </h1>}
+        // if (this.props.benches === undefined) { return <h1> Loading </h1>}
 
-        const listBenches = this.props.benches.map((bench, idx) => {
-            return <BenchIndexItem benchId={bench.id} desc={bench.description} lat={bench.lat} long={bench.long} seats={bench.seats} key={"bench-item-" + idx}/>
-        })
+        // const listBenches = this.props.benches.map((bench, idx) => {
+        //     return <BenchIndexItem benchId={bench.id} desc={bench.description} lat={bench.lat} long={bench.long} seats={bench.seats} key={"bench-item-" + idx}/>
+        // })
 
 
 
         return (
             <section>
                 <ul>
-                    {listBenches}
+                    Testing
                 </ul>
             </section>
         )

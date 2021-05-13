@@ -12,5 +12,11 @@ export const toObj = (benches) => {
 }
 
 export const selectAllReviews = (state) => {
-    return Object.values(state.entities.reviews)
+    return {"anus" : "test"}
+    // return Object.values(state.entities.reviews)
+}
+
+export const selectAllBenches = (state) => {
+
+    return Object.values(state.entities.benches)
 }
