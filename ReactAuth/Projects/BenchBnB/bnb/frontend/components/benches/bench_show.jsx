@@ -1,6 +1,9 @@
 import React from 'react';
 import BenchMap from './bench_map'
 import ReviewIndexContainer from '../reviews/review_index_container'
+import ReviewFormContainer from '../reviews/review_form_container'
+
+import { Route, Switch } from 'react-router-dom'
 
 class BenchShow extends React.Component {
 
@@ -49,6 +52,8 @@ class BenchShow extends React.Component {
                 </ul>
 
                 <ReviewIndexContainer />
+                <Route path='/benches/:benchId/review' component={ReviewFormContainer} />
+        
             </section>
                 
         )

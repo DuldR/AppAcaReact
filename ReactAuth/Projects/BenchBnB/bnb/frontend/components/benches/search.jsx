@@ -7,6 +7,7 @@ import React from 'react'
 import { NewRoute } from '/frontend/util/route_util'
 import { Route, Switch } from 'react-router-dom'
 import BenchForm from './bench_form'
+import ReviewFormContainer from '../reviews/review_form_container'
 
 class Search extends React.Component {
     constructor(props) {
@@ -49,7 +50,7 @@ class Search extends React.Component {
 
                 <Switch>
                     <NewRoute exact={true} path={"/benches/new"} component={BenchFormContainer} />
-                    <Route exact path='/benches/:benchId' component={BenchShowContainer} />
+                    <Route path='/benches/:benchId' component={BenchShowContainer} />
                 </Switch>
                 
                 
