@@ -1,9 +1,7 @@
 class Bench < ApplicationRecord
 
     has_many :reviews
-    # has_many :reviews,
-    # through: :bench_reviews,
-    # source: :review
+    has_one_attached :photo
 
     def self.in_bounds(bounds)
 

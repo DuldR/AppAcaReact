@@ -16,3 +16,12 @@ const mapDispatchToProps = dispatch => ({
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(BenchForm)
+
+        // let bench = { bench: this.state }
+        // const formData = new FormData();
+
+        // formData.append('bench[description]', this.state.description)
+        // formData.append('bench[lat]', 37)
+        // formData.append('bench[long]', 122)
+        // formData.append('bench[seats]', this.state.seats)
+        // formData.append('bench[photo]', this.state.photoFile)
