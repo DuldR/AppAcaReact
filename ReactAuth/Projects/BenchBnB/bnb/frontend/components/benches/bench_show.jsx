@@ -3,7 +3,7 @@ import BenchMap from './bench_map'
 import ReviewIndexContainer from '../reviews/review_index_container'
 import ReviewFormContainer from '../reviews/review_form_container'
 
-import { Route, Switch } from 'react-router-dom'
+import { Route, Link, withRouter } from 'react-router-dom'
 
 class BenchShow extends React.Component {
 
@@ -27,7 +27,7 @@ class BenchShow extends React.Component {
 
         if ( this.props.loaded === false ) { return <h1>Loading</h1> }
         
-        const { description, lat, seats, long } = this.props.bench
+        const { description, lat, seats, long, id } = this.props.bench
         return (
 
             <section>
@@ -51,7 +51,13 @@ class BenchShow extends React.Component {
                     </li>
                 </ul>
 
+                
                 <ReviewIndexContainer />
+
+                <Link to={`/benches/${id}/review`}>
+                    Leave a review?
+                </Link>
+
                 <Route path='/benches/:benchId/review' component={ReviewFormContainer} />
         
             </section>
