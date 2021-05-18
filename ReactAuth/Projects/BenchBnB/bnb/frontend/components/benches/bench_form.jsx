@@ -5,20 +5,43 @@ import { Route, Redirect } from 'react-router-dom'
 class BenchForm extends React.Component {
     constructor(props) {
         super(props);
-        this.state = { description: "", lat: this.props.lat, long: this.props.lng, seats: 0 }
+        this.state = { description: "", lat: this.props.lat, long: this.props.lng, seats: 0, photoFile: null }
 
         this.handleSubmit = this.handleSubmit.bind(this)
         this.addBench = this.addBench.bind(this)
+        this.handleFile = this.handleFile.bind(this)
     }
 
     handleSubmit(e) {
         e.preventDefault();
         let bench = { bench: this.state }
+        const formData = new FormData();
 
-        this.props.createBench(bench).then(
-            this.props.history.push('/')
-        )
+        formData.append('bench[description]', this.state.description)
+        formData.append('bench[lat]', this.state.lat)
+        formData.append('bench[long]', this.state.long)
+        formData.append('bench[seats]', this.state.seats)
+        if (this.state.photoFile) {
+            formData.append('bench[photo]', this.state.photoFile)
+        }
 
+        $.ajax({
+            method: "POST",
+            url: "api/benches",
+            data: formData,
+            contentType: false,
+            processData: false
+        })
+
+
+        // this.props.createBench(formData).then(
+        //     this.props.history.push('/')
+        // )
+
+    }
+
+    handleFile(e) {
+        this.setState({photoFile: e.currentTarget.files[0] })
     }
 
     addBench(e) {
@@ -53,6 +76,10 @@ class BenchForm extends React.Component {
                 <br></br>
                 <label >Long: </label>
                 <input className="form-lng" type='text' value={this.state.long} disabled></input>
+                <br>
+                </br>
+
+                <input type="file" onChange={this.handleFile}></input>
 
                 <button>Submit</button>
 

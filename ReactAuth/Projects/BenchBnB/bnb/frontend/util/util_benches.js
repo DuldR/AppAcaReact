@@ -4,8 +4,6 @@ export const createBench = (bench) => {
         method: "POST",
         url: "api/benches",
         data: bench
-        // contentType: false,
-        // processData: false
     })
 
 }
