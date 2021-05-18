@@ -44,12 +44,14 @@ export const fetchOneBench = (bench) => (dispatch, getState) => {
     })
 }
 
-export const createBench = (bench) => dispatch => (
-    APIUtil.createBench(bench).then(
+export const createBench = (bench) => dispatch => {
+    console.log("Thunk")
+    console.log(bench)
+    return APIUtil.createBench(bench).then(
         bench => {
             dispatch(receiveOneBench(bench));
             return bench
         }
     )
-)
+}
 

@@ -15,6 +15,8 @@ class BenchMap extends React.Component {
 
     componentDidMount() {
 
+        debugger
+
         // SF if needed
         // { lat: 37.7758, lng: -122.435 }
 

@@ -25,18 +25,19 @@ class BenchForm extends React.Component {
             formData.append('bench[photo]', this.state.photoFile)
         }
 
-        $.ajax({
-            method: "POST",
-            url: "api/benches",
-            data: formData,
-            contentType: false,
-            processData: false
-        })
+        // $.ajax({
+        //     method: "POST",
+        //     url: "api/benches",
+        //     data: formData,
+        //     contentType: false,
+        //     processData: false
+        // })
 
+        console.log(formData)
 
-        // this.props.createBench(formData).then(
-        //     this.props.history.push('/')
-        // )
+        this.props.createBench(formData).then(
+            this.props.history.push('/')
+        )
 
     }
 
