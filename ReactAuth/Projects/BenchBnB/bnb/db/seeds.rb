@@ -10,10 +10,10 @@
 User.create!(username: 1, password: 123456)
 
 # Benches
-Bench.create!(description: "Test Bench 1", lat: 37.747573, long: -122.442415, seats: 1)
-Bench.create!(description: "Test Bench 2", lat: 37.771836, long: -122.480727, seats: 2)
-Bench.create!(description: "Test Bench 3", lat: 37.774343, long: -122.457431, seats: 3)
-Bench.create!(description: "Test Bench 4", lat: 37.781894, long: -122.451058, seats: 4)
+Bench.create!(description: "Test Bench 1", lat: 37.747573, long: -122.442415, seats: 1, photo: nil )
+Bench.create!(description: "Test Bench 2", lat: 37.771836, long: -122.480727, seats: 2, photo: nil)
+Bench.create!(description: "Test Bench 3", lat: 37.774343, long: -122.457431, seats: 3, photo: nil)
+Bench.create!(description: "Test Bench 4", lat: 37.781894, long: -122.451058, seats: 4, photo: nil)
 
 # Reviews
 Review.create!(comment: "Test Review 1", rating: 5, user_id: 1, bench_id: 1)
