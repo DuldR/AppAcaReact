@@ -19,3 +19,7 @@ export const selectAllBenches = (state) => {
 
     return Object.values(state.entities.benches)
 }
+
+export const selectAllUsers = (state) => {
+    return Object.values(state.entities.users)
+}

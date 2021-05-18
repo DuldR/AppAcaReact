@@ -5,7 +5,7 @@ class ReviewForm extends React.Component {
     constructor(props) {
         super(props);
 
-        this.state = { rating: 0, comment: "" }
+        this.state = { bench_id: this.props.bench.id, user_id: this.props.user.id, rating: 1, comment: "" }
 
         this.handleSubmit = this.handleSubmit.bind(this)
         this.handleCancel = this.handleCancel.bind(this)
@@ -15,14 +15,15 @@ class ReviewForm extends React.Component {
 
     handleSubmit(e) {
         e.preventDefault();
+        let review = { review: this.state }
+        this.props.createReview(review).then(
+            this.props.history.push(`/benches/${this.props.bench.id}`)
+        )
 
-        console.log("Fired")
     }
 
     handleCancel(e) {
         e.preventDefault();
-
-    
         this.props.history.push(`/benches/${this.props.bench.id}`)
     }
 
@@ -54,7 +55,6 @@ class ReviewForm extends React.Component {
                 </select>
                 <br></br>
                 <label >Comment: </label>
-                {/* <input className="form-comment" type='text' onChange={this.addBench}></input> */}
                 <textarea className="form-comment" onChange={this.addReview}></textarea>
                 <br></br>
 

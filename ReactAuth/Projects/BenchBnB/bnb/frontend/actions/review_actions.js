@@ -33,7 +33,7 @@ export const fetchReviews = (bench) => (dispatch) => {
 }
 
 export const createReview = (review) => (dispatch) => {
-    APIUtil.createReview(review).then(
+    return APIUtil.createReview(review).then(
         review => {
             dispatch(receiveOneReview(review))
             return review
