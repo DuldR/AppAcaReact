@@ -39,14 +39,14 @@ export const fetchBenches = (filters) => (dispatch, getState) => {
 
 export const fetchOneBench = (bench) => (dispatch, getState) => {
     return APIUtil.getOneBench(bench).then(bench => {
-        dispatch(receiveOneBench(bench))
         dispatch(startLoadingOneBench())
+        dispatch(receiveOneBench(bench))
+        
     })
 }
 
 export const createBench = (bench) => dispatch => {
-    console.log("Thunk")
-    console.log(bench)
+
     return APIUtil.createBench(bench).then(
         bench => {
             dispatch(receiveOneBench(bench));

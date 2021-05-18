@@ -9,9 +9,10 @@ const benchesReducer = (state = {}, action) => {
     switch (action.type) {
 
         case RECEIVE_BENCHES:
-            return action.benches
+            return Object.assign({}, state, action.benches)
         case RECEIVE_ONE_BENCH:
-            return Object.assign({}, state, {[action.bench.id]:action.bench})
+            console.log(action.bench)
+            return Object.assign({}, state, action.bench)
         default:
             return state;
     }
