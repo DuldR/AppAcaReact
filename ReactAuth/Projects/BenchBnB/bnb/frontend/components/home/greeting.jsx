@@ -22,9 +22,12 @@ class Greeting extends React.Component{
 
     signup() {
         return (
-            <div>
+            <div className={"nav-login"}>
                 <Link to="/signup">Signup </Link>
-                <Link to="/login">Login</Link>
+
+                or
+
+                <Link to="/login"> Login</Link>
             </div>
         )
 
@@ -42,10 +45,9 @@ class Greeting extends React.Component{
     greeting() {
         const {currentUser} = this.props
         return (
-            <div>
-                <h1>Welcome, {currentUser.username}</h1>
-                <Link to="/">Return to Index</Link>
-                <button onClick={this.logout}>Log out?</button>
+            <div className={"nav-bar"}>
+                <h2>Welcome, {currentUser.username}</h2>
+                <button className={"logout-button"} onClick={this.logout}>Log out?</button>
             </div>
         )
     }

@@ -6,7 +6,7 @@ export const ReviewIndexItem = (props) => {
 
     return ( 
         <li>
-            <ul>
+            <ul className={"review-list-item"}>
                 <li>
                     <label> Comment: </label>
                     {props.comment}

@@ -11,16 +11,18 @@ import BenchFormContainer from './benches/bench_form_container'
 const App = () => (
   <div>
       <header>
-          <h1>Bench BnB</h1>
+          <h1>⾬</h1>
           <GreetingContainer />    
       </header>
+
+      <div className="main-container">
+
+        <AuthRoute path={"/signup"} exact={true} component={SignUpFormContainer} />
+        <AuthRoute path={"/login"} exact={true} component={LoginFormContainer} />
+        <ProtectedRoute path={"/"} component={SearchContainer} />
+
+      </div>
       
-
-      <AuthRoute path={"/signup"} exact={true} component={SignUpFormContainer} />
-      <AuthRoute path={"/login"} exact={true} component={LoginFormContainer} />
-      {/* <ProtectedRoute path={"/benches/new"} component={BenchFormContainer} /> */}
-
-      <ProtectedRoute path={"/"} component={SearchContainer} />
     
   </div>
 );

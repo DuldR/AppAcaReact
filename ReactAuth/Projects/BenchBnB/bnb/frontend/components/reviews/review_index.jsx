@@ -20,7 +20,7 @@ class ReviewIndex extends React.Component {
 
 
         return (
-            <ul>
+            <ul className={"review-list"}>
                 {reviews}
             </ul>
         )

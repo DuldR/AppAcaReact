@@ -57,14 +57,14 @@ class SessionForm extends React.Component {
     displayHeader() {
 
         if (this.props.formType === "login") {
-            return <div>
-                Log in Baby 
-                <Link to='/signup'>Signup</Link>
+            return <div className="signup-form">
+                Log In Form
+                <Link to='/signup'>No Account? Click here to Sign Up</Link>
             </div>
         } else {
-            return <div>
-                Signup Baby 
-                <Link to='/login'>Login</Link>
+            return <div className="signup-form">
+                Sign Up Form
+                <Link to='/login'>Already have an account? Click here to log in</Link>
             </div>
         }
 
