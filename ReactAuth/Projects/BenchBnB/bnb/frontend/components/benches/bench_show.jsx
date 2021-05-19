@@ -27,12 +27,16 @@ class BenchShow extends React.Component {
 
         if ( this.props.loaded === false ) { return <h1>Loading</h1> }
         
-        const { description, lat, seats, long, id } = this.props.bench
+        const { description, lat, seats, long, id, photoUrl } = this.props.bench
         return (
 
             <section>
                 <BenchMap benches={[this.props.bench]} center={{lat: lat, lng: long}} drag={false} />
                 <ul>
+                    <li>
+                        <img src={photoUrl} />
+
+                    </li>
                     <li>
                         <label>Name: </label>
                         {description}

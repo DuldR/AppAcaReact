@@ -11,7 +11,8 @@ const benchesReducer = (state = {}, action) => {
         case RECEIVE_BENCHES:
             return Object.assign({}, state, action.benches)
         case RECEIVE_ONE_BENCH:
-            return Object.assign({}, state, action.bench)
+            let newObject = Object.values(action.bench)
+            return Object.assign({}, state, {[newObject[0].id]: newObject[0]})
         default:
             return state;
     }

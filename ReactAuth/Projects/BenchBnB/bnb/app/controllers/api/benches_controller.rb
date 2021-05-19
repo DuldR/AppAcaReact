@@ -4,7 +4,7 @@ class Api::BenchesController < ApplicationController
         @bench = Bench.new(bench_params)
 
         if @bench.save
-            render json: @bench
+            render :create
         else
             render json: ["Not a valid bench"], status: 422
         end

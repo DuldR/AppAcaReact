@@ -14,6 +14,7 @@ class BenchIndex extends React.Component {
 
 
     componentDidMount() {
+
         this.props.fetchFilter("bounds", this.props.bounds)
 
     }

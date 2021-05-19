@@ -41,6 +41,7 @@ export const fetchOneBench = (bench) => (dispatch, getState) => {
     return APIUtil.getOneBench(bench).then(bench => {
         dispatch(startLoadingOneBench())
         dispatch(receiveOneBench(bench))
+        return bench
         
     })
 }

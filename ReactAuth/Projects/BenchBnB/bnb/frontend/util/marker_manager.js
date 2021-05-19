@@ -8,6 +8,7 @@ export default class MarkerManager {
     }
 
     createMarkerFromBench(bench, benchId) {
+
         let newMarker = new google.maps.Marker({
             position: { lat: bench.lat, lng: bench.long },
             map: this.map,

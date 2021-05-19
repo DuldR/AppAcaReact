@@ -5,7 +5,7 @@ import { Route, Redirect } from 'react-router-dom'
 class BenchForm extends React.Component {
     constructor(props) {
         super(props);
-        this.state = { description: "", lat: this.props.lat, long: this.props.lng, seats: 0, photoFile: null }
+        this.state = { description: "", lat: this.props.lat, long: this.props.lng, seats: 0, photoFile: null, photoUrl: null }
 
         this.handleSubmit = this.handleSubmit.bind(this)
         this.addBench = this.addBench.bind(this)
@@ -32,6 +32,19 @@ class BenchForm extends React.Component {
     }
 
     handleFile(e) {
+
+        const file = e.currentTarget.files[0]
+        const fileReader = new FileReader();
+
+        fileReader.onloadend = () => {
+            this.setState({photoFile: file, photoUrl: fileReader.result})
+        }
+
+        if (file) {
+            fileReader.readAsDataURL(file);
+        }
+        
+
         this.setState({photoFile: e.currentTarget.files[0] })
     }
 
@@ -53,6 +66,9 @@ class BenchForm extends React.Component {
 
     render() {
 
+        const preview = this.state.photoUrl ?  <img src={this.state.photoUrl} /> : null;
+
+
         return (
             <form onSubmit={this.handleSubmit} className="bench-form" id="bench-submit">
 
@@ -69,6 +85,10 @@ class BenchForm extends React.Component {
                 <input className="form-lng" type='text' value={this.state.long} disabled></input>
                 <br>
                 </br>
+
+                <label>IMage Preview</label>
+
+                {preview}
 
                 <input type="file" onChange={this.handleFile}></input>
 
